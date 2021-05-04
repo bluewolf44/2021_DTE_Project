@@ -8,3 +8,4 @@ func _process(delta):
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")
 		)
 	move_and_slide(move.normalized()*speed)
+	
