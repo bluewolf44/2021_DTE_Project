@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Sprites/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/male_head1.png" type="Texture" id=2]
@@ -7,9 +7,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.5045, 25.5271 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 resource_name = "RunEast"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -35,9 +36,10 @@ tracks/1/keys = {
 "values": [ 132, 133, 134, 135, 136, 137, 138, 139 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 resource_name = "RunNorth"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -63,7 +65,7 @@ tracks/1/keys = {
 "values": [ 68, 69, 70, 71, 72, 73, 74, 75 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=4]
 resource_name = "RunNorthEast"
 length = 0.8
 loop = true
@@ -92,7 +94,7 @@ tracks/1/keys = {
 "values": [ 99, 100, 101, 102, 103, 104, 105, 106 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "RunNorthWest"
 length = 0.8
 loop = true
@@ -121,7 +123,36 @@ tracks/1/keys = {
 "values": [ 36, 37, 38, 39, 40, 41, 42, 43 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=6]
+resource_name = "RunSouth"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
+}
+
+[sub_resource type="Animation" id=7]
 resource_name = "RunSouthEast"
 length = 0.8
 loop = true
@@ -150,8 +181,36 @@ tracks/1/keys = {
 "values": [ 164, 165, 166, 167, 168, 169, 170, 171 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "RunWest"
+[sub_resource type="Animation" id=18]
+resource_name = "RunSouthWest"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -179,7 +238,7 @@ tracks/1/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=9]
 resource_name = "StandEast"
 length = 0.4
 loop = true
@@ -208,9 +267,10 @@ tracks/1/keys = {
 "values": [ 128, 129, 130, 131 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "StandNorth"
 length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:frame")
 tracks/0/interp = 1
@@ -221,7 +281,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 65, 66, 67, 68 ]
+"values": [ 64, 65, 66, 67 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body:frame")
@@ -233,12 +293,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 65, 66, 67, 68 ]
+"values": [ 64, 65, 66, 67 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "StandNorthEast"
 length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -264,9 +325,9 @@ tracks/1/keys = {
 "values": [ 96, 97, 98, 99 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "StandNorthWest"
+[sub_resource type="Animation" id=12]
 length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
@@ -277,7 +338,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 33, 34, 35, 36 ]
+"values": [ 32, 33, 34, 35 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Head:frame")
@@ -292,8 +353,93 @@ tracks/1/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "StandWest"
+[sub_resource type="Animation" id=13]
+resource_name = "StandSouth"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 192, 193, 194, 195 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 192, 193, 194, 195 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "StandSouthEast"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 160, 161, 162, 163 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 160, 161, 162, 163 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "StandSouthWest"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 224, 225, 226, 227 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 224, 225, 226, 227 ]
+}
+
+[sub_resource type="Animation" id=14]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -321,13 +467,109 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=7]
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "RunSouth"
 
-[sub_resource type="AnimationNodeStateMachine" id=5]
-states/Stand/node = SubResource( 7 )
-states/Stand/position = Vector2( 373, 71 )
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "RunWest"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "RunEast"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "RunNorth"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "RunSouthEast"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "RunSouthWest"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "RunNorthWest"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "RunNorthEast"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=29]
+blend_point_0/node = SubResource( 32 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 33 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 34 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 35 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_point_4/node = SubResource( 36 )
+blend_point_4/pos = Vector2( 1, 1 )
+blend_point_5/node = SubResource( 37 )
+blend_point_5/pos = Vector2( -1, 1 )
+blend_point_6/node = SubResource( 38 )
+blend_point_6/pos = Vector2( -1, -1 )
+blend_point_7/node = SubResource( 39 )
+blend_point_7/pos = Vector2( 1, -1 )
+min_space = Vector2( -1.01, -1.01 )
+max_space = Vector2( 1.01, 1.01 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "StandSouth"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "StandNorth"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "StandEast"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "StandWest"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "StandSouthWest"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "StandSouthEast"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "StandNorthEast"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "StandNorthWest"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 21 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 22 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 23 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 25 )
+blend_point_4/pos = Vector2( -1, 1 )
+blend_point_5/node = SubResource( 26 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 27 )
+blend_point_6/pos = Vector2( 1, -1 )
+blend_point_7/node = SubResource( 28 )
+blend_point_7/pos = Vector2( -1, -1 )
+min_space = Vector2( -1.01, -1.01 )
+max_space = Vector2( 1.01, 1.01 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Run/node = SubResource( 29 )
+states/Run/position = Vector2( 589, 68 )
+states/Stand/node = SubResource( 15 )
+states/Stand/position = Vector2( 375, 68 )
+transitions = [ "Stand", "Run", SubResource( 30 ), "Run", "Stand", SubResource( 31 ) ]
+start_node = "Stand"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -344,32 +586,37 @@ current = true
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 171
+frame = 105
 
 [node name="Head" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 171
+frame = 104
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "StandWest"
 method_call_mode = 1
-anims/RunEast = SubResource( 14 )
-anims/RunNorth = SubResource( 10 )
-anims/RunNorthEast = SubResource( 13 )
-anims/RunNorthWest = SubResource( 8 )
-anims/RunSouthEast = SubResource( 15 )
-anims/RunWest = SubResource( 2 )
-anims/StandEast = SubResource( 16 )
-anims/StandNorth = SubResource( 11 )
-anims/StandNorthEast = SubResource( 12 )
-anims/StandNorthWest = SubResource( 9 )
-anims/StandWest = SubResource( 3 )
+anims/RunEast = SubResource( 2 )
+anims/RunNorth = SubResource( 3 )
+anims/RunNorthEast = SubResource( 4 )
+anims/RunNorthWest = SubResource( 5 )
+anims/RunSouth = SubResource( 6 )
+anims/RunSouthEast = SubResource( 7 )
+anims/RunSouthWest = SubResource( 18 )
+anims/RunWest = SubResource( 8 )
+anims/StandEast = SubResource( 9 )
+anims/StandNorth = SubResource( 10 )
+anims/StandNorthEast = SubResource( 11 )
+anims/StandNorthWest = SubResource( 12 )
+anims/StandSouth = SubResource( 13 )
+anims/StandSouthEast = SubResource( 20 )
+anims/StandSouthWest = SubResource( 19 )
+anims/StandWest = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 5 )
+tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 6 )
-parameters/Stand/blend_position = Vector2( 0, 0 )
+parameters/playback = SubResource( 17 )
+parameters/Run/blend_position = Vector2( 0.889181, -0.973199 )
+parameters/Stand/blend_position = Vector2( 0, 1.01 )
