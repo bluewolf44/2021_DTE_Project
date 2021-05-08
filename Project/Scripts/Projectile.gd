@@ -3,12 +3,17 @@ extends Node2D
 var move = Vector2(0,0)
 var effects
 var interact
+onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
 	position += move*delta
+	if position.distance_to(player.position) > 400:
+		queue_free()
 
 func _on_Area2D_area_entered(area):
-	pass # Replace with function body.
+	if area.get_parent().type in interact:
+		area.get_parent().interact(effects)
+		queue_free()
 
 func add_data(data):
 	if data["time"] != -1:

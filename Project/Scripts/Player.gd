@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var speed = 300
+var type = "player"
+
 var other_action = false
 var held_spell
 var held_postion
@@ -9,7 +11,6 @@ var move_towards
 var has_move = false
 
 func _process(delta):
-
 	var move = Vector2(
 		Input.get_action_strength("Move_Right")-Input.get_action_strength("Move_Left"),
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")
@@ -20,10 +21,8 @@ func _process(delta):
 		travel("Run")
 		$AnimationTree.set("parameters/Stand/blend_position",move)
 		$AnimationTree.set("parameters/Run/blend_position",move)
-	
 	elif not other_action:
 		travel("Stand")
-	
 	
 	if Input.is_action_just_pressed("LMB"):
 		other_action = true
@@ -36,8 +35,8 @@ func _process(delta):
 			"speed":400
 		}
 		
-		held_postion = get_global_mouse_position()-position.normalized()
-		$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position.normalized()))
+		held_postion = (get_global_mouse_position()-position).normalized()
+		$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())
 		travel("Cast")
 
 func cast_spell():
