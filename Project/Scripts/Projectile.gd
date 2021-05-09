@@ -21,7 +21,6 @@ func add_data(data):
 		$Timer.wait_time = data["time"]
 	effects = data["effects"]
 	interact = data["interact"]
-	$Spell_attack.texture = data["texture"]
 	$Area2D/CollisionShape2D.position = data["collionShape"]["position"]
 	$Area2D/CollisionShape2D.shape.extents = data["collionShape"]["size"]
 	

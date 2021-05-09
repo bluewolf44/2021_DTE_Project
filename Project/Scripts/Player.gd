@@ -9,7 +9,7 @@ var held_spell = {
 			"effects":{"damage":10},
 			"time":-1,
 			"interact":["enemy","wall"],
-			"sprite":{"texture":load("res://Sprites/11_fire_spritesheet.png"),"type":"fire"},
+			"sprite":"fire",
 			"speed":400,
 			"collionShape":{"position":Vector2(1.2,10.7),"size":Vector2(7.2,16)},
 		}
