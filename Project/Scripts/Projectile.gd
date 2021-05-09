@@ -3,6 +3,7 @@ extends Node2D
 var move = Vector2(0,0)
 var effects
 var interact
+var type = "projectile"
 onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
@@ -21,6 +22,8 @@ func add_data(data):
 	effects = data["effects"]
 	interact = data["interact"]
 	$Spell_attack.texture = data["texture"]
+	$Area2D/CollisionShape2D.position = data["collionShape"]["position"]
+	$Area2D/CollisionShape2D.shape.extents = data["collionShape"]["size"]
 	
 func _on_Timer_timeout():
 	queue_free()

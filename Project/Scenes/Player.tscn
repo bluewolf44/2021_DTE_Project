@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Sprites/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/male_head1.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.5045, 25.5271 )
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=2]
 resource_name = "CastEast"
 loop = true
 tracks/0/type = "value"
@@ -34,22 +34,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 152, 153, 154, 155 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=3]
 resource_name = "CastNorth"
 loop = true
 tracks/0/type = "value"
@@ -76,22 +62,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 88, 89, 90, 91 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=4]
 resource_name = "CastNorthEast"
 loop = true
 tracks/0/type = "value"
@@ -118,22 +90,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 120, 121, 122, 123 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=5]
 resource_name = "CastNorthWest"
 loop = true
 tracks/0/type = "value"
@@ -160,22 +118,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 56, 57, 58, 59 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=6]
 resource_name = "CastSouth"
 loop = true
 tracks/0/type = "value"
@@ -202,22 +146,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 216, 217, 218, 219 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=7]
 resource_name = "CastSouthEast"
 loop = true
 tracks/0/type = "value"
@@ -244,22 +174,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 184, 185, 186, 187 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=47]
+[sub_resource type="Animation" id=8]
 resource_name = "CastSouthWest"
 loop = true
 tracks/0/type = "value"
@@ -286,22 +202,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 248, 249, 250, 251 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
 
-[sub_resource type="Animation" id=40]
+[sub_resource type="Animation" id=9]
 resource_name = "CastWest"
 loop = true
 tracks/0/type = "value"
@@ -328,254 +230,9 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "cast_spell"
-} ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "RunEast"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 132, 133, 134, 135, 136, 137, 138, 139 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 132, 133, 134, 135, 136, 137, 138, 139 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "RunNorth"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 68, 69, 70, 71, 72, 73, 74, 75 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 68, 69, 70, 71, 72, 73, 74, 75 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "RunNorthEast"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 100, 101, 102, 103, 104, 105, 106, 107 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 100, 101, 102, 103, 104, 105, 106, 107 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "RunNorthWest"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 36, 37, 38, 39, 40, 41, 42, 43 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 36, 37, 38, 39, 40, 41, 42, 43 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "RunSouth"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "RunSouthEast"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 164, 165, 166, 167, 168, 169, 170, 171 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 164, 165, 166, 167, 168, 169, 170, 171 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "RunSouthWest"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
-}
 
 [sub_resource type="Animation" id=10]
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
@@ -584,10 +241,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 128, 129, 130, 131 ]
+"values": [ 132, 133, 134, 135, 136, 137, 138, 139 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Head:frame")
@@ -596,42 +253,42 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 128, 129, 130, 131 ]
+"values": [ 132, 133, 134, 135, 136, 137, 138, 139 ]
 }
 
 [sub_resource type="Animation" id=11]
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 64, 65, 66, 67 ]
+"values": [ 68, 69, 70, 71, 72, 73, 74, 75 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body:frame")
+tracks/1/path = NodePath("Head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 64, 65, 66, 67 ]
+"values": [ 68, 69, 70, 71, 72, 73, 74, 75 ]
 }
 
 [sub_resource type="Animation" id=12]
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
@@ -640,10 +297,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 96, 97, 98, 99 ]
+"values": [ 100, 101, 102, 103, 104, 105, 106, 107 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Head:frame")
@@ -652,14 +309,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 96, 97, 98, 99 ]
+"values": [ 100, 101, 102, 103, 104, 105, 106, 107 ]
 }
 
 [sub_resource type="Animation" id=13]
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:frame")
@@ -668,10 +325,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 32, 33, 34, 35 ]
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Head:frame")
@@ -680,42 +337,265 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 32, 33, 34, 35 ]
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43 ]
 }
 
 [sub_resource type="Animation" id=14]
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 192, 193, 194, 195 ]
+"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body:frame")
+tracks/1/path = NodePath("Head:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 192, 193, 194, 195 ]
+"values": [ 196, 197, 198, 199, 200, 201, 202, 203 ]
 }
 
 [sub_resource type="Animation" id=15]
-resource_name = "StandSouthEast"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 164, 165, 166, 167, 168, 169, 170, 171 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 164, 165, 166, 167, 168, 169, 170, 171 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 228, 229, 230, 231, 232, 233, 234, 235 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 128, 129, 130, 131 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 128, 129, 130, 131 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 64, 65, 66, 67 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 64, 65, 66, 67 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 96, 97, 98, 99 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 96, 97, 98, 99 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35 ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 192, 193, 194, 195 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 192, 193, 194, 195 ]
+}
+
+[sub_resource type="Animation" id=23]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -743,8 +623,7 @@ tracks/1/keys = {
 "values": [ 160, 161, 162, 163 ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "StandSouthWest"
+[sub_resource type="Animation" id=24]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:frame")
@@ -771,7 +650,7 @@ tracks/1/keys = {
 "values": [ 224, 225, 226, 227 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=25]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -799,149 +678,166 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=48]
-animation = "CastSouth"
-
-[sub_resource type="AnimationNodeAnimation" id=49]
-animation = "CastEast"
-
-[sub_resource type="AnimationNodeAnimation" id=50]
-animation = "CastWest"
-
-[sub_resource type="AnimationNodeAnimation" id=51]
-animation = "CastNorth"
-
-[sub_resource type="AnimationNodeAnimation" id=52]
-animation = "CastSouthWest"
-
-[sub_resource type="AnimationNodeAnimation" id=53]
-animation = "CastSouthEast"
-
-[sub_resource type="AnimationNodeAnimation" id=54]
-animation = "CastNorthEast"
-
 [sub_resource type="AnimationNodeAnimation" id=55]
-animation = "CastNorthWest"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=56]
-blend_point_0/node = SubResource( 48 )
+
+[sub_resource type="AnimationNodeTimeScale" id=57]
+
+[sub_resource type="AnimationNodeBlendTree" id=58]
+nodes/Animation/node = SubResource( 55 )
+nodes/Animation/position = Vector2( 0, 140 )
+nodes/BlendSpace2D/node = SubResource( 56 )
+nodes/BlendSpace2D/position = Vector2( 691, 281 )
+nodes/TimeScale/node = SubResource( 57 )
+nodes/TimeScale/position = Vector2( 180, 140 )
+nodes/output/position = Vector2( 340, 160 )
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "CastSouth"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "CastEast"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "CastWest"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "CastNorth"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "CastSouthWest"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "CastSouthEast"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "CastNorthEast"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "CastNorthWest"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=34]
+blend_point_0/node = SubResource( 26 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 49 )
+blend_point_1/node = SubResource( 27 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 50 )
+blend_point_2/node = SubResource( 28 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 51 )
+blend_point_3/node = SubResource( 29 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 52 )
+blend_point_4/node = SubResource( 30 )
 blend_point_4/pos = Vector2( -1, 1 )
-blend_point_5/node = SubResource( 53 )
+blend_point_5/node = SubResource( 31 )
 blend_point_5/pos = Vector2( 1, 1 )
-blend_point_6/node = SubResource( 54 )
+blend_point_6/node = SubResource( 32 )
 blend_point_6/pos = Vector2( 1, -1 )
-blend_point_7/node = SubResource( 55 )
+blend_point_7/node = SubResource( 33 )
 blend_point_7/pos = Vector2( -1, -1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=35]
 animation = "RunSouth"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "RunWest"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "RunEast"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "RunNorth"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "RunSouthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "RunSouthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "RunNorthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=42]
 animation = "RunNorthEast"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=26]
-blend_point_0/node = SubResource( 18 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=43]
+blend_point_0/node = SubResource( 35 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 19 )
+blend_point_1/node = SubResource( 36 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 20 )
+blend_point_2/node = SubResource( 37 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 21 )
+blend_point_3/node = SubResource( 38 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 22 )
+blend_point_4/node = SubResource( 39 )
 blend_point_4/pos = Vector2( 1, 1 )
-blend_point_5/node = SubResource( 23 )
+blend_point_5/node = SubResource( 40 )
 blend_point_5/pos = Vector2( -1, 1 )
-blend_point_6/node = SubResource( 24 )
+blend_point_6/node = SubResource( 41 )
 blend_point_6/pos = Vector2( -1, -1 )
-blend_point_7/node = SubResource( 25 )
+blend_point_7/node = SubResource( 42 )
 blend_point_7/pos = Vector2( 1, -1 )
 min_space = Vector2( -1.01, -1.01 )
 max_space = Vector2( 1.01, 1.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=44]
 animation = "StandSouth"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=45]
 animation = "StandNorth"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=46]
 animation = "StandEast"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=47]
 animation = "StandWest"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=48]
 animation = "StandSouthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "StandSouthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=50]
 animation = "StandNorthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "StandNorthWest"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=35]
-blend_point_0/node = SubResource( 27 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=52]
+blend_point_0/node = SubResource( 44 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 28 )
+blend_point_1/node = SubResource( 45 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 29 )
+blend_point_2/node = SubResource( 46 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 30 )
+blend_point_3/node = SubResource( 47 )
 blend_point_3/pos = Vector2( -1, 0 )
-blend_point_4/node = SubResource( 31 )
+blend_point_4/node = SubResource( 48 )
 blend_point_4/pos = Vector2( -1, 1 )
-blend_point_5/node = SubResource( 32 )
+blend_point_5/node = SubResource( 49 )
 blend_point_5/pos = Vector2( 1, 1 )
-blend_point_6/node = SubResource( 33 )
+blend_point_6/node = SubResource( 50 )
 blend_point_6/pos = Vector2( 1, -1 )
-blend_point_7/node = SubResource( 34 )
+blend_point_7/node = SubResource( 51 )
 blend_point_7/pos = Vector2( -1, -1 )
 min_space = Vector2( -1.01, -1.01 )
 max_space = Vector2( 1.01, 1.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id=38]
-states/Cast/node = SubResource( 56 )
+[sub_resource type="AnimationNodeStateMachine" id=53]
+states/BlendTree/node = SubResource( 58 )
+states/BlendTree/position = Vector2( 586, 178 )
+states/Cast/node = SubResource( 34 )
 states/Cast/position = Vector2( 375, 185 )
-states/Run/node = SubResource( 26 )
+states/Run/node = SubResource( 43 )
 states/Run/position = Vector2( 786, 68 )
-states/Stand/node = SubResource( 35 )
+states/Stand/node = SubResource( 52 )
 states/Stand/position = Vector2( 375, 68 )
 start_node = "Stand"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=39]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -962,7 +858,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 192
+frame = 195
 __meta__ = {
 "_edit_lock_": true
 }
@@ -971,43 +867,50 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 192
+frame = 195
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Player" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/CastEast = SubResource( 44 )
-anims/CastNorth = SubResource( 42 )
-anims/CastNorthEast = SubResource( 43 )
-anims/CastNorthWest = SubResource( 41 )
-anims/CastSouth = SubResource( 46 )
-anims/CastSouthEast = SubResource( 45 )
-anims/CastSouthWest = SubResource( 47 )
-anims/CastWest = SubResource( 40 )
-anims/RunEast = SubResource( 2 )
-anims/RunNorth = SubResource( 3 )
-anims/RunNorthEast = SubResource( 4 )
-anims/RunNorthWest = SubResource( 5 )
-anims/RunSouth = SubResource( 6 )
-anims/RunSouthEast = SubResource( 7 )
-anims/RunSouthWest = SubResource( 8 )
-anims/RunWest = SubResource( 9 )
-anims/StandEast = SubResource( 10 )
-anims/StandNorth = SubResource( 11 )
-anims/StandNorthEast = SubResource( 12 )
-anims/StandNorthWest = SubResource( 13 )
-anims/StandSouth = SubResource( 14 )
-anims/StandSouthEast = SubResource( 15 )
-anims/StandSouthWest = SubResource( 16 )
-anims/StandWest = SubResource( 17 )
+anims/CastEast = SubResource( 2 )
+anims/CastNorth = SubResource( 3 )
+anims/CastNorthEast = SubResource( 4 )
+anims/CastNorthWest = SubResource( 5 )
+anims/CastSouth = SubResource( 6 )
+anims/CastSouthEast = SubResource( 7 )
+anims/CastSouthWest = SubResource( 8 )
+anims/CastWest = SubResource( 9 )
+anims/RunEast = SubResource( 10 )
+anims/RunNorth = SubResource( 11 )
+anims/RunNorthEast = SubResource( 12 )
+anims/RunNorthWest = SubResource( 13 )
+anims/RunSouth = SubResource( 14 )
+anims/RunSouthEast = SubResource( 15 )
+anims/RunSouthWest = SubResource( 16 )
+anims/RunWest = SubResource( 17 )
+anims/StandEast = SubResource( 18 )
+anims/StandNorth = SubResource( 19 )
+anims/StandNorthEast = SubResource( 20 )
+anims/StandNorthWest = SubResource( 21 )
+anims/StandSouth = SubResource( 22 )
+anims/StandSouthEast = SubResource( 23 )
+anims/StandSouthWest = SubResource( 24 )
+anims/StandWest = SubResource( 25 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 38 )
+tree_root = SubResource( 53 )
 anim_player = NodePath("../Player")
 active = true
-parameters/playback = SubResource( 39 )
+parameters/playback = SubResource( 54 )
+parameters/BlendTree/BlendSpace2D/blend_position = Vector2( 0, 0 )
+parameters/BlendTree/TimeScale/scale = 2.0
 parameters/Cast/blend_position = Vector2( 0.82669, -0.791383 )
 parameters/Run/blend_position = Vector2( 0.889181, -0.973199 )
 parameters/Stand/blend_position = Vector2( 0, 1.01 )
+
+[node name="Attack_speed" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
