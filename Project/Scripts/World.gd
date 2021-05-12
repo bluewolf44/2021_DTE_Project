@@ -17,3 +17,4 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 	if data.has("speed"):
 		projectile_instance.move = direction.normalized()*data["speed"]
 	$Projectiles.add_child(projectile_instance)
+
