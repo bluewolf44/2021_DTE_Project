@@ -2,17 +2,28 @@ extends KinematicBody2D
 
 var speed = 300
 var type = "player"
-var attack_speed = 0.5
+var attack_speed = 0.25
 
 var other_action = false
-var held_spell = {
+
+var held_action = 0
+var action_hold = [{
+			"effects":{"damage":10},
+			"time":0.7,
+			"interact":[],
+			"affect":["enemy"],
+			"sprite":"Slash",
+			"where":["player_to_mouse",40],
+		},
+		{
 			"effects":{"damage":10},
 			"time":-1,
 			"interact":["enemy","wall"],
-			"sprite":"fire",
+			"affect":[],
+			"sprite":"Fire",
 			"speed":400,
-			"collionShape":{"position":Vector2(1.2,10.7),"size":Vector2(7.2,16)},
-		}
+			"where":["player",20],
+		}]
 		
 var held_postion
 
@@ -44,10 +55,16 @@ func _process(delta):
 		$Attack_speed.wait_time = attack_speed
 		$Attack_speed.start()
 		travel("Cast")
+	elif Input.is_action_just_pressed("Q"):
+		held_action += 1
+		if held_action >= 2:
+			held_action = 0
 
 func cast_spell():
-	get_parent().create_projectile(position,held_spell,held_postion)
-
+	if action_hold[held_action]["where"][0] == "player_to_mouse":
+		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"][1],action_hold[held_action],held_postion)
+	elif action_hold[held_action]["where"][0] == "player":
+		get_parent().create_projectile(position,action_hold[held_action],held_postion)
 func travel(place):
 	$AnimationTree.get("parameters/playback").travel(place)
 

@@ -678,149 +678,149 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "CastSouth"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "CastEast"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "CastWest"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "CastNorth"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "CastSouthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "CastSouthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "CastNorthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "CastNorthWest"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=38]
-blend_point_0/node = SubResource( 30 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=34]
+blend_point_0/node = SubResource( 26 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 31 )
+blend_point_1/node = SubResource( 27 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 32 )
+blend_point_2/node = SubResource( 28 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 33 )
+blend_point_3/node = SubResource( 29 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 34 )
+blend_point_4/node = SubResource( 30 )
 blend_point_4/pos = Vector2( -1, 1 )
-blend_point_5/node = SubResource( 35 )
+blend_point_5/node = SubResource( 31 )
 blend_point_5/pos = Vector2( 1, 1 )
-blend_point_6/node = SubResource( 36 )
+blend_point_6/node = SubResource( 32 )
 blend_point_6/pos = Vector2( 1, -1 )
-blend_point_7/node = SubResource( 37 )
+blend_point_7/node = SubResource( 33 )
 blend_point_7/pos = Vector2( -1, -1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=35]
 animation = "RunSouth"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "RunWest"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "RunEast"
 
-[sub_resource type="AnimationNodeAnimation" id=42]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "RunNorth"
 
-[sub_resource type="AnimationNodeAnimation" id=43]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "RunSouthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=44]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "RunSouthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "RunNorthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=46]
+[sub_resource type="AnimationNodeAnimation" id=42]
 animation = "RunNorthEast"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=47]
-blend_point_0/node = SubResource( 39 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=43]
+blend_point_0/node = SubResource( 35 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 40 )
+blend_point_1/node = SubResource( 36 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 41 )
+blend_point_2/node = SubResource( 37 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 42 )
+blend_point_3/node = SubResource( 38 )
 blend_point_3/pos = Vector2( 0, -1 )
-blend_point_4/node = SubResource( 43 )
+blend_point_4/node = SubResource( 39 )
 blend_point_4/pos = Vector2( 1, 1 )
-blend_point_5/node = SubResource( 44 )
+blend_point_5/node = SubResource( 40 )
 blend_point_5/pos = Vector2( -1, 1 )
-blend_point_6/node = SubResource( 45 )
+blend_point_6/node = SubResource( 41 )
 blend_point_6/pos = Vector2( -1, -1 )
-blend_point_7/node = SubResource( 46 )
+blend_point_7/node = SubResource( 42 )
 blend_point_7/pos = Vector2( 1, -1 )
 min_space = Vector2( -1.01, -1.01 )
 max_space = Vector2( 1.01, 1.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=48]
+[sub_resource type="AnimationNodeAnimation" id=44]
 animation = "StandSouth"
 
-[sub_resource type="AnimationNodeAnimation" id=49]
+[sub_resource type="AnimationNodeAnimation" id=45]
 animation = "StandNorth"
 
-[sub_resource type="AnimationNodeAnimation" id=50]
+[sub_resource type="AnimationNodeAnimation" id=46]
 animation = "StandEast"
 
-[sub_resource type="AnimationNodeAnimation" id=51]
+[sub_resource type="AnimationNodeAnimation" id=47]
 animation = "StandWest"
 
-[sub_resource type="AnimationNodeAnimation" id=52]
+[sub_resource type="AnimationNodeAnimation" id=48]
 animation = "StandSouthWest"
 
-[sub_resource type="AnimationNodeAnimation" id=53]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "StandSouthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=54]
+[sub_resource type="AnimationNodeAnimation" id=50]
 animation = "StandNorthEast"
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "StandNorthWest"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=56]
-blend_point_0/node = SubResource( 48 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=52]
+blend_point_0/node = SubResource( 44 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 49 )
+blend_point_1/node = SubResource( 45 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 50 )
+blend_point_2/node = SubResource( 46 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 51 )
+blend_point_3/node = SubResource( 47 )
 blend_point_3/pos = Vector2( -1, 0 )
-blend_point_4/node = SubResource( 52 )
+blend_point_4/node = SubResource( 48 )
 blend_point_4/pos = Vector2( -1, 1 )
-blend_point_5/node = SubResource( 53 )
+blend_point_5/node = SubResource( 49 )
 blend_point_5/pos = Vector2( 1, 1 )
-blend_point_6/node = SubResource( 54 )
+blend_point_6/node = SubResource( 50 )
 blend_point_6/pos = Vector2( 1, -1 )
-blend_point_7/node = SubResource( 55 )
+blend_point_7/node = SubResource( 51 )
 blend_point_7/pos = Vector2( -1, -1 )
 min_space = Vector2( -1.01, -1.01 )
 max_space = Vector2( 1.01, 1.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id=57]
-states/Cast/node = SubResource( 38 )
+[sub_resource type="AnimationNodeStateMachine" id=53]
+states/Cast/node = SubResource( 34 )
 states/Cast/position = Vector2( 555, 68 )
-states/Run/node = SubResource( 47 )
+states/Run/node = SubResource( 43 )
 states/Run/position = Vector2( 786, 68 )
-states/Stand/node = SubResource( 56 )
+states/Stand/node = SubResource( 52 )
 states/Stand/position = Vector2( 357, 68 )
 start_node = "Stand"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=58]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -841,7 +841,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 192
+frame = 193
 __meta__ = {
 "_edit_lock_": true
 }
@@ -850,7 +850,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 192
+frame = 193
 __meta__ = {
 "_edit_lock_": true
 }
@@ -883,15 +883,15 @@ anims/StandSouthWest = SubResource( 24 )
 anims/StandWest = SubResource( 25 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 57 )
+tree_root = SubResource( 53 )
 anim_player = NodePath("../Player")
 active = true
-parameters/playback = SubResource( 58 )
+parameters/playback = SubResource( 54 )
 parameters/Cast/blend_position = Vector2( 0.82669, -0.791383 )
 parameters/Run/blend_position = Vector2( 0.889181, -0.973199 )
 parameters/Stand/blend_position = Vector2( 0, 1.01 )
 
 [node name="Attack_speed" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
