@@ -22,14 +22,17 @@ func _on_Area2D_area_entered(area):
 func add_data(data):
 	if data["time"] != -1:
 		$Timer.wait_time = data["time"]
+	
 	if data.get("effects"):
 		effects = data["effects"]
+	
 	if data.get("affect"):
 		affect = data["affect"]
+	
 	if data.get("interact"):
 		interact = data["interact"]
-	print($Attacks.play(data["sprite"]))
-	print(data["sprite"])
+		
+	$Attacks.play(data["sprite"])
 	
 func _on_Timer_timeout():
 	queue_free()

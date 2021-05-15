@@ -3,7 +3,6 @@ extends KinematicBody2D
 var speed = 300
 var type = "player"
 var attack_speed = 0.25
-
 var other_action = false
 
 var held_action = 0
@@ -24,9 +23,8 @@ var action_hold = [{
 			"speed":400,
 			"where":["player",20],
 		}]
-		
-var held_postion
 
+var held_postion
 var move_towards
 var has_move = false
 
@@ -55,6 +53,7 @@ func _process(delta):
 		$Attack_speed.wait_time = attack_speed
 		$Attack_speed.start()
 		travel("Cast")
+	
 	elif Input.is_action_just_pressed("Q"):
 		held_action += 1
 		if held_action >= 2:
@@ -65,6 +64,7 @@ func cast_spell():
 		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"][1],action_hold[held_action],held_postion)
 	elif action_hold[held_action]["where"][0] == "player":
 		get_parent().create_projectile(position,action_hold[held_action],held_postion)
+
 func travel(place):
 	$AnimationTree.get("parameters/playback").travel(place)
 
