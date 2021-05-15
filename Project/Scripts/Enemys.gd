@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var player = get_parent().get_parent().get_node("Player")
 
 var speed = 150
-var type = "enemy"
+var type = "Enemy"
 
 func _process(delta):
 	if position.distance_to(player.position) < 600:

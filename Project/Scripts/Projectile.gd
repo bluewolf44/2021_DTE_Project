@@ -4,7 +4,7 @@ var move = Vector2(0,0)
 var effects
 var interact = []
 var affect = []
-var type = "projectile"
+var type = "Projectile"
 onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
@@ -22,15 +22,12 @@ func _on_Area2D_area_entered(area):
 func add_data(data):
 	if data["time"] != -1:
 		$Timer.wait_time = data["time"]
+	effects = data["effects"]
+	for n in data["affect"]:
+		affect.append(n.input)
 	
-	if data.get("effects"):
-		effects = data["effects"]
-	
-	if data.get("affect"):
-		affect = data["affect"]
-	
-	if data.get("interact"):
-		interact = data["interact"]
+	for n in data["interact"]:
+		interact.append(n.input)
 		
 	$Attacks.play(data["sprite"])
 	

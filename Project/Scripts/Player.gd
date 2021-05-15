@@ -1,28 +1,12 @@
 extends KinematicBody2D
 
 var speed = 300
-var type = "player"
+var type = "Player"
 var attack_speed = 0.25
 var other_action = false
 
 var held_action = 0
-var action_hold = [{
-			"effects":{"damage":10},
-			"time":0.7,
-			"interact":[],
-			"affect":["enemy"],
-			"sprite":"Slash",
-			"where":["player_to_mouse",40],
-		},
-		{
-			"effects":{"damage":10},
-			"time":-1,
-			"interact":["enemy","wall"],
-			"affect":[],
-			"sprite":"Fire",
-			"speed":400,
-			"where":["player",20],
-		}]
+var action_hold = [load("res://Resoures/Fire_ball.tres"),load("res://Resoures/Slash.tres")]
 
 var held_postion
 var move_towards
@@ -60,9 +44,9 @@ func _process(delta):
 			held_action = 0
 
 func cast_spell():
-	if action_hold[held_action]["where"][0] == "player_to_mouse":
-		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"][1],action_hold[held_action],held_postion)
-	elif action_hold[held_action]["where"][0] == "player":
+	if action_hold[held_action]["where"].type == 0:
+		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"].amount,action_hold[held_action],held_postion)
+	elif action_hold[held_action]["where"][0] == 1:
 		get_parent().create_projectile(position,action_hold[held_action],held_postion)
 
 func travel(place):

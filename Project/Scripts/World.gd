@@ -12,8 +12,7 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 	var projectile_instance = projectile_scene.instance()
 	projectile_instance.position = position
 	projectile_instance.add_data(data)
-	if data.has("speed"):
-		projectile_instance.move = direction.normalized()*data["speed"]
+	projectile_instance.move = direction.normalized()*data["speed"]
 	yield(get_tree(),"idle_frame")
 	$Projectiles.add_child(projectile_instance)
 	projectile_instance.look_at(position+direction)

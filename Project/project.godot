@@ -8,8 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Resource script/Action.gd"
+}, {
+"base": "Resource",
+"class": "String_input",
+"language": "GDScript",
+"path": "res://Resource script/String_input.gd"
+}, {
+"base": "Resource",
+"class": "Where",
+"language": "GDScript",
+"path": "res://Resource script/Where.gd"
+} ]
 _global_script_class_icons={
+"Action": "",
+"String_input": "",
+"Where": ""
 }
 
 [application]

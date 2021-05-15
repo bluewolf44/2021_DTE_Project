@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Resource script/Action.gd" type="Script" id=1]
+[ext_resource path="res://Resource script/String_input.gd" type="Script" id=2]
+[ext_resource path="res://Resource script/Where.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+input = "Enemy"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+type = 0
+amount = 40
+
+[resource]
+script = ExtResource( 1 )
+name = "Slash"
+time = 0.7
+speed = 0
+sprite = "Slash"
+description = "A slash with a weapoon"
+interact = [  ]
+affect = [ SubResource( 1 ) ]
+where = SubResource( 2 )
+effects = [  ]
