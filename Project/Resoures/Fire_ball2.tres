@@ -1,0 +1,59 @@
+[gd_resource type="Resource" load_steps=14 format=2]
+
+[ext_resource path="res://Resource script/String_input.gd" type="Script" id=1]
+[ext_resource path="res://Resource script/Action.gd" type="Script" id=2]
+[ext_resource path="res://Resource script/Where.gd" type="Script" id=3]
+[ext_resource path="res://Resource script/After_projectile.gd" type="Script" id=4]
+[ext_resource path="res://Resource script/Damage.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+input = 40
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+input = "Enemy"
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+input = 10
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+name = "name"
+time = -1.0
+speed = 0
+sprite = "Sun"
+description = ""
+interact = [  ]
+affect = [ SubResource( 2 ) ]
+effects = [ SubResource( 3 ) ]
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 4 )
+input = SubResource( 4 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+input = "Wall"
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 1 )
+input = "Enemy"
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 3 )
+type = 0
+amount = 20
+
+[resource]
+script = ExtResource( 2 )
+name = "Fire ball"
+time = -1.0
+speed = 400
+sprite = "Fire"
+description = "A ball of fire"
+interact = [ SubResource( 6 ), SubResource( 7 ) ]
+affect = [  ]
+where = SubResource( 8 )
+effects = [ SubResource( 1 ), SubResource( 5 ) ]

@@ -841,7 +841,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 193
+frame = 195
 __meta__ = {
 "_edit_lock_": true
 }
@@ -850,7 +850,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 193
+frame = 195
 __meta__ = {
 "_edit_lock_": true
 }

@@ -15,6 +15,16 @@ _global_script_classes=[ {
 "path": "res://Resource script/Action.gd"
 }, {
 "base": "Resource",
+"class": "After_projectile",
+"language": "GDScript",
+"path": "res://Resource script/After_projectile.gd"
+}, {
+"base": "Resource",
+"class": "Damage",
+"language": "GDScript",
+"path": "res://Resource script/Damage.gd"
+}, {
+"base": "Resource",
 "class": "String_input",
 "language": "GDScript",
 "path": "res://Resource script/String_input.gd"
@@ -26,6 +36,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Action": "",
+"After_projectile": "",
+"Damage": "",
 "String_input": "",
 "Where": ""
 }

@@ -10,7 +10,7 @@ var create_inputs = [
 	{"name":"interact","input":"create","other":["String_input"]},
 	{"name":"affect","input":"create","other":["String_input"]},
 	{"name":"where","input":"create_one","other":["Where"]},
-	{"name":"effects","input":"create","other":[]},
+	{"name":"effects","input":"create","other":["Damage","After_projectile"]},
 	]
 
 export var name = "name"

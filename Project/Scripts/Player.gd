@@ -6,7 +6,7 @@ var attack_speed = 0.25
 var other_action = false
 
 var held_action = 0
-var action_hold = [load("res://Resoures/Fire_ball.tres"),load("res://Resoures/Slash.tres")]
+var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Slash.tres")]
 
 var held_postion
 var move_towards
