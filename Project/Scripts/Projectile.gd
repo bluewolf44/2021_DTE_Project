@@ -11,13 +11,14 @@ func _process(delta):
 	position += move*delta
 	if position.distance_to(player.position) > 400:
 		queue_free()
-
-func _on_Area2D_area_entered(area):
-	if area.get_parent().type in affect:
-		area.get_parent().interact(effects)
-	elif area.get_parent().type in interact:
-		area.get_parent().interact(effects)
-		queue_free()
+	var areas = $Area2D.get_overlapping_areas()
+	if areas:
+		for a in areas:
+			if a.get_parent().type in affect:
+				a.get_parent().interact(effects)
+			elif a.get_parent().type in interact:
+				a.get_parent().interact(effects)
+				queue_free()
 
 func add_data(data):
 	if data["time"] != -1:

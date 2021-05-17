@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smoke_1.png-3b81b3d78d252540a80fe9ea995adfa6.stex"
+path="res://.import/minotaur_alpha.png-7418d75b21727e618d0d8348e4c79eab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/smoke_1.png"
-dest_files=[ "res://.import/smoke_1.png-3b81b3d78d252540a80fe9ea995adfa6.stex" ]
+source_file="res://Sprites/minotaur_alpha.png"
+dest_files=[ "res://.import/minotaur_alpha.png-7418d75b21727e618d0d8348e4c79eab.stex" ]
 
 [params]
 
