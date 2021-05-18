@@ -59,3 +59,12 @@ func _on_Attack_speed_timeout():
 	travel("Stand")
 	yield(get_tree(),"idle_frame")
 	other_action = false
+
+func hit(damage):
+	get_node("/root/PlayerData").health -= damage
+	print(get_node("/root/PlayerData").health," ",-damage)
+	if get_node("/root/PlayerData").health <= 0:
+		died()
+
+func died():
+	queue_free()

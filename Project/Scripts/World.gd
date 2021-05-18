@@ -3,9 +3,12 @@ extends Node
 onready var enemy_scene = load("res://Scenes/Enemys.tscn")
 onready var projectile_scene = load("res://Scenes/Projectile.tscn")
 
+func _ready():
+	randomize()
+
 func _on_Timer_timeout():
 	var enemy_instance = enemy_scene.instance()
-	enemy_instance.position = Vector2(1000-randi() % 2000,1000-randi() % 2000)
+	enemy_instance.position = Vector2(500-randi() % 1000,500-randi() % 1000)
 	$Enemys.add_child(enemy_instance)
 
 func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
