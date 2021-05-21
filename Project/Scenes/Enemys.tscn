@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprites/minotaur_alpha.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemys.gd" type="Script" id=2]
@@ -11,6 +11,39 @@ extents = Vector2( 29.2192, 31.3934 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "AttackEast"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+}, {
+"args": [  ],
+"method": "attack_reset"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "AttackNorthWest"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("icon:frame")
@@ -58,7 +91,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "RunNorth"
 length = 0.8
 loop = true
@@ -92,9 +125,10 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31, 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "RunNorthWest"
 length = 0.8
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("icon:frame")
 tracks/0/interp = 1
@@ -102,13 +136,81 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 76 ]
+"values": [ 76, 77, 78, 79, 80, 81, 82, 83 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="Animation" id=9]
+resource_name = "RunSouth"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 148, 149, 150, 151, 152, 153, 154, 155 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "RunSouthEast"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 172, 173, 174, 175, 176, 177, 178, 179 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "RunSouthWest"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 124, 125, 126, 127, 128, 129, 130, 131 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "RunWest"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 100, 101, 102, 103, 104, 105, 106, 107 ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 40.429, 25.8329 )
 
 [node name="Enemys" type="KinematicBody2D"]
@@ -124,7 +226,7 @@ __meta__ = {
 texture = ExtResource( 1 )
 hframes = 24
 vframes = 8
-frame = 77
+frame = 15
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,13 +238,20 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AttackEast = SubResource( 3 )
+anims/AttackNorthWest = SubResource( 12 )
 anims/RunEast = SubResource( 4 )
-anims/RunNorth = SubResource( 7 )
+anims/RunNorth = SubResource( 5 )
 anims/RunNorthEast = SubResource( 6 )
-anims/RunNorthWest = SubResource( 8 )
+anims/RunNorthWest = SubResource( 7 )
+anims/RunSouth = SubResource( 9 )
+anims/RunSouthEast = SubResource( 13 )
+anims/RunSouthWest = SubResource( 10 )
+anims/RunWest = SubResource( 11 )
 
 [node name="Attack" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 position = Vector2( -0.944931, 58.5863 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
