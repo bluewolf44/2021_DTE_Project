@@ -844,7 +844,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 194
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -853,7 +853,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 194
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -892,7 +892,7 @@ active = true
 parameters/playback = SubResource( 54 )
 parameters/Cast/blend_position = Vector2( 0.82669, -0.791383 )
 parameters/Run/blend_position = Vector2( 0.889181, -0.973199 )
-parameters/Stand/blend_position = Vector2( 0, 1.01 )
+parameters/Stand/blend_position = Vector2( 1.00475, 1.01 )
 
 [node name="Attack_speed" type="Timer" parent="."]
 wait_time = 0.25

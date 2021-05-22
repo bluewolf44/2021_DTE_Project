@@ -11,7 +11,10 @@ func _process(delta):
 	if position.distance_to(player.position) <= 80 and not action:
 		start_attack()
 	elif position.distance_to(player.position) < 600 and not action:
-		move_and_collide((player.position-position).normalized()*delta*speed)
+		var move = (player.position-position).normalized()
+		travel("Run")
+		$AnimationTree.set("parameters/Run/blend_position",move)
+		move_and_collide(move*delta*speed)
 
 func interact(effects):
 	for e in effects:
@@ -31,7 +34,8 @@ func start_attack():
 	$Attack.look_at(player.position)
 	$Attack.rotation_degrees -= 90
 	action = true
-	$AnimationPlayer.play("AttackEast")
+	$AnimationTree.set("parameters/Attack/blend_position",(player.position-position).normalized())
+	travel("Attack")
 
 func attack():
 	if $Attack.overlaps_area(player.get_node("Area2D")):
@@ -39,3 +43,6 @@ func attack():
 
 func attack_reset():
 	action = false
+
+func travel(place):
+	$AnimationTree.get("parameters/playback").travel(place)
