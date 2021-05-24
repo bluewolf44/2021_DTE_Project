@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Sprites/player/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/player/male_head1.png" type="Texture" id=2]
@@ -825,6 +825,33 @@ start_node = "Stand"
 [sub_resource type="RectangleShape2D" id=55]
 extents = Vector2( 17.0893, 25.9639 )
 
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.839216, 0.0980392, 0.0980392, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+shadow_color = Color( 0.929412, 0.145098, 0.0627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=57]
+bg_color = Color( 0.0862745, 0.654902, 0.2, 1 )
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color( 0.862745, 0.0901961, 0.0117647, 1 )
+shadow_size = 5
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -844,7 +871,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -853,7 +880,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -904,5 +931,26 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1.32433, 11.3892 )
 shape = SubResource( 55 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health_bar" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Health_bar"]
+margin_left = 12.9181
+margin_top = 10.0234
+margin_right = 281.918
+margin_bottom = 34.0234
+custom_styles/fg = SubResource( 56 )
+custom_styles/bg = SubResource( 57 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]

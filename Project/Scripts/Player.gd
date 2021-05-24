@@ -12,6 +12,9 @@ var held_postion
 var move_towards
 var has_move = false
 
+func _ready():
+	$CanvasLayer/Health_bar/ProgressBar.max_value = get_node("/root/PlayerData").health
+
 func _process(delta):
 	var move = Vector2(
 		Input.get_action_strength("Move_Right")-Input.get_action_strength("Move_Left"),
@@ -24,6 +27,7 @@ func _process(delta):
 		$AnimationTree.set("parameters/Stand/blend_position",move)
 		$AnimationTree.set("parameters/Run/blend_position",move)
 		$Attack_speed.stop()
+	
 	elif not other_action:
 		travel("Stand")
 		$Attack_speed.stop()
@@ -62,6 +66,7 @@ func _on_Attack_speed_timeout():
 
 func hit(damage):
 	get_node("/root/PlayerData").health -= damage
+	$CanvasLayer/Health_bar/ProgressBar.value += damage
 	print(get_node("/root/PlayerData").health," ",-damage)
 	if get_node("/root/PlayerData").health <= 0:
 		died()
