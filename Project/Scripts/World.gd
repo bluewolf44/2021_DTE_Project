@@ -1,13 +1,13 @@
 extends Node
 
-onready var enemy_scene = load("res://Scenes/Enemys/Minotaur.tscn")
+onready var enemy_scenes = ["Goblin","Minotaur"]
 onready var projectile_scene = load("res://Scenes/Projectile.tscn")
 
 func _ready():
 	randomize()
 
 func _on_Timer_timeout():
-	var enemy_instance = enemy_scene.instance()
+	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
 	enemy_instance.position = Vector2(500-randi() % 1000,500-randi() % 1000)
 	$Enemys.add_child(enemy_instance)
 

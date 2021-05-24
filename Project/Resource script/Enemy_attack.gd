@@ -7,7 +7,6 @@ var create_inputs = [
 	{"name":"distance","input":"int"},
 	{"name":"speed","input":"int"},
 	{"name":"sprite","input":"str"},
-	{"name":"special","input":"create_one","other":[]},
 	{"name":"effects","input":"create","other":["Damage","After_projectile"]},
 	]
 
@@ -16,7 +15,6 @@ export var time = 1.0
 export var distance = 20
 export var speed = 0
 export var sprite = "null"
-export(Resource) var special
 
 var affect = []
 var interact = [{"input":"Player"}]

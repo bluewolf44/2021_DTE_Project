@@ -5,6 +5,7 @@ var type = "Enemy"
 
 export(Resource) var monster_data
 var held_action
+var can_get_hit = true
 
 var speed
 var health
@@ -16,7 +17,7 @@ func _ready():
 	health = monster_data.health
 
 func _process(delta):
-	if position.distance_to(player.position) <= 80 and not action:
+	if position.distance_to(player.position) <= monster_data.distance and not action:
 		start_attack()
 	elif position.distance_to(player.position) < 600 and not action:
 		var move = (player.position-position).normalized()
@@ -25,14 +26,17 @@ func _process(delta):
 		move_and_collide(move*delta*speed)
 
 func interact(effects):
-	for e in effects:
-		match e.type:
-			"damage":
-				health -= e.input
-				if health <= 0:
-					died()
-			"after_projectile":
-				get_node("/root/World").create_projectile(position,e.input)
+	if can_get_hit:
+		for e in effects:
+			match e.type:
+				"damage":
+					health -= e.input
+					if health <= 0:
+						died()
+				"after_projectile":
+					get_node("/root/World").create_projectile(position,e.input)
+		can_get_hit = false
+		$Timer.start()
 
 func died():
 	yield(get_tree(),"idle_frame")
@@ -51,3 +55,6 @@ func attack_reset():
 
 func travel(place):
 	$AnimationTree.get("parameters/playback").travel(place)
+
+func _on_Timer_timeout():
+	can_get_hit = true

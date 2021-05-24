@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Resource script/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Resource script/Damage.gd" type="Script" id=2]
+[ext_resource path="res://Resource script/Enemy_attack.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+input = 7
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+effects = [ SubResource( 1 ) ]
+time = -1.0
+distance = 20
+speed = 200
+sprite = "Spear"
+
+[resource]
+script = ExtResource( 1 )
+name = "Goblin"
+health = 60
+speed = 100
+distance = 200
+attack_speed = 1.0
+attack = SubResource( 2 )

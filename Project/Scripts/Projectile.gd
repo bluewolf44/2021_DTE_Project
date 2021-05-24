@@ -7,6 +7,8 @@ var affect = []
 var type = "Projectile"
 onready var player = get_parent().get_parent().get_node("Player")
 
+
+
 func _process(delta):
 	position += move*delta
 	if position.distance_to(player.position) > 400:
@@ -23,6 +25,8 @@ func _process(delta):
 func add_data(data):
 	if data["time"] != -1:
 		$Timer.wait_time = data["time"]
+	else:
+		$Timer.autostart = false
 	effects = data["effects"]
 	for n in data["affect"]:
 		affect.append(n.input)
@@ -34,3 +38,4 @@ func add_data(data):
 	
 func _on_Timer_timeout():
 	queue_free()
+
