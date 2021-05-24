@@ -1,11 +1,19 @@
 extends KinematicBody2D
 
 onready var player = get_parent().get_parent().get_node("Player")
-
-var speed = 150
 var type = "Enemy"
-var health = 50
+
+export(Resource) var monster_data
+var held_action
+
+var speed
+var health
 var action = false
+
+func _ready():
+	held_action = monster_data["attack"]
+	speed = monster_data.speed
+	health = monster_data.health
 
 func _process(delta):
 	if position.distance_to(player.position) <= 80 and not action:
@@ -31,15 +39,12 @@ func died():
 	queue_free()
 
 func start_attack():
-	$Attack.look_at(player.position)
-	$Attack.rotation_degrees -= 90
 	action = true
 	$AnimationTree.set("parameters/Attack/blend_position",(player.position-position).normalized())
 	travel("Attack")
 
 func attack():
-	if $Attack.overlaps_area(player.get_node("Area2D")):
-		player.hit(5)
+	get_parent().get_parent().create_projectile(position+held_action.distance*(player.position-position).normalized(),held_action,(player.position-position).normalized())
 
 func attack_reset():
 	action = false

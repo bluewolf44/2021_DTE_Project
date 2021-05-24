@@ -1,6 +1,6 @@
 extends Node
 
-onready var enemy_scene = load("res://Scenes/Enemys.tscn")
+onready var enemy_scene = load("res://Scenes/Enemys/Minotaur.tscn")
 onready var projectile_scene = load("res://Scenes/Projectile.tscn")
 
 func _ready():

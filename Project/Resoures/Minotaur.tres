@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Resource script/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Resource script/Enemy_attack.gd" type="Script" id=2]
+[ext_resource path="res://Resource script/Damage.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+input = 5
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+effects = [ SubResource( 1 ) ]
+time = 0.5
+distance = 60
+speed = 0
+sprite = "null"
+
+[resource]
+script = ExtResource( 1 )
+name = "Minotaur"
+health = 50
+speed = 150
+attack = SubResource( 2 )

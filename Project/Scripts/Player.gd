@@ -68,3 +68,9 @@ func hit(damage):
 
 func died():
 	queue_free()
+
+func interact(effects):
+	for e in effects:
+		match e.type:
+			"damage":
+				hit(e.input)

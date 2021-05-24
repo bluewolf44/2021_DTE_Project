@@ -25,6 +25,16 @@ _global_script_classes=[ {
 "path": "res://Resource script/Damage.gd"
 }, {
 "base": "Resource",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Resource script/Enemy.gd"
+}, {
+"base": "Resource",
+"class": "Enemy_attack",
+"language": "GDScript",
+"path": "res://Resource script/Enemy_attack.gd"
+}, {
+"base": "Resource",
 "class": "String_input",
 "language": "GDScript",
 "path": "res://Resource script/String_input.gd"
@@ -38,6 +48,8 @@ _global_script_class_icons={
 "Action": "",
 "After_projectile": "",
 "Damage": "",
+"Enemy": "",
+"Enemy_attack": "",
 "String_input": "",
 "Where": ""
 }
