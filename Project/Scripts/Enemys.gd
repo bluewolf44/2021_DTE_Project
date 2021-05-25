@@ -58,3 +58,13 @@ func travel(place):
 
 func _on_Timer_timeout():
 	can_get_hit = true
+
+func create_drop(rare = 0,stats_amount=2):
+	var item = Resource.new()
+	item.set_script(load("res://Resource script/Item.gd"))
+	for n in range(stats_amount):
+		var stat = Resource.new()
+		stat.set_script(load("res://Resource script/Stats.gd"))
+		stat.type = randi()%5
+		stat.per_plus = randi()%2
+		
