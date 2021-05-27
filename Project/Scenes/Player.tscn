@@ -953,4 +953,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Health" type="Label" parent="CanvasLayer/Health_bar"]
+margin_left = 142.0
+margin_top = 15.0
+margin_right = 180.0
+margin_bottom = 29.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slash" type="Label" parent="CanvasLayer/Health_bar"]
+margin_left = 137.001
+margin_top = 15.3326
+margin_right = 143.001
+margin_bottom = 29.3326
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Max_Health" type="Label" parent="CanvasLayer/Health_bar"]
+margin_left = 95.6493
+margin_top = 14.9989
+margin_right = 135.649
+margin_bottom = 28.9989
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]

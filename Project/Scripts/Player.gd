@@ -13,6 +13,8 @@ var move_towards
 var has_move = false
 
 func _ready():
+	$CanvasLayer/Health_bar/Max_Health.text = str(get_node("/root/PlayerData").health)
+	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
 	$CanvasLayer/Health_bar/ProgressBar.max_value = get_node("/root/PlayerData").health
 
 func _process(delta):
@@ -66,6 +68,7 @@ func _on_Attack_speed_timeout():
 
 func hit(damage):
 	get_node("/root/PlayerData").health -= damage
+	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
 	$CanvasLayer/Health_bar/ProgressBar.value += damage
 	print(get_node("/root/PlayerData").health," ",-damage)
 	if get_node("/root/PlayerData").health <= 0:

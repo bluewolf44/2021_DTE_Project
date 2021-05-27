@@ -518,7 +518,7 @@ __meta__ = {
 texture = ExtResource( 1 )
 hframes = 24
 vframes = 8
-frame = 155
+frame = 153
 __meta__ = {
 "_edit_lock_": true
 }

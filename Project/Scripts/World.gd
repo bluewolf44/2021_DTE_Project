@@ -20,3 +20,11 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 	$Projectiles.add_child(projectile_instance)
 	projectile_instance.look_at(position+direction)
 	projectile_instance.rotation_degrees -= 90
+
+func create_text(text,position,color = Color(0,0,0)):
+	var text_instance = load("res://Scenes/Text.tscn").instance()
+	text_instance.text = str(text)
+	text_instance.rect_position = position
+	text_instance.modulate = color
+	$Text.add_child(text_instance)
+	

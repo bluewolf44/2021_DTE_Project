@@ -40,6 +40,7 @@ func interact(effects):
 
 func died():
 	yield(get_tree(),"idle_frame")
+	create_drop()
 	queue_free()
 
 func start_attack():
@@ -66,5 +67,10 @@ func create_drop(rare = 0,stats_amount=2):
 		var stat = Resource.new()
 		stat.set_script(load("res://Resource script/Stats.gd"))
 		stat.type = randi()%5
-		stat.per_plus = randi()%2
-		
+		stat.change = randi()%2
+		item.stats.append(stat)
+	
+	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
+	drop_item_instance.data = item
+	drop_item_instance.position = position
+	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
