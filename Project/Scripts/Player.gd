@@ -82,3 +82,6 @@ func interact(effects):
 		match e.type:
 			"damage":
 				hit(e.input)
+
+func open_inv():
+	$CanvasLayer/Inventory.visible = true
