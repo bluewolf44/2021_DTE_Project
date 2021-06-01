@@ -24,7 +24,6 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 func create_text(text,position,color = Color(0,0,0)):
 	var text_instance = load("res://Scenes/Text.tscn").instance()
 	text_instance.text = str(text)
-	text_instance.rect_position = position
+	text_instance.rect_position = position + Vector2(50 - randi() % 100,0)
 	text_instance.modulate = color
 	$Text.add_child(text_instance)
-	

@@ -12,6 +12,8 @@ var held_postion
 var move_towards
 var has_move = false
 
+var move_inv = false
+
 func _ready():
 	$CanvasLayer/Health_bar/Max_Health.text = str(get_node("/root/PlayerData").health)
 	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
@@ -48,6 +50,12 @@ func _process(delta):
 		held_action += 1
 		if held_action >= 2:
 			held_action = 0
+	
+	if Input.is_action_just_pressed("E"):
+		open_inv()
+	
+	if move_inv:
+		$Move.global_position = get_global_mouse_position()
 
 func cast_spell():
 	if action_hold[held_action]["where"].type == 0:
@@ -84,4 +92,33 @@ func interact(effects):
 				hit(e.input)
 
 func open_inv():
-	$CanvasLayer/Inventory.visible = true
+	$CanvasLayer/Inventory.visible = !$CanvasLayer/Inventory.visible
+	if $CanvasLayer/Inventory.visible:
+		for slot in $CanvasLayer/Inventory/Slots.get_children():
+			slot.get_node("icon").texture = load("res://icon.png")
+			slot.get_node("icon").modulate = Color(1,1,1)
+			slot.data = null
+		
+		for item_num in range(len(PlayerData.inventory)):
+			var slot = get_node("CanvasLayer/Inventory/Slots/"+str(item_num))
+			var item = PlayerData.inventory[item_num]
+			if item.sprite:
+				slot.get_node("icon").texture = item.sprite
+			else:
+				slot.get_node("icon").modulate = Color(0,1,0)
+			slot.data = item
+
+func move_item(data):
+	$Move.data = data
+	$Move.modulate = Color(0,1,0)
+	$Move.visible = true
+	if data.sprite:
+		$Move.texture = data.sprite
+	move_inv = true
+	
+func reset_move():
+	$Move.data = null
+	$Move.visible = false
+	$Move.texture = load("res://icon.png")
+	$Move.modulate = Color(1,1,1)
+	move_inv = false
