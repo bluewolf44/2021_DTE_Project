@@ -874,7 +874,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 161
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -883,7 +883,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 161
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -926,13 +926,6 @@ parameters/Stand/blend_position = Vector2( 1.00475, 1.01 )
 
 [node name="Attack_speed" type="Timer" parent="."]
 wait_time = 0.25
-
-[node name="Move" type="Sprite" parent="."]
-visible = false
-position = Vector2( 600, 0 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-script = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -1404,5 +1397,11 @@ margin_left = 324.0
 margin_top = 180.0
 margin_right = 356.0
 margin_bottom = 212.0
+
+[node name="Move" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 0.5, 0.5 )
+z_index = 10
+texture = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]

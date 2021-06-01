@@ -55,7 +55,7 @@ func _process(delta):
 		open_inv()
 	
 	if move_inv:
-		$Move.global_position = get_global_mouse_position()
+		$CanvasLayer/Move.global_position = get_global_mouse_position()
 
 func cast_spell():
 	if action_hold[held_action]["where"].type == 0:
@@ -109,16 +109,16 @@ func open_inv():
 			slot.data = item
 
 func move_item(data):
-	$Move.data = data
-	$Move.modulate = Color(0,1,0)
-	$Move.visible = true
+	$CanvasLayer/Move.data = data
+	$CanvasLayer/Move.modulate = Color(0,1,0)
+	$CanvasLayer/Move.visible = true
 	if data.sprite:
-		$Move.texture = data.sprite
+		$CanvasLayer/Move.texture = data.sprite
 	move_inv = true
 	
 func reset_move():
-	$Move.data = null
-	$Move.visible = false
-	$Move.texture = load("res://icon.png")
-	$Move.modulate = Color(1,1,1)
+	$CanvasLayer/Move.data = null
+	$CanvasLayer/Move.visible = false
+	$CanvasLayer/Move.texture = load("res://icon.png")
+	$CanvasLayer/Move.modulate = Color(1,1,1)
 	move_inv = false
