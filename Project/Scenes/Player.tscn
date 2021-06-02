@@ -862,9 +862,6 @@ script = ExtResource( 3 )
 position = Vector2( 1.33633, 11.0817 )
 shape = SubResource( 1 )
 disabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -1400,7 +1397,6 @@ margin_bottom = 212.0
 
 [node name="Move" type="Sprite" parent="CanvasLayer"]
 scale = Vector2( 0.5, 0.5 )
-z_index = 10
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
 

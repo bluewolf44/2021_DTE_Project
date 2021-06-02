@@ -55,7 +55,7 @@ func _process(delta):
 		open_inv()
 	
 	if move_inv:
-		$CanvasLayer/Move.global_position = get_global_mouse_position()
+		$CanvasLayer/Move.position = get_viewport().get_mouse_position()
 
 func cast_spell():
 	if action_hold[held_action]["where"].type == 0:
@@ -99,14 +99,15 @@ func open_inv():
 			slot.get_node("icon").modulate = Color(1,1,1)
 			slot.data = null
 		
-		for item_num in range(len(PlayerData.inventory)):
-			var slot = get_node("CanvasLayer/Inventory/Slots/"+str(item_num))
+		for item_num in range(60):
 			var item = PlayerData.inventory[item_num]
-			if item.sprite:
-				slot.get_node("icon").texture = item.sprite
-			else:
-				slot.get_node("icon").modulate = Color(0,1,0)
-			slot.data = item
+			if item:
+				var slot = get_node("CanvasLayer/Inventory/Slots/"+str(item_num))
+				if item.sprite:
+					slot.get_node("icon").texture = item.sprite
+				else:
+					slot.get_node("icon").modulate = Color(0,1,0)
+				slot.data = item
 
 func move_item(data):
 	$CanvasLayer/Move.data = data
