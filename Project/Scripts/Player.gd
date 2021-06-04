@@ -123,3 +123,9 @@ func reset_move():
 	$CanvasLayer/Move.texture = load("res://icon.png")
 	$CanvasLayer/Move.modulate = Color(1,1,1)
 	move_inv = false
+	
+func show_info(data):
+	var info = $CanvasLayer/Inventory/Info
+	info.get_node("Sprite").texture = data.sprite
+	info.get_node("Name").text = data.name
+	info.get_node("Des").text = data.description

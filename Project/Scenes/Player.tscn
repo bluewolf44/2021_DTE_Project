@@ -871,7 +871,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -880,7 +880,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1395,7 +1395,59 @@ margin_top = 180.0
 margin_right = 356.0
 margin_bottom = 212.0
 
+[node name="Info" type="Control" parent="CanvasLayer/Inventory"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory/Info"]
+margin_right = 188.0
+margin_bottom = 186.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventory/Info"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 181.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Inventory/Info"]
+position = Vector2( 30.973, 27.6518 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Name" type="Label" parent="CanvasLayer/Inventory/Info"]
+margin_left = 54.0
+margin_top = 17.0
+margin_right = 162.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.815686, 0.0941176, 0.0941176, 1 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Des" type="Label" parent="CanvasLayer/Inventory/Info"]
+margin_left = 14.0
+margin_top = 46.0
+margin_right = 176.0
+margin_bottom = 176.0
+custom_colors/font_color = Color( 0.815686, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Move" type="Sprite" parent="CanvasLayer"]
+visible = false
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )

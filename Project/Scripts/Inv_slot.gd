@@ -28,3 +28,7 @@ func _on_Button_button_up():
 		get_parent().get_parent().get_parent().get_parent().move_item(data)
 		data = null
 		PlayerData.remove_item(data)
+
+func _on_Slot_mouse_entered(data):
+	if data:
+		get_parent().get_parent().get_parent().get_parent().show_info(data) 
