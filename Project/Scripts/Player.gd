@@ -94,20 +94,23 @@ func interact(effects):
 func open_inv():
 	$CanvasLayer/Inventory.visible = !$CanvasLayer/Inventory.visible
 	if $CanvasLayer/Inventory.visible:
-		for slot in $CanvasLayer/Inventory/Slots.get_children():
+		update_inv()
+
+func update_inv():
+	for slot in $CanvasLayer/Inventory/Slots.get_children():
 			slot.get_node("icon").texture = load("res://icon.png")
 			slot.get_node("icon").modulate = Color(1,1,1)
 			slot.data = null
 		
-		for item_num in range(60):
-			var item = PlayerData.inventory[item_num]
-			if item:
-				var slot = get_node("CanvasLayer/Inventory/Slots/"+str(item_num))
-				if item.sprite:
-					slot.get_node("icon").texture = item.sprite
-				else:
-					slot.get_node("icon").modulate = Color(0,1,0)
-				slot.data = item
+	for item_num in range(60):
+		var item = PlayerData.inventory[item_num]
+		if item:
+			var slot = get_node("CanvasLayer/Inventory/Slots/"+str(item_num))
+			if item.sprite:
+				slot.get_node("icon").texture = item.sprite
+			else:
+				slot.get_node("icon").modulate = Color(0,1,0)
+			slot.data = item
 
 func move_item(data):
 	$CanvasLayer/Move.data = data
@@ -124,8 +127,12 @@ func reset_move():
 	$CanvasLayer/Move.modulate = Color(1,1,1)
 	move_inv = false
 	
-func show_info(data):
+func show_info(slot,data):
 	var info = $CanvasLayer/Inventory/Info
-	info.get_node("Sprite").texture = data.sprite
-	info.get_node("Name").text = data.name
+	info.visible = true
+	info.rect_position = slot.rect_position + slot.get_parent().rect_position + Vector2(0,32)
+	if data.sprite:
+		info.get_node("Sprite").texture = data.sprite
+	if data.name:
+		info.get_node("Name").text = data.name
 	info.get_node("Des").text = data.description

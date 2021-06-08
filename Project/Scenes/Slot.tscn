@@ -20,6 +20,7 @@ centered = false
 [node name="Button" type="Button" parent="."]
 margin_right = 31.0
 margin_bottom = 31.0
+mouse_filter = 1
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false

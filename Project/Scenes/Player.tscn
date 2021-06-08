@@ -825,8 +825,9 @@ start_node = "Stand"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
-[sub_resource type="RectangleShape2D" id=55]
-extents = Vector2( 17.0893, 25.9639 )
+[sub_resource type="CapsuleShape2D" id=58]
+radius = 8.0971
+height = 10.7729
 
 [sub_resource type="StyleBoxFlat" id=56]
 bg_color = Color( 0.839216, 0.0980392, 0.0980392, 1 )
@@ -929,8 +930,9 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 1.32433, 11.3892 )
-shape = SubResource( 55 )
+position = Vector2( -0.443431, 8.56077 )
+rotation = -0.0179686
+shape = SubResource( 58 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -990,6 +992,7 @@ __meta__ = {
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 margin_left = 600.0
 margin_right = 600.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -999,6 +1002,7 @@ margin_left = 0.864319
 margin_top = 0.943878
 margin_right = 420.864
 margin_bottom = 598.944
+mouse_filter = 2
 color = Color( 1, 1, 1, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1009,6 +1013,7 @@ margin_left = 24.8643
 margin_top = 14.9439
 margin_right = 401.864
 margin_bottom = 253.944
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1019,6 +1024,7 @@ margin_left = 27.0
 margin_top = 263.0
 margin_right = 402.0
 margin_bottom = 580.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1029,6 +1035,7 @@ margin_left = 175.989
 margin_top = 93.8125
 margin_right = 215.989
 margin_bottom = 133.813
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1063,6 +1070,7 @@ margin_left = 37.0
 margin_top = 272.0
 margin_right = 393.0
 margin_bottom = 484.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1399,6 +1407,7 @@ margin_bottom = 212.0
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
