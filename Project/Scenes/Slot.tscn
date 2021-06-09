@@ -27,4 +27,5 @@ __meta__ = {
 }
 
 [connection signal="mouse_entered" from="." to="." method="_on_Slot_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Slot_mouse_exited"]
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

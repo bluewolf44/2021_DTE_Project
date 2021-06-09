@@ -68,9 +68,26 @@ func create_drop(rare = 0,stats_amount=2):
 		stat.set_script(load("res://Resource script/Stats.gd"))
 		stat.type = randi()%5
 		stat.change = randi()%2
+		stat.amount = float(randi()%10)
+		
 		item.stats.append(stat)
+	item.name = pick_name()
 	
 	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
 	drop_item_instance.position = position
 	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
+
+func pick_name():
+	return [
+		"Soulsiphon",
+		"Blightspore",
+		"Soulkeeper",
+		"Sunlight",
+		"Holy Aspect",
+		"Champion Ornament",
+		"Thundersoul Stone",
+		"Scar, Trinket of the Caged Mind",
+		"Mercy, Hope of Silence",
+		"Nirvana, Aspect of Desecration",
+	][randi()%10]

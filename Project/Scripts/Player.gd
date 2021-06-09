@@ -78,7 +78,7 @@ func hit(damage):
 	get_node("/root/PlayerData").health -= damage
 	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
 	$CanvasLayer/Health_bar/ProgressBar.value += damage
-	print(get_node("/root/PlayerData").health," ",-damage)
+	#print(get_node("/root/PlayerData").health," ",-damage)
 	if get_node("/root/PlayerData").health <= 0:
 		died()
 
@@ -113,6 +113,7 @@ func update_inv():
 			slot.data = item
 
 func move_item(data):
+	$CanvasLayer/Inventory/Info.visible = false
 	$CanvasLayer/Move.data = data
 	$CanvasLayer/Move.modulate = Color(0,1,0)
 	$CanvasLayer/Move.visible = true
@@ -131,6 +132,8 @@ func show_info(slot,data):
 	var info = $CanvasLayer/Inventory/Info
 	info.visible = true
 	info.rect_position = slot.rect_position + slot.get_parent().rect_position + Vector2(0,32)
+	if $CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x >= get_viewport_rect().size.x:
+		info.rect_position.x -= 36*(int(($CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x - get_viewport_rect().size.x)/36) + 1)
 	if data.sprite:
 		info.get_node("Sprite").texture = data.sprite
 	if data.name:
