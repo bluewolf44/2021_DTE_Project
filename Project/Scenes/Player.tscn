@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Sprites/player/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/player/male_head1.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Slot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Move.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Equitment_slots.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.5045, 25.5271 )
@@ -872,7 +873,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -881,7 +882,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -998,9 +999,9 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Inventory"]
-margin_left = 0.864319
+margin_left = 1.92499
 margin_top = 0.943878
-margin_right = 420.864
+margin_right = 421.925
 margin_bottom = 598.944
 mouse_filter = 2
 color = Color( 1, 1, 1, 0.392157 )
@@ -1009,10 +1010,10 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Inventory"]
-margin_left = 24.8643
-margin_top = 14.9439
-margin_right = 401.864
-margin_bottom = 253.944
+margin_left = 24.0273
+margin_top = 14.547
+margin_right = 401.027
+margin_bottom = 253.547
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
@@ -1031,39 +1032,103 @@ __meta__ = {
 }
 
 [node name="Equitment slots" type="Control" parent="CanvasLayer/Inventory"]
-margin_left = 175.989
-margin_top = 93.8125
-margin_right = 215.989
-margin_bottom = 133.813
+margin_left = 182.288
+margin_top = 134.782
+margin_right = 222.288
+margin_bottom = 174.783
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon3" type="Sprite" parent="CanvasLayer/Inventory/Equitment slots"]
-position = Vector2( 21.0156, -29.3306 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="icon3" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+type = "Chest"
 
-[node name="icon4" type="Sprite" parent="CanvasLayer/Inventory/Equitment slots"]
-position = Vector2( 22.5136, 25.3574 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="icon4" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+position = Vector2( 52, 0 )
+type = "Ring"
 
-[node name="icon5" type="Sprite" parent="CanvasLayer/Inventory/Equitment slots"]
-position = Vector2( 19.0156, 76.7984 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="icon5" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+position = Vector2( -52, -1.25992 )
+type = "Legs"
 
-[node name="icon6" type="Sprite" parent="CanvasLayer/Inventory/Equitment slots"]
-position = Vector2( 81.6966, 26.1064 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="icon6" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+position = Vector2( 104, -0.629944 )
+type = "Weapon1"
 
-[node name="icon7" type="Sprite" parent="CanvasLayer/Inventory/Equitment slots"]
-position = Vector2( -34.4214, 26.8554 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="icon7" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+position = Vector2( -104, 0 )
+type = "Head"
+
+[node name="icon8" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+position = Vector2( 155.37, 0 )
+type = "Weapon2"
+
+[node name="Label" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = -126.277
+margin_top = -40.9698
+margin_right = -78.277
+margin_bottom = -26.9698
+text = "Head"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = -75.205
+margin_top = -40.4086
+margin_right = -27.205
+margin_bottom = -26.4086
+text = "Legs"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = -22.4493
+margin_top = -40.4086
+margin_right = 25.5507
+margin_bottom = -26.4086
+text = "Chest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = 27.5003
+margin_top = -39.8474
+margin_right = 75.5003
+margin_bottom = -25.8474
+text = "Ring"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = 69.6974
+margin_top = -40.3653
+margin_right = 129.697
+margin_bottom = -26.3653
+text = "Weapon1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
+margin_left = 130.155
+margin_top = -40.0118
+margin_right = 190.155
+margin_bottom = -26.0118
+text = "Weapon2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Slots" type="Control" parent="CanvasLayer/Inventory"]
 margin_left = 37.0

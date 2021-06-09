@@ -8,6 +8,8 @@ var speed = 300
 
 var inventory = []
 
+var equited = {}
+
 func _ready():
 	for n in range(60):
 		inventory.append(null)
