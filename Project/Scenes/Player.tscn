@@ -873,7 +873,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 161
 __meta__ = {
 "_edit_lock_": true
 }
@@ -882,7 +882,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 161
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1045,24 +1045,29 @@ __meta__ = {
 type = "Chest"
 
 [node name="icon4" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
-position = Vector2( 52, 0 )
+margin_left = 52.0
+margin_right = 52.0
 type = "Ring"
 
 [node name="icon5" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
-position = Vector2( -52, -1.25992 )
+margin_left = -52.0
+margin_right = -52.0
 type = "Legs"
 
 [node name="icon6" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
-position = Vector2( 104, -0.629944 )
-type = "Weapon1"
+margin_left = 104.0
+margin_right = 104.0
+type = "Weapon"
 
 [node name="icon7" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
-position = Vector2( -104, 0 )
+margin_left = -104.0
+margin_right = -104.0
 type = "Head"
 
 [node name="icon8" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
-position = Vector2( 155.37, 0 )
-type = "Weapon2"
+margin_left = 156.0
+margin_right = 156.0
+type = "Weapon"
 
 [node name="Label" type="Label" parent="CanvasLayer/Inventory/Equitment slots"]
 margin_left = -126.277
@@ -1514,11 +1519,19 @@ __meta__ = {
 margin_left = 14.0
 margin_top = 46.0
 margin_right = 176.0
-margin_bottom = 176.0
+margin_bottom = 151.0
 custom_colors/font_color = Color( 0.815686, 0.0941176, 0.0941176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Type" type="Label" parent="CanvasLayer/Inventory/Info"]
+margin_left = 12.6992
+margin_top = 161.915
+margin_right = 52.6992
+margin_bottom = 175.915
+custom_colors/font_color = Color( 0.827451, 0.121569, 0.121569, 1 )
+text = "Type:"
 
 [node name="Move" type="Sprite" parent="CanvasLayer"]
 visible = false

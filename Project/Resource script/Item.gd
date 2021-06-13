@@ -8,8 +8,17 @@ var create_inputs = [
 	{"name":"stats","input":"create","other":["Stats"]},
 ]
 
+enum enum_type{
+	CHEST
+	RING
+	LEGS
+	HEAD
+	WEAPON
+}
+
 export var name = ""
 export var description = ""
+export(enum_type) var type
 export(Array,Resource) var stats = []
 export(Texture) var sprite
 

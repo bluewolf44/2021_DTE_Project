@@ -72,6 +72,7 @@ func create_drop(rare = 0,stats_amount=2):
 		
 		item.stats.append(stat)
 	item.name = pick_name()
+	item.type = randi()%5
 	
 	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
@@ -90,4 +91,7 @@ func pick_name():
 		"Scar, Trinket of the Caged Mind",
 		"Mercy, Hope of Silence",
 		"Nirvana, Aspect of Desecration",
-	][randi()%10]
+		"Randy Ortain",
+		"Peenexcalibur",
+		"Mini sucktion cup man",
+	][randi()%13]

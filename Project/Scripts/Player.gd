@@ -139,3 +139,4 @@ func show_info(slot,data):
 	if data.name:
 		info.get_node("Name").text = data.name
 	info.get_node("Des").text = data.description
+	info.get_node("Type").text = ["Chest","Ring","Legs","Head","Weapon"][data.type]
