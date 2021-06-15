@@ -17,7 +17,6 @@ enum enum_type{
 }
 
 export var name = ""
-export var description = ""
 export(enum_type) var type
 export(Array,Resource) var stats = []
 export(Texture) var sprite

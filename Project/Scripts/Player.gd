@@ -138,5 +138,11 @@ func show_info(slot,data):
 		info.get_node("Sprite").texture = data.sprite
 	if data.name:
 		info.get_node("Name").text = data.name
-	info.get_node("Des").text = data.description
 	info.get_node("Type").text = ["Chest","Ring","Legs","Head","Weapon"][data.type]
+	for n in info.get_node("Stats").get_children():
+		n.queue_free()
+	
+	for stat in data.stats:
+		var l = Label.new()
+		l.text = ["Damage","Heath","Defence","Speed","Crit",][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
+		info.get_node("Stats").add_child(l)

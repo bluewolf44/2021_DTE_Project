@@ -60,16 +60,16 @@ func travel(place):
 func _on_Timer_timeout():
 	can_get_hit = true
 
-func create_drop(rare = 0,stats_amount=2):
+func create_drop(rare = 1,stats_amount=2):
 	var item = Resource.new()
-	item.set_script(load("res://Resource script/Item.gd"))
+	item.set_script(preload("res://Resource script/Item.gd"))
+	item.stats = []
 	for n in range(stats_amount):
 		var stat = Resource.new()
-		stat.set_script(load("res://Resource script/Stats.gd"))
+		stat.set_script(preload("res://Resource script/Stats.gd"))
 		stat.type = randi()%5
 		stat.change = randi()%2
-		stat.amount = float(randi()%10)
-		
+		stat.amount = (float(randi()%10)+1)*rare
 		item.stats.append(stat)
 	item.name = pick_name()
 	item.type = randi()%5
