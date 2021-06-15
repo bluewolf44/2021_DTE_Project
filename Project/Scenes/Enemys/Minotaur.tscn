@@ -507,6 +507,8 @@ start_node = "Run"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
 [node name="Minotaur" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 monster_data = ExtResource( 3 )
 
@@ -520,7 +522,7 @@ __meta__ = {
 texture = ExtResource( 1 )
 hframes = 24
 vframes = 8
-frame = 152
+frame = 148
 __meta__ = {
 "_edit_lock_": true
 }

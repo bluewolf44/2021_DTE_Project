@@ -506,6 +506,8 @@ start_node = "Run"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
 [node name="Enemys" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -518,7 +520,7 @@ __meta__ = {
 texture = ExtResource( 1 )
 hframes = 24
 vframes = 8
-frame = 153
+frame = 154
 __meta__ = {
 "_edit_lock_": true
 }

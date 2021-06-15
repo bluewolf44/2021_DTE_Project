@@ -507,6 +507,8 @@ start_node = "Run"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
 [node name="Goblin" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 monster_data = ExtResource( 3 )
 
@@ -518,7 +520,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 48
 vframes = 8
-frame = 305
+frame = 301
 __meta__ = {
 "_edit_lock_": true
 }
