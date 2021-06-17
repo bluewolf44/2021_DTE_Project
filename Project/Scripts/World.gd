@@ -72,6 +72,39 @@ func create_world():
 				if j != Vector2(0,0):
 					star.connect_points(point_to_astar[path],point_to_astar[path+j],5)
 	
-	for x in range(max_area.x+10):
-		for y in range(max_area.y+10):
-			pass
+	for x in range(-(max_area.x+10),max_area.x+10):
+		for y in range(-(max_area.x+10),max_area.y+10):
+			var pos = Vector2(x,y)
+			if $Floor.get_cellv(pos) != -1:
+				continue
+			
+			var side = {"+y":false,"-y":false,"+x":false,"-x":false}
+			if $Floor.get_cellv(pos + Vector2(1,0)) == 0:
+				side["+x"] = true
+			if $Floor.get_cellv(pos + Vector2(-1,0)) == 0:
+				side["-x"] = true
+			if $Floor.get_cellv(pos + Vector2(0,1)) == 0:
+				side["+y"] = true
+			if $Floor.get_cellv(pos + Vector2(0,-1)) == 0:
+				side["-y"] = true
+			
+			if (side["-y"] and side["+y"]) or (side["-x"] and side["+x"]): 
+				$Floor.set_cellv(pos,0)
+			
+			elif side["-x"] and side["-y"]:
+				pass
+			elif side["+x"] and side["-y"]:
+				pass
+			elif side["-x"] and side["+y"]:
+				pass
+			elif side["+x"] and side["+y"]:
+				pass
+			elif side["-x"]:
+				pass
+			elif side["-y"]:
+				pass
+			elif side["+x"]:
+				pass
+			elif side["+y"]:
+				pass
+			
