@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var player = get_parent().get_parent().get_node("Player")
+onready var nav = get_parent().get_parent().get_node("Nav")
 var type = "Enemy"
 
 export(Resource) var monster_data
@@ -20,10 +21,10 @@ func _process(delta):
 	if position.distance_to(player.position) <= monster_data.distance and not action:
 		start_attack()
 	elif position.distance_to(player.position) < 600 and not action:
-		var move = (player.position-position).normalized()
+		var move = (nav.get_simple_path(position,player.position)[1]-position).normalized()
+		move_and_collide(move*speed*delta)
 		travel("Run")
-		$AnimationTree.set("parameters/Run/blend_position",move)
-		move_and_collide(move*delta*speed)
+		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
 
 func interact(effects):
 	if can_get_hit:
