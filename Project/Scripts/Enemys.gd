@@ -61,11 +61,15 @@ func travel(place):
 func _on_Timer_timeout():
 	can_get_hit = true
 
-func create_drop(rare = 1,stats_amount=2):
+func create_drop():
+	var rare = PlayerData.run_random({"max":100,range(60,100):0,range(25,60):1,range(8,25):2,range(4,8):3,range(1,4):4,range(1):5})
+	if rare == 0:
+		return
+	
 	var item = Resource.new()
 	item.set_script(preload("res://Resource script/Item.gd"))
 	item.stats = []
-	for n in range(stats_amount):
+	for n in range(rare + 1):
 		var stat = Resource.new()
 		stat.set_script(preload("res://Resource script/Stats.gd"))
 		stat.type = randi()%5

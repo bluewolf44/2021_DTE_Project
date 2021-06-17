@@ -22,3 +22,11 @@ func add_item(data):
 
 func remove_item(data):
 	inventory[inventory.find(data)] = null
+
+func run_random(data):# data = {"max":100,range(2):"answer",range(3,8):"anweser"....
+	var numb = randi() % data["max"]
+	data.erase("max")
+	for d in data:
+		if numb in d:
+			return data[d]
+

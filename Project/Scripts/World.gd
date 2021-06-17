@@ -10,7 +10,7 @@ func _ready():
 func _on_Timer_timeout():
 	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
 	var pos = Vector2(500-randi() % 1000,500-randi() % 1000)
-	while $Floor.get_cellv(pos) != -1:
+	while $Floor.get_cellv(pos) == -1:
 		pos = Vector2(500-randi() % 1000,500-randi() % 1000)
 	enemy_instance.position = Vector2(500-randi() % 1000,500-randi() % 1000)
 	$Enemys.add_child(enemy_instance)
