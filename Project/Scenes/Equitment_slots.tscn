@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 1 )
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

@@ -9,8 +9,7 @@ extents = Vector2( 16, 16 )
 [node name="Drop_items" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="icon" type="Sprite" parent="."]
-modulate = Color( 0.121569, 0.721569, 0.117647, 1 )
+[node name="Icon" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -22,8 +21,8 @@ shape = SubResource( 1 )
 [node name="Button" type="Button" parent="."]
 margin_left = -16.0
 margin_top = -16.0
-margin_right = 15.0
-margin_bottom = 15.0
+margin_right = 16.0
+margin_bottom = 16.0
 button_mask = 2
 flat = true
 __meta__ = {

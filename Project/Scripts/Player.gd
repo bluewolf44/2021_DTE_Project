@@ -99,7 +99,7 @@ func open_inv():
 func update_inv():
 	for slot in $CanvasLayer/Inventory/Slots.get_children():
 			slot.get_node("icon").texture = load("res://icon.png")
-			slot.get_node("icon").modulate = Color(1,1,1)
+			slot.get_node("icon").modulate = Color(0,0,0)
 			slot.data = null
 		
 	for item_num in range(60):
@@ -109,13 +109,13 @@ func update_inv():
 			if item.sprite:
 				slot.get_node("icon").texture = item.sprite
 			else:
-				slot.get_node("icon").modulate = Color(0,1,0)
+				slot.get_node("icon").modulate = item.color
 			slot.data = item
 
 func move_item(data):
 	$CanvasLayer/Inventory/Info.visible = false
 	$CanvasLayer/Move.data = data
-	$CanvasLayer/Move.modulate = Color(0,1,0)
+	$CanvasLayer/Move.modulate = data.color
 	$CanvasLayer/Move.visible = true
 	if data.sprite:
 		$CanvasLayer/Move.texture = data.sprite

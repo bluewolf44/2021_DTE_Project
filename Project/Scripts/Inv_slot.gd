@@ -10,7 +10,7 @@ func _on_Button_button_up():
 		var new_data = move.data
 		if new_data.sprite:
 			$icon.texture = new_data.sprite
-		$icon.modulate = Color(0,1,0)
+		$icon.modulate = new_data.color
 		PlayerData.remove_item(data)
 		player.move_item(data)
 		PlayerData.inventory[int(name)] = new_data
@@ -20,7 +20,7 @@ func _on_Button_button_up():
 		data = move.data
 		if data.sprite:
 			$icon.texture = data.sprite
-		$icon.modulate = Color(0,1,0)
+		$icon.modulate = data.color
 		PlayerData.remove_item(data)
 		PlayerData.inventory[int(name)] = data
 		player.reset_move()

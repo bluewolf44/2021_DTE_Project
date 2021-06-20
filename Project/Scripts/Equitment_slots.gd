@@ -18,7 +18,7 @@ func _on_Button_button_up():
 		var new_data = move.data
 		if new_data.sprite:
 			$Sprite.texture = new_data.sprite
-		$Sprite.modulate = Color(0,1,0)
+		$Sprite.modulate = new_data.color
 		
 		PlayerData.equited[id] = new_data
 		PlayerData.remove_item(new_data)
@@ -29,7 +29,7 @@ func _on_Button_button_up():
 		data = move.data
 		if data.sprite:
 			$Sprite.texture = data.sprite
-		$Sprite.modulate = Color(0,1,0)
+		$Sprite.modulate = data.color
 		PlayerData.remove_item(data)
 		PlayerData.equited[id] = data
 		player.reset_move()
@@ -37,7 +37,7 @@ func _on_Button_button_up():
 	
 	elif data:
 		$Sprite.texture = load("res://icon.png")
-		$Sprite.modulate = Color(1,1,1)
+		$Sprite.modulate = Color(0,0,0)
 		player.move_item(data)
 		data = null
 		PlayerData.equited[id] = null

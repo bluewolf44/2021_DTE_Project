@@ -62,7 +62,7 @@ func _on_Timer_timeout():
 	can_get_hit = true
 
 func create_drop():
-	var rare = PlayerData.run_random({"max":100,range(60,100):0,range(25,60):1,range(8,25):2,range(4,8):3,range(1,4):4,range(1):5})
+	var rare = PlayerData.run_random({"max":1000,range(300,1000):0,range(150,300):1,range(80,150):2,range(30,80):3,range(5,30):4,range(5):5})
 	if rare == 0:
 		return
 	
@@ -77,11 +77,13 @@ func create_drop():
 		stat.amount = (float(randi()%10)+1)*rare
 		item.stats.append(stat)
 	item.name = pick_name()
+	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]
 	item.type = randi()%5
 	
 	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
 	drop_item_instance.position = position
+	drop_item_instance.get_node("Icon").modulate = item.color
 	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
 
 func pick_name():
