@@ -62,7 +62,7 @@ func _on_Timer_timeout():
 	can_get_hit = true
 
 func create_drop():
-	var rare = PlayerData.run_random({"max":1000,range(300,1000):0,range(150,300):1,range(80,150):2,range(30,80):3,range(5,30):4,range(5):5})
+	var rare = PlayerData.run_random({"max":1000,range(400,1000):0,range(100,400):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
 	if rare == 0:
 		return
 	

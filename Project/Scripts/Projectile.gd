@@ -7,8 +7,6 @@ var affect = []
 var type = "Projectile"
 onready var player = get_parent().get_parent().get_node("Player")
 
-
-
 func _process(delta):
 	position += move*delta
 	if position.distance_to(player.position) > 400:
@@ -39,3 +37,6 @@ func add_data(data):
 func _on_Timer_timeout():
 	queue_free()
 
+func _on_Area2D_body_entered(body):
+	if body.name == "Wall" and "Wall" in interact:
+		queue_free()

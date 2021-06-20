@@ -16,12 +16,12 @@ input = "Enemy"
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
-input = 10
+input = 20
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 2 )
 name = "name"
-time = 2.0
+time = 1.0
 speed = 0
 sprite = "Sun"
 description = ""

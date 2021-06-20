@@ -28,7 +28,7 @@ func _on_Button_button_up():
 	
 	elif data:
 		$icon.texture = load("res://icon.png")
-		$icon.modulate = Color(1,1,1)
+		$icon.modulate = Color(0,0,0)
 		player.move_item(data)
 		data = null
 		PlayerData.remove_item(data)

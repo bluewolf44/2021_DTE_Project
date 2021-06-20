@@ -24,6 +24,7 @@ func _on_Button_button_up():
 		PlayerData.remove_item(new_data)
 		player.move_item(data)
 		data = new_data
+		PlayerData.update_stats()
 
 	elif move.data and ["Chest","Ring","Legs","Head","Weapon"][move.data.type] == type:
 		data = move.data
@@ -34,6 +35,7 @@ func _on_Button_button_up():
 		PlayerData.equited[id] = data
 		player.reset_move()
 		player.show_info(self,data)
+		PlayerData.update_stats()
 	
 	elif data:
 		$Sprite.texture = load("res://icon.png")
@@ -41,6 +43,7 @@ func _on_Button_button_up():
 		player.move_item(data)
 		data = null
 		PlayerData.equited[id] = null
+		PlayerData.update_stats()
 
 func _on_Button_mouse_entered():
 	if data:

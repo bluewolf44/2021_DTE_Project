@@ -124,8 +124,6 @@ func move_item(data):
 func reset_move():
 	$CanvasLayer/Move.data = null
 	$CanvasLayer/Move.visible = false
-	$CanvasLayer/Move.texture = load("res://icon.png")
-	$CanvasLayer/Move.modulate = Color(1,1,1)
 	move_inv = false
 	
 func show_info(slot,data):
