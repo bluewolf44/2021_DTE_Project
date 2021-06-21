@@ -31,7 +31,9 @@ func interact(effects):
 		for e in effects:
 			match e.type:
 				"damage":
-					health -= e.input
+					health -= (e.input + PlayerData.attack)*int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1)
+					if randi() % 100 <= int(PlayerData.crit) % 100:
+						health -= PlayerData.dam_crit*(e.input + PlayerData.attack)
 					if health <= 0:
 						died()
 				"after_projectile":
@@ -72,7 +74,7 @@ func create_drop():
 	for n in range(rare + 1):
 		var stat = Resource.new()
 		stat.set_script(preload("res://Resource script/Stats.gd"))
-		stat.type = randi()%5
+		stat.type = randi()%6
 		stat.change = randi()%2
 		stat.amount = (float(randi()%10)+1)*rare
 		item.stats.append(stat)

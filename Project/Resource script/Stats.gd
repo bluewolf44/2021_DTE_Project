@@ -13,6 +13,7 @@ enum stat_type{
 	DEFENCE
 	SPEED
 	CRIT
+	DAM_CRIT
 }
 enum per_plus{
 	ADDITION

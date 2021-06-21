@@ -15,9 +15,9 @@ var has_move = false
 var move_inv = false
 
 func _ready():
-	$CanvasLayer/Health_bar/Max_Health.text = str(get_node("/root/PlayerData").health)
-	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
-	$CanvasLayer/Health_bar/ProgressBar.max_value = get_node("/root/PlayerData").health
+	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
+	$CanvasLayer/Health_bar/Health.text = str(PlayerData.health)
+	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
 
 func _process(delta):
 	var move = Vector2(
@@ -75,8 +75,8 @@ func _on_Attack_speed_timeout():
 	other_action = false
 
 func hit(damage):
-	get_node("/root/PlayerData").health -= damage
-	$CanvasLayer/Health_bar/Health.text = str(get_node("/root/PlayerData").health)
+	PlayerData.current_health -= damage
+	$CanvasLayer/Health_bar/Health.text = str(PlayerData.current_health)
 	$CanvasLayer/Health_bar/ProgressBar.value += damage
 	#print(get_node("/root/PlayerData").health," ",-damage)
 	if get_node("/root/PlayerData").health <= 0:
@@ -142,5 +142,10 @@ func show_info(slot,data):
 	
 	for stat in data.stats:
 		var l = Label.new()
-		l.text = ["Damage","Heath","Defence","Speed","Crit",][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
+		l.text = ["Damage","Heath","Defence","Speed","Crit","Crit Dam"][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
 		info.get_node("Stats").add_child(l)
+
+func updata_stats():
+	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
+	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
+	speed = PlayerData.speed
