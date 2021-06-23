@@ -1531,6 +1531,12 @@ margin_bottom = 175.915
 custom_colors/font_color = Color( 0.827451, 0.121569, 0.121569, 1 )
 text = "Type:"
 
+[node name="Button" type="Button" parent="CanvasLayer/Inventory"]
+margin_left = -606.0
+margin_right = 2.0
+margin_bottom = 601.0
+flat = true
+
 [node name="Move" type="Sprite" parent="CanvasLayer"]
 visible = false
 scale = Vector2( 0.5, 0.5 )
@@ -1538,3 +1544,4 @@ texture = ExtResource( 4 )
 script = ExtResource( 6 )
 
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
+[connection signal="button_up" from="CanvasLayer/Inventory/Button" to="." method="_on_Button_button_up"]

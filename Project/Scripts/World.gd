@@ -9,10 +9,12 @@ func _ready():
 
 func _on_Timer_timeout():
 	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
-	var pos = Vector2(500-randi() % 1000,500-randi() % 1000)
+	var pos = Vector2(25-randi() % 50,25-randi() % 50)
 	while $Nav/Title.get_cellv(pos) == -1:
-		pos = Vector2(500-randi() % 1000,500-randi() % 1000)
-	enemy_instance.position = Vector2(500-randi() % 1000,500-randi() % 1000)
+		pos = Vector2(25-randi() % 50,25-randi() % 50)
+		
+	enemy_instance.position = $Nav/Title.map_to_world(pos)
+	print($Nav/Title.map_to_world(pos))
 	$Enemys.add_child(enemy_instance)
 
 func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):

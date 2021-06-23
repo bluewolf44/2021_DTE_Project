@@ -79,7 +79,7 @@ func hit(damage):
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.current_health)
 	$CanvasLayer/Health_bar/ProgressBar.value += damage
 	#print(get_node("/root/PlayerData").health," ",-damage)
-	if get_node("/root/PlayerData").health <= 0:
+	if PlayerData.current_health <= 0:
 		died()
 
 func died():
@@ -149,3 +149,14 @@ func updata_stats():
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
 	speed = PlayerData.speed
+
+func _on_Button_button_up():
+	if $CanvasLayer/Move.data:
+		var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
+		drop_item_instance.data = $CanvasLayer/Move.data
+		drop_item_instance.position = position
+		drop_item_instance.get_node("Icon").modulate = $CanvasLayer/Move.data.color
+		get_parent().get_node("Drop_items").add_child(drop_item_instance)
+		PlayerData.remove_item($CanvasLayer/Move.data)
+		reset_move()
+		
