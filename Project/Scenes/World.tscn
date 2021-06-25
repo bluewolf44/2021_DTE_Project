@@ -357,8 +357,6 @@ format = 1
 
 [node name="Enemys" type="Node" parent="."]
 
-[node name="Projectiles" type="Node" parent="."]
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Text" type="Node" parent="."]
@@ -369,6 +367,8 @@ tile_set = SubResource( 16 )
 cell_size = Vector2( 64, 32 )
 show_collision = true
 format = 1
+
+[node name="Projectiles" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

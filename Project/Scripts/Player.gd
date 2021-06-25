@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var speed = 300
 var type = "Player"
-var attack_speed = 0.25
 var other_action = false
 
 var held_action = 0
@@ -37,19 +36,8 @@ func _process(delta):
 		$Attack_speed.stop()
 	
 	if Input.is_action_just_pressed("LMB") and not other_action:
-		other_action = true
-		held_postion = (get_global_mouse_position()-position).normalized()
-		
-		$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())
-		$AnimationTree.set("parameters/Stand/blend_position",(get_global_mouse_position()-position).normalized())
-		$Attack_speed.wait_time = attack_speed
-		$Attack_speed.start()
-		travel("Cast")
-	
-	elif Input.is_action_just_pressed("Q"):
-		held_action += 1
-		if held_action >= 2:
-			held_action = 0
+		held_action = 0
+		start_attack()
 	
 	if Input.is_action_just_pressed("E"):
 		open_inv()
@@ -82,6 +70,16 @@ func hit(damage):
 	if PlayerData.current_health <= 0:
 		died()
 
+func start_attack():
+	other_action = true
+	held_postion = (get_global_mouse_position()-position).normalized()
+	
+	$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())
+	$AnimationTree.set("parameters/Stand/blend_position",(get_global_mouse_position()-position).normalized())
+	$Attack_speed.wait_time = action_hold[held_action].cast_time
+	$Attack_speed.start()
+	travel("Cast")
+
 func died():
 	queue_free()
 
@@ -113,6 +111,7 @@ func update_inv():
 			slot.data = item
 
 func move_item(data):
+	$CanvasLayer/Inventory/Button.rect_size = Vector2(614,511)
 	$CanvasLayer/Inventory/Info.visible = false
 	$CanvasLayer/Move.data = data
 	$CanvasLayer/Move.modulate = data.color
@@ -122,6 +121,7 @@ func move_item(data):
 	move_inv = true
 	
 func reset_move():
+	$CanvasLayer/Inventory/Button.rect_size = Vector2(0,0)
 	$CanvasLayer/Move.data = null
 	$CanvasLayer/Move.visible = false
 	move_inv = false

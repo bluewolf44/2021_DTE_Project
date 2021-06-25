@@ -14,7 +14,6 @@ func _on_Timer_timeout():
 		pos = Vector2(25-randi() % 50,25-randi() % 50)
 		
 	enemy_instance.position = $Nav/Title.map_to_world(pos)
-	print($Nav/Title.map_to_world(pos))
 	$Enemys.add_child(enemy_instance)
 
 func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
@@ -44,7 +43,6 @@ func create_world():
 		for y in range(max_area.y+10):
 			for n in [Vector2(x,y),Vector2(-x,-y),Vector2(x,-y),Vector2(-x,y)]:
 				point_to_astar[n] = id
-				#astar_to_point[id] = n
 				star.add_point(id,n)
 				id += 1
 	for x in range(-max_area.x,max_area.x):
