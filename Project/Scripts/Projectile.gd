@@ -39,4 +39,7 @@ func _on_Timer_timeout():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Wall" and "Wall" in interact:
+		for e in effects:
+			if e.type == "after_projectile":
+				get_node("/root/World").create_projectile(position,e.input)
 		queue_free()

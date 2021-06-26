@@ -17,6 +17,9 @@ func _ready():
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
+	for n in range(1,len(action_hold)):
+		$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = action_hold[n].icon
+	
 
 func _process(delta):
 	var move = Vector2(
@@ -35,16 +38,47 @@ func _process(delta):
 		travel("Stand")
 		$Attack_speed.stop()
 	
-	if Input.is_action_just_pressed("LMB") and not other_action:
-		held_action = 0
-		start_attack()
-	
 	if Input.is_action_just_pressed("E"):
 		open_inv()
 	
 	if move_inv:
 		$CanvasLayer/Move.position = get_viewport().get_mouse_position()
-
+	
+	if not other_action:
+		if Input.is_action_just_pressed("LMB"):
+			held_action = 0
+			start_attack()	
+		elif Input.is_action_just_pressed("0") and action_hold.size() == 11:
+			held_action = 10
+			start_attack()	
+		elif Input.is_action_just_pressed("1") and action_hold.size() >= 2:
+			held_action = 1
+			start_attack()	
+		elif Input.is_action_just_pressed("2") and action_hold.size() >= 3:
+			held_action = 2
+			start_attack()	
+		elif Input.is_action_just_pressed("3") and action_hold.size() >= 4:
+			held_action = 3
+			start_attack()	
+		elif Input.is_action_just_pressed("4") and action_hold.size() >= 5:
+			held_action = 4
+			start_attack()	
+		elif Input.is_action_just_pressed("5") and action_hold.size() >= 6:
+			held_action = 5
+			start_attack()	
+		elif Input.is_action_just_pressed("6") and action_hold.size() >= 7:
+			held_action = 6
+			start_attack()	
+		elif Input.is_action_just_pressed("7") and action_hold.size() >= 8:
+			held_action = 7
+			start_attack()	
+		elif Input.is_action_just_pressed("8") and action_hold.size() >= 9:
+			held_action = 8
+			start_attack()	
+		elif Input.is_action_just_pressed("9") and action_hold.size() >= 10:
+			held_action = 9
+			start_attack()	
+	
 func cast_spell():
 	if action_hold[held_action]["where"].type == 0:
 		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"].amount,action_hold[held_action],held_postion)

@@ -8,6 +8,7 @@ var create_inputs = [
 	{"name":"sprite","input":"str"},
 	{"name":"speed","input":"int"},
 	{"name":"cast_time","input":"float"},
+	{"name":"icon","input":"tex"},
 	{"name":"interact","input":"create","other":["String_input"]},
 	{"name":"affect","input":"create","other":["String_input"]},
 	{"name":"where","input":"create_one","other":["Where"]},
@@ -20,6 +21,7 @@ export var cast_time = 1.0
 export var speed = 0
 export var sprite = ""
 export var description = ""
+export(Texture) var icon
 export(Array,Resource) var interact = []
 export(Array,Resource) var affect = []
 export(Resource) var where
