@@ -20,6 +20,7 @@ sprite = "null"
 script = ExtResource( 1 )
 name = "Minotaur"
 health = 50
+xp = 4
 speed = 150
 distance = 60
 attack_speed = 0.5

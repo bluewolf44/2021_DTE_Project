@@ -14,6 +14,7 @@ var has_move = false
 var move_inv = false
 
 func _ready():
+	update_xp()
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
@@ -194,3 +195,7 @@ func _on_Button_button_up():
 		PlayerData.remove_item($CanvasLayer/Move.data)
 		reset_move()
 		
+func update_xp():
+	$CanvasLayer/Hot_bar/XP.max_value = PlayerData.xp_to_next
+	$CanvasLayer/Hot_bar/XP.value = PlayerData.current_xp
+	$CanvasLayer/Hot_bar/Lvl.text = str(PlayerData.lvl)

@@ -11,6 +11,7 @@ var can_get_hit = true
 var speed
 var health
 var action = false
+var level = 1
 
 func _ready():
 	held_action = monster_data["attack"]
@@ -31,9 +32,13 @@ func interact(effects):
 		for e in effects:
 			match e.type:
 				"damage":
-					health -= (e.input + PlayerData.attack)*int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1)
+					var total = (e.input + PlayerData.attack)*int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1)
 					if randi() % 100 <= int(PlayerData.crit) % 100:
-						health -= PlayerData.dam_crit*(e.input + PlayerData.attack)
+						total += PlayerData.dam_crit*(e.input + PlayerData.attack)
+					
+					print(total)
+					health -= total
+					get_parent().get_parent().create_text(str(total),position,Color("eb0c0c"))
 					if health <= 0:
 						died()
 				"after_projectile":
@@ -44,6 +49,9 @@ func interact(effects):
 func died():
 	yield(get_tree(),"idle_frame")
 	create_drop()
+	var xp = round(monster_data.xp*(rand_range(0.7,1.3)))*level
+	PlayerData.gain_xp(xp)
+	get_parent().get_parent().create_text(str(xp) + " Xp",position,Color("1df516"))
 	queue_free()
 
 func start_attack():

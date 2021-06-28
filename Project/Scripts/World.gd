@@ -29,7 +29,7 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 func create_text(text,position,color = Color(0,0,0)):
 	var text_instance = load("res://Scenes/Text.tscn").instance()
 	text_instance.text = str(text)
-	text_instance.rect_position = position + Vector2(50 - randi() % 100,0)
+	text_instance.rect_position = position + Vector2(50 - randi() % 100,50 - randi() % 100)
 	text_instance.modulate = color
 	$Text.add_child(text_instance)
 
@@ -87,7 +87,6 @@ func create_world():
 					$Nav/Title.set_cellv(pos,0)
 					not_tops.append(pos)
 	
-	var extra_tops = []
 	var all_walls = []
 	for x in range(-(max_area.x+10),max_area.x+10):
 		for y in range(-(max_area.x+10),max_area.y+10):
@@ -118,11 +117,9 @@ func create_world():
 				$Wall.set_cellv(pos+Vector2(-2,-2),11)
 				all_walls.append(pos)
 			elif side["-x"]:
-				extra_tops.append(pos+Vector2(-1,-1))
 				$Wall.set_cellv(pos+Vector2(-2,-2),8)
 				all_walls.append(pos)
 			elif side["-y"]:
-				extra_tops.append(pos+Vector2(-2,-1))
 				all_walls.append(pos)
 				$Wall.set_cellv(pos+Vector2(-2,-2),7)
 			elif side["+x"]:
@@ -155,6 +152,3 @@ func create_world():
 			$Top.set_cellv(pos,0)
 	for pos in not_tops:
 		$Top.set_cellv(pos+Vector2(-2,-2),-1)
-	
-#	for pos in extra_tops:
-#		$Top.set_cellv(pos,1)

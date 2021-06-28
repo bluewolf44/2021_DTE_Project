@@ -32,6 +32,10 @@ var per_dam_crit = 0
 var inventory = []
 var equited = {}
 
+var lvl = 1
+var current_xp = 0
+var xp_to_next = 100
+
 func _ready():
 	for n in range(60):
 		inventory.append(null)
@@ -67,3 +71,11 @@ func update_stats():
 		print(i,self[i])
 	
 	get_node("/root/World/Player").updata_stats()
+
+func gain_xp(number):
+	current_xp += number
+	while current_xp >= xp_to_next:
+		current_xp -= xp_to_next
+		xp_to_next = 5*lvl*lvl+95
+		print("level up")
+	get_node("/root/World/Player").update_xp()
