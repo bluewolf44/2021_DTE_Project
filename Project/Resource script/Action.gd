@@ -9,6 +9,7 @@ var create_inputs = [
 	{"name":"speed","input":"int"},
 	{"name":"cast_time","input":"float"},
 	{"name":"icon","input":"tex"},
+	{"name":"color","input":"str"},
 	{"name":"interact","input":"create","other":["String_input"]},
 	{"name":"affect","input":"create","other":["String_input"]},
 	{"name":"where","input":"create_one","other":["Where"]},
@@ -19,6 +20,7 @@ export var name = "name"
 export var time = -1.0
 export var cast_time = 1.0
 export var speed = 0
+export var color = "ffffff"
 export var sprite = ""
 export var description = ""
 export(Texture) var icon

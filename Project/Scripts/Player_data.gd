@@ -2,7 +2,7 @@ extends Node
 
 var health = 12000
 var current_health = 12000
-var attack = 69
+var attack = 5
 var defence = 4
 var crit = 5
 var dam_crit = 5
@@ -77,5 +77,13 @@ func gain_xp(number):
 	while current_xp >= xp_to_next:
 		current_xp -= xp_to_next
 		xp_to_next = 5*lvl*lvl+95
+		lvl += 1
+		base_attack += 2
+		base_health += 1000
+		base_defence += 3
+		base_crit += 2
+		base_dam_crit += 3
+		base_speed += 10
 		print("level up")
+		update_stats()
 	get_node("/root/World/Player").update_xp()

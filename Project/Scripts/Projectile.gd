@@ -34,6 +34,8 @@ func add_data(data):
 		
 	$Attacks.play(data["sprite"])
 	
+	modulate = Color(data.color)
+	
 func _on_Timer_timeout():
 	queue_free()
 

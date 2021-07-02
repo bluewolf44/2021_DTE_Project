@@ -18,3 +18,4 @@ export var sprite = "null"
 
 var affect = []
 var interact = [{"input":"Player"},{"input":"Wall"}]
+var color = "ffffff"

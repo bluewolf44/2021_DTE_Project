@@ -14,6 +14,7 @@ var action = false
 var level = 1
 
 func _ready():
+	$Timer.wait_time = 0.5
 	held_action = monster_data["attack"]
 	speed = monster_data.speed
 	health = monster_data.health
@@ -36,7 +37,6 @@ func interact(effects):
 					if randi() % 100 <= int(PlayerData.crit) % 100:
 						total += PlayerData.dam_crit*(e.input + PlayerData.attack)
 					
-					print(total)
 					health -= total
 					get_parent().get_parent().create_text(str(total),position,Color("eb0c0c"))
 					if health <= 0:

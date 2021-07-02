@@ -1,32 +1,32 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://Resource script/Action.gd" type="Script" id=1]
-[ext_resource path="res://Resource script/String_input.gd" type="Script" id=2]
+[ext_resource path="res://Resource script/Damage.gd" type="Script" id=2]
 [ext_resource path="res://Resource script/Where.gd" type="Script" id=3]
-[ext_resource path="res://Resource script/Damage.gd" type="Script" id=4]
+[ext_resource path="res://Resource script/String_input.gd" type="Script" id=4]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 input = "Enemy"
 
 [sub_resource type="Resource" id=2]
-script = ExtResource( 4 )
-input = 60
+script = ExtResource( 2 )
+input = 35
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 3 )
 type = 0
-amount = 40
+amount = 30
 
 [resource]
 script = ExtResource( 1 )
-name = "Slash"
-time = 0.6
-cast_time = 0.1
-speed = 0
-color = "ffffff"
-sprite = "Slash"
-description = "A slash with a weapoon"
+name = "Blue fire"
+time = 30.0
+cast_time = 1.0
+speed = 150
+color = "1114d1"
+sprite = "Sun"
+description = "It a blue flame"
 interact = [  ]
 affect = [ SubResource( 1 ) ]
 where = SubResource( 3 )

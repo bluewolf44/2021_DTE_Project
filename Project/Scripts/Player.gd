@@ -5,7 +5,7 @@ var type = "Player"
 var other_action = false
 
 var held_action = 0
-var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Slash.tres")]
+var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Slash.tres"),load("res://Resoures/Blue_Flame.tres")]
 
 var held_postion
 var move_towards
