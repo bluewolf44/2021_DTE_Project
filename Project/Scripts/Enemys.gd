@@ -28,27 +28,30 @@ func _process(delta):
 		travel("Run")
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
 
-func interact(effects):
+func interact(effects,projective):
 	if can_get_hit:
 		for e in effects:
 			match e.type:
 				"damage":
-					var total = (e.input + PlayerData.attack)*int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1)
+					var total = (e.input + PlayerData.attack)*int(int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1))
 					if randi() % 100 <= int(PlayerData.crit) % 100:
-						total += PlayerData.dam_crit*(e.input + PlayerData.attack)
+						total += round((PlayerData.dam_crit/100+1)*(e.input + PlayerData.attack))
 					
 					health -= total
 					get_parent().get_parent().create_text(str(total),position,Color("eb0c0c"))
 					if health <= 0:
 						died()
 				"after_projectile":
-					get_node("/root/World").create_projectile(position,e.input)
+					if not projective.has_after:
+						get_node("/root/World").create_projectile(projective.position,e.input)
+						projective.has_after = true
 		can_get_hit = false
 		$Timer.start()
 
 func died():
 	yield(get_tree(),"idle_frame")
 	create_drop()
+	create_gold()
 	var xp = round(monster_data.xp*(rand_range(0.7,1.3)))*level
 	PlayerData.gain_xp(xp)
 	get_parent().get_parent().create_text(str(xp) + " Xp",position,Color("1df516"))
@@ -89,6 +92,7 @@ func create_drop():
 	item.name = pick_name()
 	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]
 	item.type = randi()%5
+	item.rare = rare
 	
 	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
@@ -112,3 +116,10 @@ func pick_name():
 		"Peenexcalibur",
 		"Mini sucktion cup man",
 	][randi()%13]
+
+func create_gold():
+	if randi() % 3 == 0:
+		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
+		drop_gold_instance.position = position
+		drop_gold_instance.amount = randi() % 10*level + 2*level
+		get_parent().get_parent().get_node("Gold").add_child(drop_gold_instance)

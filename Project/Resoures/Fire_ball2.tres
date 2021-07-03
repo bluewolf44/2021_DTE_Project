@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
-input = 20
+input = 30
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 1 )

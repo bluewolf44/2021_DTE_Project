@@ -31,6 +31,7 @@ var per_dam_crit = 0
 
 var inventory = []
 var equited = {}
+var gold = 0
 
 var lvl = 1
 var current_xp = 0
@@ -87,3 +88,10 @@ func gain_xp(number):
 		print("level up")
 		update_stats()
 	get_node("/root/World/Player").update_xp()
+
+func add_gold(amount):
+	gold += amount
+	var j = ""
+	for n in range(7-len(str(gold))):
+		j += "0"
+	get_node("/root/World/Player/CanvasLayer/Gold/Label2").text = j + str(gold)

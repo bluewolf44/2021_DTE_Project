@@ -5,6 +5,7 @@ var effects
 var interact = []
 var affect = []
 var type = "Projectile"
+var has_after = false
 onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
@@ -15,9 +16,9 @@ func _process(delta):
 	if areas:
 		for a in areas:
 			if a.get_parent().type in affect:
-				a.get_parent().interact(effects)
+				a.get_parent().interact(effects,self)
 			elif a.get_parent().type in interact:
-				a.get_parent().interact(effects)
+				a.get_parent().interact(effects,self)
 				queue_free()
 
 func add_data(data):

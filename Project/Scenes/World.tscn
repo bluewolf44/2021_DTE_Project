@@ -314,6 +314,8 @@ cell_size = Vector2( 64, 32 )
 show_collision = true
 format = 1
 
+[node name="Gold" type="Node" parent="."]
+
 [node name="Drop_items" type="Node" parent="."]
 
 [node name="Enemys" type="Node" parent="."]

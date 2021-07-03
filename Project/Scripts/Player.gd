@@ -118,7 +118,7 @@ func start_attack():
 func died():
 	queue_free()
 
-func interact(effects):
+func interact(effects,projective):
 	for e in effects:
 		match e.type:
 			"damage":
