@@ -27,6 +27,7 @@ speed = 0
 color = "ffffff"
 sprite = "Slash"
 description = "A slash with a weapoon"
+cost = 40
 interact = [  ]
 affect = [ SubResource( 1 ) ]
 where = SubResource( 3 )

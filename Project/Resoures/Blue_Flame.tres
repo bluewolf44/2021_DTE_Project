@@ -27,6 +27,7 @@ speed = 150
 color = "1114d1"
 sprite = "Sun"
 description = "It a blue flame"
+cost = 50
 interact = [  ]
 affect = [ SubResource( 1 ) ]
 where = SubResource( 3 )

@@ -3,7 +3,6 @@ var data
 var type = "drop_item"
 
 func _ready():
-	print(data.rare)
 	$AnimationPlayer.play(["","Common","Uncommon","rare","Mythical","legendary"][data.rare])
 
 func _on_Button_button_down():

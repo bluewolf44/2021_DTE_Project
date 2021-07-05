@@ -7,6 +7,8 @@ var defence = 4
 var crit = 5
 var dam_crit = 5
 var speed = 300
+var mana = 100
+var mana_regen = 1
 
 var base_health = 12000
 var base_attack = 5
@@ -14,6 +16,8 @@ var base_defence = 4
 var base_crit = 5
 var base_dam_crit = 5
 var base_speed = 300
+var base_mana = 100
+var base_mana_regen = 1
 
 var add_health = 0
 var add_attack = 0
@@ -21,6 +25,8 @@ var add_defence = 0
 var add_crit = 0
 var add_dam_crit = 0
 var add_speed = 0
+var add_mana = 0
+var add_mana_regen = 0
 
 var per_health = 0
 var per_attack = 0
@@ -28,6 +34,8 @@ var per_defence = 0
 var per_crit = 0
 var per_speed = 0
 var per_dam_crit = 0
+var per_mana = 0
+var per_mana_regen = 0
 
 var inventory = []
 var equited = {}
