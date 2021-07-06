@@ -22,7 +22,7 @@ func _ready():
 func _process(delta):
 	if position.distance_to(player.position) <= monster_data.distance and not action:
 		start_attack()
-	elif position.distance_to(player.position) < 600 and not action:
+	elif position.distance_to(player.position) < 300 and not action:
 		var move = (nav.get_simple_path(position,player.position)[1]-position).normalized()
 		move_and_collide(move*speed*delta)
 		travel("Run")
@@ -85,7 +85,7 @@ func create_drop():
 	for n in range(rare + 1):
 		var stat = Resource.new()
 		stat.set_script(preload("res://Resource script/Stats.gd"))
-		stat.type = randi()%6
+		stat.type = randi()%8
 		stat.change = randi()%2
 		stat.amount = (float(randi()%10)+1)*rare
 		item.stats.append(stat)

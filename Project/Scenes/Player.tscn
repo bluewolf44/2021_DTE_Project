@@ -829,7 +829,7 @@ start_node = "Stand"
 radius = 8.0971
 height = 10.7729
 
-[sub_resource type="StyleBoxFlat" id=57]
+[sub_resource type="StyleBoxFlat" id=56]
 bg_color = Color( 0.0862745, 0.654902, 0.2, 1 )
 border_width_top = 3
 border_width_right = 3
@@ -841,7 +841,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id=63]
+[sub_resource type="StyleBoxFlat" id=57]
 bg_color = Color( 0.901961, 0.0392157, 0.0392157, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -856,7 +856,7 @@ corner_radius_bottom_left = 3
 shadow_color = Color( 0.862745, 0.0901961, 0.0117647, 1 )
 shadow_size = 5
 
-[sub_resource type="StyleBoxFlat" id=64]
+[sub_resource type="StyleBoxFlat" id=58]
 bg_color = Color( 0.211765, 0.0862745, 0.654902, 1 )
 border_width_top = 3
 border_width_right = 3
@@ -868,7 +868,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id=65]
+[sub_resource type="StyleBoxFlat" id=59]
 bg_color = Color( 0.160784, 0.160784, 0.160784, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -880,7 +880,7 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-shadow_color = Color( 0.862745, 0.0901961, 0.0117647, 1 )
+shadow_color = Color( 0.0117647, 0.223529, 0.862745, 1 )
 shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id=60]
@@ -925,7 +925,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 161
 __meta__ = {
 "_edit_lock_": true
 }
@@ -934,7 +934,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 162
+frame = 161
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1001,8 +1001,8 @@ margin_left = 12.9181
 margin_top = 10.0234
 margin_right = 281.918
 margin_bottom = 34.0234
-custom_styles/fg = SubResource( 57 )
-custom_styles/bg = SubResource( 63 )
+custom_styles/fg = SubResource( 56 )
+custom_styles/bg = SubResource( 57 )
 value = 75.0
 percent_visible = false
 __meta__ = {
@@ -1056,8 +1056,8 @@ margin_left = 12.9181
 margin_top = 10.0234
 margin_right = 281.918
 margin_bottom = 34.0234
-custom_styles/fg = SubResource( 64 )
-custom_styles/bg = SubResource( 65 )
+custom_styles/fg = SubResource( 58 )
+custom_styles/bg = SubResource( 59 )
 value = 75.0
 percent_visible = false
 __meta__ = {

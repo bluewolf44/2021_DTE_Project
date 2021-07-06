@@ -86,6 +86,10 @@ func _process(delta):
 		elif Input.is_action_just_pressed("9") and action_hold.size() >= 10:
 			held_action = 9
 			start_attack()
+	if PlayerData.mana > PlayerData.mana_current:
+		PlayerData.mana_current = move_toward(PlayerData.mana_current,PlayerData.mana,PlayerData.mana_regen*delta)
+		$CanvasLayer/Mana_bar/Mana.text = str(round(PlayerData.mana_current))
+		$CanvasLayer/Mana_bar/ProgressBar.value = round(PlayerData.mana_current)
 	
 func cast_spell():
 	if action_hold[held_action]["where"].type == 0:
@@ -113,6 +117,12 @@ func hit(damage):
 		died()
 
 func start_attack():
+	if PlayerData.mana_current < action_hold[held_action].cost:
+		print(action_hold[held_action].cost,PlayerData.mana_current)
+		return
+	PlayerData.mana_current -= action_hold[held_action].cost
+	$CanvasLayer/Mana_bar/Mana.text = str(PlayerData.mana_current)
+	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana_current
 	other_action = true
 	held_postion = (get_global_mouse_position()-position).normalized()
 	

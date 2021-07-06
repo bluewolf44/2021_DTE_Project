@@ -8,7 +8,8 @@ var crit = 5
 var dam_crit = 5
 var speed = 300
 var mana = 100
-var mana_regen = 1
+var mana_current = 100
+var mana_regen = 5
 
 var base_health = 12000
 var base_attack = 5
@@ -17,7 +18,7 @@ var base_crit = 5
 var base_dam_crit = 5
 var base_speed = 300
 var base_mana = 100
-var base_mana_regen = 1
+var base_mana_regen = 3
 
 var add_health = 0
 var add_attack = 0
@@ -67,15 +68,15 @@ func run_random(data):# data = {"max":100,range(2):"answer",range(3,8):"anweser"
 
 func update_stats():
 	for n in ["add","per"]:
-		for i in ["attack","health","defence","speed","crit","dam_crit"]:
+		for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
 			self[n + "_"+ i] = 0
 	
 	for e in equited:
 		if equited[e]:
 			for stat in equited[e].stats:
-				self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit"][stat.type]] += stat.amount
+				self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"][stat.type]] += stat.amount
 	
-	for i in ["attack","health","defence","speed","crit","dam_crit"]:
+	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
 		self[i] = round((self["per_" + i]/100+1)*self["base_" + i] + self["add_" + i])
 		print(i,self[i])
 	
@@ -93,6 +94,8 @@ func gain_xp(number):
 		base_crit += 2
 		base_dam_crit += 3
 		base_speed += 10
+		base_mana += 20
+		base_mana_regen += 1
 		print("level up")
 		update_stats()
 	get_node("/root/World/Player").update_xp()

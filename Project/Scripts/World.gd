@@ -6,6 +6,7 @@ onready var projectile_scene = load("res://Scenes/Projectile.tscn")
 func _ready():
 	randomize()
 	create_world()
+	create_enemys(50)
 
 func _on_Timer_timeout():
 	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
@@ -15,6 +16,19 @@ func _on_Timer_timeout():
 		
 	enemy_instance.position = $Nav/Title.map_to_world(pos)
 	$Enemys.add_child(enemy_instance)
+
+func create_enemys(number):
+	var enemy_scene = []
+	for n in enemy_scenes:
+		enemy_scene.append(load("res://Scenes/Enemys/"+n+".tscn"))
+	for e in range(number):
+		var enemy_instance = enemy_scene[randi()%2].instance()
+		var pos = Vector2(50-randi() % 100,50-randi() % 100)
+		while $Nav/Title.get_cellv(pos) == -1:
+			pos = Vector2(50-randi() % 100,50-randi() % 100)
+			
+		enemy_instance.position = $Nav/Title.map_to_world(pos)
+		$Enemys.add_child(enemy_instance)
 
 func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 	var projectile_instance = projectile_scene.instance()

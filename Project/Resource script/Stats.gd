@@ -14,6 +14,8 @@ enum stat_type{
 	SPEED
 	CRIT
 	DAM_CRIT
+	MANA
+	MANA_REGEN
 }
 enum per_plus{
 	ADDITION
