@@ -194,7 +194,7 @@ func show_info(slot,data):
 	
 	for stat in data.stats:
 		var l = Label.new()
-		l.text = ["Damage","Heath","Defence","Speed","Crit","Crit Dam"][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
+		l.text = ["Damage","Heath","Defence","Speed","Crit","Crit Dam","Mana","Mana regen"][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
 		info.get_node("Stats").add_child(l)
 
 func updata_stats():

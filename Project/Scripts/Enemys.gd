@@ -12,6 +12,7 @@ var speed
 var health
 var action = false
 var level = 1
+var can_see = false
 
 func _ready():
 	$Timer.wait_time = 0.5
@@ -22,11 +23,14 @@ func _ready():
 func _process(delta):
 	if position.distance_to(player.position) <= monster_data.distance and not action:
 		start_attack()
-	elif position.distance_to(player.position) < 300 and not action:
+	elif can_see and not action:
 		var move = (nav.get_simple_path(position,player.position)[1]-position).normalized()
 		move_and_collide(move*speed*delta)
 		travel("Run")
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
+	if position.distance_to(player.position) <= 300:
+		can_see = true
+		
 
 func interact(effects,projective):
 	if can_get_hit:
