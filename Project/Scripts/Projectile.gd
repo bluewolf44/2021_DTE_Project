@@ -10,7 +10,7 @@ onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
 	position += move*delta
-	if position.distance_to(player.position) > 400:
+	if position.distance_to(player.position) > 800:
 		queue_free()
 	var areas = $Area2D.get_overlapping_areas()
 	if areas:

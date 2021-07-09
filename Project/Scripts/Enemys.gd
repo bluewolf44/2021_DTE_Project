@@ -15,6 +15,7 @@ var level = 1
 var can_see = false
 
 func _ready():
+	visible = false
 	$Timer.wait_time = 0.5
 	held_action = monster_data["attack"]
 	speed = monster_data.speed
@@ -30,7 +31,8 @@ func _process(delta):
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
 	if position.distance_to(player.position) <= 300:
 		can_see = true
-		
+	if position.distance_to(player.position) <= 500:
+		visible = true
 
 func interact(effects,projective):
 	if can_get_hit:
@@ -49,6 +51,7 @@ func interact(effects,projective):
 					if not projective.has_after:
 						get_node("/root/World").create_projectile(projective.position,e.input)
 						projective.has_after = true
+		can_see = true
 		can_get_hit = false
 		$Timer.start()
 
