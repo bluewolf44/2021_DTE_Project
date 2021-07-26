@@ -264,7 +264,6 @@ data = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -4.74182, 40.7189 )
-current = true
 
 [node name="Done" type="Button" parent="."]
 margin_left = 623.0

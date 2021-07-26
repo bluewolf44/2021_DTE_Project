@@ -926,7 +926,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 161
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -935,7 +935,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 161
+frame = 160
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1394,6 +1394,7 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
 margin_left = 1088.04
 margin_top = -17.9594
 margin_right = 1088.04

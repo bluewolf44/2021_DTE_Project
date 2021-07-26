@@ -47,7 +47,7 @@ var lvl = 1
 var current_xp = 0
 var xp_to_next = 100
 
-var action_hold = [load("res://Resoures/Fire_ball2.tres")]
+var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Blue_Flame.tres"),load("res://Resoures/Slash.tres")]
 
 func _ready():
 	for n in range(60):
