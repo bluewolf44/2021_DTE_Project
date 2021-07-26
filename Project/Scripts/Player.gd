@@ -5,7 +5,6 @@ var type = "Player"
 var other_action = false
 
 var held_action = 0
-var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Slash.tres"),load("res://Resoures/Blue_Flame.tres")]
 
 var held_postion
 var move_towards
@@ -25,8 +24,8 @@ func _ready():
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana
 	
-	for n in range(1,len(action_hold)):
-		$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = action_hold[n].icon
+	for n in range(1,len(PlayerData.action_hold)):
+		$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
 	
 
 func _process(delta):
@@ -56,34 +55,34 @@ func _process(delta):
 		if Input.is_action_just_pressed("LMB"):
 			held_action = 0
 			start_attack()
-		elif Input.is_action_just_pressed("0") and action_hold.size() == 11:
+		elif Input.is_action_just_pressed("0") and PlayerData.action_hold.size() == 11:
 			held_action = 10
 			start_attack()
-		elif Input.is_action_just_pressed("1") and action_hold.size() >= 2:
+		elif Input.is_action_just_pressed("1") and PlayerData.action_hold.size() >= 2:
 			held_action = 1
 			start_attack()
-		elif Input.is_action_just_pressed("2") and action_hold.size() >= 3:
+		elif Input.is_action_just_pressed("2") and PlayerData.action_hold.size() >= 3:
 			held_action = 2
 			start_attack()
-		elif Input.is_action_just_pressed("3") and action_hold.size() >= 4:
+		elif Input.is_action_just_pressed("3") and PlayerData.action_hold.size() >= 4:
 			held_action = 3
 			start_attack()
-		elif Input.is_action_just_pressed("4") and action_hold.size() >= 5:
+		elif Input.is_action_just_pressed("4") and PlayerData.action_hold.size() >= 5:
 			held_action = 4
 			start_attack()
-		elif Input.is_action_just_pressed("5") and action_hold.size() >= 6:
+		elif Input.is_action_just_pressed("5") and PlayerData.action_hold.size() >= 6:
 			held_action = 5
 			start_attack()
-		elif Input.is_action_just_pressed("6") and action_hold.size() >= 7:
+		elif Input.is_action_just_pressed("6") and PlayerData.action_hold.size() >= 7:
 			held_action = 6
 			start_attack()
-		elif Input.is_action_just_pressed("7") and action_hold.size() >= 8:
+		elif Input.is_action_just_pressed("7") and PlayerData.action_hold.size() >= 8:
 			held_action = 7
 			start_attack()
-		elif Input.is_action_just_pressed("8") and action_hold.size() >= 9:
+		elif Input.is_action_just_pressed("8") and PlayerData.action_hold.size() >= 9:
 			held_action = 8
 			start_attack()
-		elif Input.is_action_just_pressed("9") and action_hold.size() >= 10:
+		elif Input.is_action_just_pressed("9") and PlayerData.action_hold.size() >= 10:
 			held_action = 9
 			start_attack()
 	if PlayerData.mana > PlayerData.mana_current:
@@ -92,10 +91,10 @@ func _process(delta):
 		$CanvasLayer/Mana_bar/ProgressBar.value = round(PlayerData.mana_current)
 	
 func cast_spell():
-	if action_hold[held_action]["where"].type == 0:
-		get_parent().create_projectile(position+held_postion*action_hold[held_action]["where"].amount,action_hold[held_action],held_postion)
-	elif action_hold[held_action]["where"][0] == 1:
-		get_parent().create_projectile(position,action_hold[held_action],held_postion)
+	if PlayerData.action_hold[held_action]["where"].type == 0:
+		get_parent().create_projectile(position+held_postion*PlayerData.action_hold[held_action]["where"].amount,PlayerData.action_hold[held_action],held_postion)
+	elif PlayerData.action_hold[held_action]["where"][0] == 1:
+		get_parent().create_projectile(position,PlayerData.action_hold[held_action],held_postion)
 
 func travel(place):
 	$AnimationTree.get("parameters/playback").travel(place)
@@ -117,10 +116,10 @@ func hit(damage):
 		died()
 
 func start_attack():
-	if PlayerData.mana_current < action_hold[held_action].cost:
-		print(action_hold[held_action].cost,PlayerData.mana_current)
+	if PlayerData.mana_current < PlayerData.action_hold[held_action].cost:
+		print(PlayerData.action_hold[held_action].cost,PlayerData.mana_current)
 		return
-	PlayerData.mana_current -= action_hold[held_action].cost
+	PlayerData.mana_current -= PlayerData.action_hold[held_action].cost
 	$CanvasLayer/Mana_bar/Mana.text = str(PlayerData.mana_current)
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana_current
 	other_action = true
@@ -128,7 +127,7 @@ func start_attack():
 	
 	$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())
 	$AnimationTree.set("parameters/Stand/blend_position",(get_global_mouse_position()-position).normalized())
-	$Attack_speed.wait_time = action_hold[held_action].cast_time
+	$Attack_speed.wait_time = PlayerData.action_hold[held_action].cast_time
 	$Attack_speed.start()
 	travel("Cast")
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resource script/Skills.gd" type="Script" id=1]
+[ext_resource path="res://Resoures/Blue_Flame.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Blue flame"
+description = "A blue flame"
+stats = [  ]
+special = ExtResource( 2 )

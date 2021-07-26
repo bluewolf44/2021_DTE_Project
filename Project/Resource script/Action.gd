@@ -1,5 +1,6 @@
 extends Resource
 class_name Action
+var type = "Action"
 
 var create_inputs = [
 	{"name":"name","input":"str"},

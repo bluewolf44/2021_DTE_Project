@@ -82,7 +82,8 @@ func _on_Timer_timeout():
 	can_get_hit = true
 
 func create_drop():
-	var rare = PlayerData.run_random({"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
+	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5})
+		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
 	if rare == 0:
 		return
 	
@@ -103,7 +104,11 @@ func create_drop():
 	
 	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
-	drop_item_instance.position = position
+	var pos = Vector2(50-randi() % 100,50-randi() % 100)
+	if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
+		drop_item_instance.position = pos + position
+	else:
+		drop_item_instance.position = position
 	drop_item_instance.get_node("Icon").modulate = item.color
 	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
 
@@ -129,4 +134,9 @@ func create_gold():
 		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
 		drop_gold_instance.position = position
 		drop_gold_instance.amount = randi() % 10*level + 2*level
-		get_parent().get_parent().get_node("Gold").add_child(drop_gold_instance)
+		var pos = Vector2(50-randi() % 100,50-randi() % 100)
+		if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
+			drop_gold_instance.position = pos + position
+		else:
+			drop_gold_instance.position = position
+		get_node("../../Gold").add_child(drop_gold_instance)

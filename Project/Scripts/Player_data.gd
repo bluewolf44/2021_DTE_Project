@@ -38,6 +38,7 @@ var per_dam_crit = 0
 var per_mana = 0
 var per_mana_regen = 0
 
+var skill_stats = []
 var inventory = []
 var equited = {}
 var gold = 0
@@ -45,6 +46,8 @@ var gold = 0
 var lvl = 1
 var current_xp = 0
 var xp_to_next = 100
+
+var action_hold = [load("res://Resoures/Fire_ball2.tres")]
 
 func _ready():
 	for n in range(60):
@@ -59,28 +62,36 @@ func add_item(data):
 func remove_item(data):
 	inventory[inventory.find(data)] = null
 
-func run_random(data):# data = {"max":100,range(2):"answer",range(3,8):"anweser"....
-	var numb = randi() % data["max"]
-	data.erase("max")
+func run_random(data):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
+	var total = 0
+	var hold = []
 	for d in data:
-		if numb in d:
-			return data[d]
+		total += d
+		hold.append({"rare":total,"res":data[d]})
+		
+	var rand = randi() % total
+	for h in hold:
+		if rand <= h["rare"]:
+			return h["res"]
 
 func update_stats():
 	for n in ["add","per"]:
 		for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
 			self[n + "_"+ i] = 0
-	
+	var total = skill_stats
 	for e in equited:
 		if equited[e]:
 			for stat in equited[e].stats:
-				self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"][stat.type]] += stat.amount
+				total.append(stat)
+	
+	for stat in total:
+		self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"][stat.type]] += stat.amount
 	
 	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
 		self[i] = round((self["per_" + i]/100+1)*self["base_" + i] + self["add_" + i])
 		print(i,self[i])
-	
-	get_node("/root/World/Player").updata_stats()
+	if get_node("/root/World/Player"):
+		get_node("/root/World/Player").updata_stats()
 
 func gain_xp(number):
 	current_xp += number

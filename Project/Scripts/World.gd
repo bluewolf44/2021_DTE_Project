@@ -4,6 +4,7 @@ onready var enemy_scenes = ["Goblin","Minotaur"]
 onready var projectile_scene = load("res://Scenes/Projectile.tscn")
 
 func _ready():
+	OS.set_window_maximized(true)
 	randomize()
 	create_world()
 	create_enemys(50)
@@ -43,7 +44,7 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
 func create_text(text,position,color = Color(0,0,0)):
 	var text_instance = load("res://Scenes/Text.tscn").instance()
 	text_instance.text = str(text)
-	text_instance.rect_position = position + Vector2(50 - randi() % 100,50 - randi() % 100)
+	text_instance.rect_position = position + Vector2(50 - randi() % 100,25 - randi() % 100)
 	text_instance.modulate = color
 	$Text.add_child(text_instance)
 

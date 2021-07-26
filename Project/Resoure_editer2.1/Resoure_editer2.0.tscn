@@ -16,19 +16,19 @@ script = ExtResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Done" type="Button" parent="CanvasLayer"]
-margin_left = 849.0
-margin_top = 559.0
-margin_right = 1022.0
-margin_bottom = 599.0
+margin_left = 1721.01
+margin_top = 999.502
+margin_right = 1894.01
+margin_bottom = 1039.5
 text = "Done"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -1.33484
-margin_right = 173.665
-margin_bottom = 592.0
+margin_left = -1.0
+margin_right = 174.0
+margin_bottom = 1079.0
 color = Color( 0.0941176, 0.0862745, 0.682353, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -38,7 +38,7 @@ __meta__ = {
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 150.0
-margin_bottom = 490.0
+margin_bottom = 1020.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,10 +46,10 @@ __meta__ = {
 [node name="Holder" type="VBoxContainer" parent="CanvasLayer/Buttons"]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-margin_left = 5.81079
-margin_top = 563.0
-margin_right = 167.811
-margin_bottom = 586.0
+margin_left = 6.0
+margin_top = 1045.44
+margin_right = 168.0
+margin_bottom = 1068.44
 text = "Load"
 __meta__ = {
 "_edit_use_anchors_": false
