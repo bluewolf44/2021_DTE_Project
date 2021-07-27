@@ -926,7 +926,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -935,7 +935,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1940,6 +1940,7 @@ custom_colors/font_color = Color( 0.827451, 0.121569, 0.121569, 1 )
 text = "Type:"
 
 [node name="Button" type="Button" parent="CanvasLayer/Inventory"]
+visible = false
 margin_left = -606.0
 margin_top = -1.0
 margin_right = 8.0
@@ -1961,6 +1962,31 @@ script = ExtResource( 6 )
 [node name="Skill_tree" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 963.985, 497.647 )
+
+[node name="Menu_picker" type="Control" parent="CanvasLayer"]
+visible = false
+margin_left = 1909.87
+margin_top = 57.082
+margin_right = 1949.87
+margin_bottom = 97.082
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu_picker"]
+margin_left = -50.0
+margin_top = -5.0
+margin_right = -17.0
+margin_bottom = 16.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Button"]
+margin_left = -21.5524
+margin_top = -12.0006
+margin_right = 18.4476
+margin_bottom = 27.9994
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
 [connection signal="button_up" from="CanvasLayer/Inventory/Button" to="." method="_on_Button_button_up"]

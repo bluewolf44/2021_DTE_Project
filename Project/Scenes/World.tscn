@@ -327,6 +327,7 @@ mode = 1
 tile_set = SubResource( 13 )
 cell_size = Vector2( 64, 32 )
 cell_y_sort = true
+show_collision = true
 format = 1
 
 [node name="Top" type="TileMap" parent="."]

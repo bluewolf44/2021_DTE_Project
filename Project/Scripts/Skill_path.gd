@@ -8,13 +8,16 @@ var point1
 var point2
 
 func set_name1(change):
-	id1 = change
-	name = str(id1)+ " " + str(id2)
-	update()
+	if Engine.editor_hint and id1 != change:
+		id1 = change
+		name = str(id1)+ " " + str(id2)
+		update()
+
 func set_name2(change):
-	id2 = change
-	name = str(id1)+ " " + str(id2)
-	update()
+	if Engine.editor_hint and id1 != change:
+		id2 = change
+		name = str(id1)+ " " + str(id2)
+		update()
 
 func update():
 	if id1 >= 0 and id2 >= 0:

@@ -6,7 +6,7 @@ var attack = 5
 var defence = 4
 var crit = 5
 var dam_crit = 5
-var speed = 300
+var speed = 200
 var mana = 100
 var mana_current = 100
 var mana_regen = 5
@@ -16,7 +16,7 @@ var base_attack = 5
 var base_defence = 4
 var base_crit = 5
 var base_dam_crit = 5
-var base_speed = 300
+var base_speed = 200
 var base_mana = 100
 var base_mana_regen = 3
 
@@ -45,7 +45,7 @@ var gold = 0
 
 var lvl = 1
 var current_xp = 0
-var xp_to_next = 100
+var xp_to_next = 30
 
 var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Blue_Flame.tres"),load("res://Resoures/Slash.tres")]
 

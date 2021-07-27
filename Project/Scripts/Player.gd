@@ -26,7 +26,8 @@ func _ready():
 	
 	for n in range(1,len(PlayerData.action_hold)):
 		$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
-	
+
+	PlayerData.update_stats()
 
 func _process(delta):
 	var move = Vector2(

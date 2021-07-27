@@ -33,6 +33,8 @@ func _process(delta):
 		can_see = true
 	if position.distance_to(player.position) <= 500:
 		visible = true
+	elif not can_see:
+		visible = false
 
 func interact(effects,projective):
 	if can_get_hit:

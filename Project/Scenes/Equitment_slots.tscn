@@ -15,6 +15,8 @@ margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -22,6 +24,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0.998901, -0.499441 )
 texture = ExtResource( 1 )
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
