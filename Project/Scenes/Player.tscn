@@ -926,7 +926,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -935,7 +935,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1394,7 +1394,6 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
-visible = false
 margin_left = 1088.04
 margin_top = -17.9594
 margin_right = 1088.04
@@ -1882,6 +1881,7 @@ margin_right = 356.0
 margin_bottom = 212.0
 
 [node name="Info" type="Control" parent="CanvasLayer/Inventory"]
+visible = false
 modulate = Color( 1, 1, 1, 0.705882 )
 margin_right = 188.0
 margin_bottom = 186.0
@@ -1940,11 +1940,10 @@ custom_colors/font_color = Color( 0.827451, 0.121569, 0.121569, 1 )
 text = "Type:"
 
 [node name="Button" type="Button" parent="CanvasLayer/Inventory"]
-visible = false
-margin_left = -606.0
-margin_top = -1.0
-margin_right = 8.0
-margin_bottom = 510.0
+margin_left = -941.0
+margin_top = 107.0
+margin_right = 106.0
+margin_bottom = 941.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
@@ -1964,26 +1963,70 @@ visible = false
 position = Vector2( 963.985, 497.647 )
 
 [node name="Menu_picker" type="Control" parent="CanvasLayer"]
-visible = false
-margin_left = 1909.87
-margin_top = 57.082
-margin_right = 1949.87
-margin_bottom = 97.082
+margin_left = 93.4005
+margin_top = 224.145
+margin_right = 133.401
+margin_bottom = 264.145
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CanvasLayer/Menu_picker"]
-margin_left = -50.0
-margin_top = -5.0
-margin_right = -17.0
-margin_bottom = 16.0
+[node name="Inventory" type="Button" parent="CanvasLayer/Menu_picker"]
+margin_left = -94.0453
+margin_top = 4.24265
+margin_right = 41.9547
+margin_bottom = 64.2426
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Button"]
-margin_left = -21.5524
-margin_top = -12.0006
-margin_right = 18.4476
-margin_bottom = 27.9994
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Inventory"]
+margin_right = 135.0
+margin_bottom = 61.0
+color = Color( 0.462745, 0.501961, 0.317647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu_picker/Inventory"]
+margin_left = 8.19714
+margin_top = 18.3372
+margin_right = 69.1971
+margin_bottom = 32.3372
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill_tree" type="Button" parent="CanvasLayer/Menu_picker"]
+margin_left = -94.752
+margin_top = 90.0
+margin_right = 41.248
+margin_bottom = 150.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Skill_tree"]
+margin_right = 135.0
+margin_bottom = 61.0
+color = Color( 0.317647, 0.494118, 0.501961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu_picker/Skill_tree"]
+margin_left = 8.19714
+margin_top = 18.3372
+margin_right = 69.1971
+margin_bottom = 32.3372
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Skill Tree"
 __meta__ = {
 "_edit_use_anchors_": false
 }

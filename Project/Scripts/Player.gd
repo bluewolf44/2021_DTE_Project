@@ -53,7 +53,7 @@ func _process(delta):
 		$CanvasLayer/Move.position = get_viewport().get_mouse_position()
 	
 	if not other_action:
-		if Input.is_action_just_pressed("LMB"):
+		if Input.is_action_just_pressed("LMB") and not (get_viewport().get_mouse_position().x >= 1175 and $CanvasLayer/Inventory.visible):
 			held_action = 0
 			start_attack()
 		elif Input.is_action_just_pressed("0") and PlayerData.action_hold.size() == 11:
