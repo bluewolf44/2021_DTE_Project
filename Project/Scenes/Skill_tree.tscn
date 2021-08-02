@@ -16,6 +16,17 @@
 [node name="Skill_tree" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -3200.0
+margin_top = -3200.0
+margin_right = 3200.0
+margin_bottom = 3200.0
+mouse_filter = 2
+color = Color( 0.137255, 0.137255, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="0 1" parent="Paths" instance=ExtResource( 2 )]
@@ -262,30 +273,6 @@ data = ExtResource( 11 )
 position = Vector2( 155.376, 249.812 )
 data = ExtResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -4.74182, 40.7189 )
-current = true
-
-[node name="Done" type="Button" parent="."]
-margin_left = 623.0
-margin_top = 508.0
-margin_right = 947.0
-margin_bottom = 571.0
-text = "Done"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Restart" type="Button" parent="."]
-margin_left = 623.0
-margin_top = 434.0
-margin_right = 947.0
-margin_bottom = 497.0
-text = "Restart"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Tool_tip" type="Node2D" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.780392 )
@@ -342,5 +329,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="Done" to="." method="_on_Done_button_up"]
-[connection signal="button_up" from="Restart" to="." method="_on_Restart_button_up"]
+[node name="CanvasModulate" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Done" type="Button" parent="CanvasModulate"]
+visible = false
+margin_left = 1575.44
+margin_top = 996.919
+margin_right = 1899.44
+margin_bottom = 1059.92
+text = "Done"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="CanvasModulate"]
+visible = false
+margin_left = 1575.44
+margin_top = 922.919
+margin_right = 1899.44
+margin_bottom = 985.919
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="CanvasModulate/Done" to="." method="_on_Done_button_up"]
+[connection signal="button_up" from="CanvasModulate/Restart" to="." method="_on_Restart_button_up"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=2]
@@ -296,6 +296,54 @@ points = PoolVector2Array( 48, 80, 16, 80, 16, 64, 48, 64 )
 } ]
 14/z_index = 0
 
+[sub_resource type="NavigationPolygon" id=14]
+vertices = PoolVector2Array( 0, 16, 32, 32, 64, 16, 32, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="OccluderPolygon2D" id=15]
+polygon = PoolVector2Array( 32, 32, 64, 16, 32, 0, 0, 16 )
+
+[sub_resource type="NavigationPolygon" id=16]
+vertices = PoolVector2Array( 32, 0, 64, 16, 32, 32, 0, 16 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="OccluderPolygon2D" id=17]
+polygon = PoolVector2Array( 32, 32, 64, 16, 32, 0, 0, 16 )
+
+[sub_resource type="TileSet" id=18]
+0/name = "grassland_tiles.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 15 )
+0/navigation_offset = Vector2( 0, 0 )
+0/navigation = SubResource( 14 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "grassland_tiles.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 32, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/occluder = SubResource( 17 )
+1/navigation_offset = Vector2( 0, 0 )
+1/navigation = SubResource( 16 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [node name="World" type="Node"]
 script = ExtResource( 2 )
 
@@ -332,8 +380,9 @@ format = 1
 
 [node name="Top" type="TileMap" parent="."]
 mode = 1
-tile_set = ExtResource( 4 )
+tile_set = SubResource( 18 )
 cell_size = Vector2( 64, 32 )
+compatibility_mode = true
 format = 1
 
 [node name="Projectiles" type="Node" parent="."]
@@ -341,5 +390,8 @@ format = 1
 [node name="Text" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.443137, 0.443137, 0.443137, 1 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

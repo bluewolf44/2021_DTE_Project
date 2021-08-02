@@ -7,7 +7,7 @@ func _ready():
 	OS.set_window_maximized(true)
 	randomize()
 	create_world()
-	create_enemys(50)
+	create_enemys(100)
 
 func _on_Timer_timeout():
 	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()

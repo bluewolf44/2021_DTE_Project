@@ -8,16 +8,14 @@ var point1
 var point2
 
 func set_name1(change):
-	if Engine.editor_hint and id1 != change:
-		id1 = change
-		name = str(id1)+ " " + str(id2)
-		update()
+	id1 = change
+	name = str(id1)+ " " + str(id2)
+	update()
 
 func set_name2(change):
-	if Engine.editor_hint and id1 != change:
-		id2 = change
-		name = str(id1)+ " " + str(id2)
-		update()
+	id2 = change
+	name = str(id1)+ " " + str(id2)
+	update()
 
 func update():
 	if id1 >= 0 and id2 >= 0:
@@ -30,7 +28,3 @@ func update():
 			scale.y = (point2.position.distance_to(point1.position)-10)/32
 			look_at(point2.position)
 			rotation_degrees -= 90
-		else:
-			print("doesn't have id ",id1," or ",id2," at ",name)
-	else:
-		print("please put id above 0 at ",name)

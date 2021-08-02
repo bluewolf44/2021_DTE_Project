@@ -33,4 +33,5 @@ func _on_Button_mouse_exited():
 
 func _process(delta):
 	if mouse_in:
-		tool_tip.position = get_global_mouse_position() + Vector2(0,32)
+		tool_tip.global_position = get_viewport().get_mouse_position() + Vector2(0,32)
+	

@@ -86,6 +86,7 @@ func _process(delta):
 		elif Input.is_action_just_pressed("9") and PlayerData.action_hold.size() >= 10:
 			held_action = 9
 			start_attack()
+		
 	if PlayerData.mana > PlayerData.mana_current:
 		PlayerData.mana_current = move_toward(PlayerData.mana_current,PlayerData.mana,PlayerData.mana_regen*delta)
 		$CanvasLayer/Mana_bar/Mana.text = str(round(PlayerData.mana_current))
@@ -199,6 +200,8 @@ func show_info(slot,data):
 
 func updata_stats():
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
+	$CanvasLayer/Mana_bar/Max_Mana.text = str(PlayerData.mana)
+	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
 	speed = PlayerData.speed
 
@@ -216,3 +219,25 @@ func update_xp():
 	$CanvasLayer/Hot_bar/XP.max_value = PlayerData.xp_to_next
 	$CanvasLayer/Hot_bar/XP.value = PlayerData.current_xp
 	$CanvasLayer/Hot_bar/Lvl.text = str(PlayerData.lvl)
+
+func _on_Inventory_button_up():
+	print("work")
+	open_inv()
+
+func _on_Skill_tree_button_up():
+	open_skill()
+
+func open_skill():
+	$CanvasLayer/Skill_tree.visible = !$CanvasLayer/Skill_tree.visible
+	if $CanvasLayer/Skill_tree.visible:
+		$CanvasLayer/Skill_tree.base_place = Vector2(960,500)
+		$CanvasLayer/Skill_tree.position = Vector2(960,500)
+		$CanvasLayer/Skill_tree/CanvasModulate/Done.visible = true
+		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = true
+		get_tree().paused = true
+		$Camera2D.current = false
+	else:
+		$CanvasLayer/Skill_tree/CanvasModulate/Done.visible = false
+		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = false
+		$Camera2D.current = true
+		get_tree().paused = false

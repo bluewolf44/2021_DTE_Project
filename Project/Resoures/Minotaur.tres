@@ -14,7 +14,7 @@ effects = [ SubResource( 1 ) ]
 time = 0.5
 distance = 60
 speed = 0
-sprite = "null"
+sprite = "Null"
 
 [resource]
 script = ExtResource( 1 )

@@ -109,6 +109,7 @@ func gain_xp(number):
 		base_mana_regen += 1
 		print("level up")
 		update_stats()
+		get_node("/root/World/Player/CanvasLayer/Skill_tree").points += 1
 	get_node("/root/World/Player").update_xp()
 
 func add_gold(amount):

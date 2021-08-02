@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Sprites/player/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/player/male_head1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Equitment_slots.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/hot_bar_button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Skill_tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/light.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -926,7 +927,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -935,7 +936,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 163
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1394,6 +1395,7 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Control" parent="CanvasLayer"]
+visible = false
 margin_left = 1088.04
 margin_top = -17.9594
 margin_right = 1088.04
@@ -1959,23 +1961,25 @@ texture = ExtResource( 4 )
 script = ExtResource( 6 )
 
 [node name="Skill_tree" parent="CanvasLayer" instance=ExtResource( 9 )]
+pause_mode = 2
 visible = false
-position = Vector2( 963.985, 497.647 )
+position = Vector2( 960, 500 )
 
 [node name="Menu_picker" type="Control" parent="CanvasLayer"]
-margin_left = 93.4005
-margin_top = 224.145
-margin_right = 133.401
-margin_bottom = 264.145
+pause_mode = 2
+margin_left = 89.625
+margin_top = 223.673
+margin_right = 129.626
+margin_bottom = 263.673
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Inventory" type="Button" parent="CanvasLayer/Menu_picker"]
-margin_left = -94.0453
-margin_top = 4.24265
-margin_right = 41.9547
-margin_bottom = 64.2426
+margin_left = -90.0
+margin_top = 5.0
+margin_right = 46.0
+margin_bottom = 65.0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1984,6 +1988,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Inventory"]
 margin_right = 135.0
 margin_bottom = 61.0
+mouse_filter = 2
 color = Color( 0.462745, 0.501961, 0.317647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2002,9 +2007,9 @@ __meta__ = {
 }
 
 [node name="Skill_tree" type="Button" parent="CanvasLayer/Menu_picker"]
-margin_left = -94.752
+margin_left = -90.0
 margin_top = 90.0
-margin_right = 41.248
+margin_right = 46.0
 margin_bottom = 150.0
 flat = true
 __meta__ = {
@@ -2014,6 +2019,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu_picker/Skill_tree"]
 margin_right = 135.0
 margin_bottom = 61.0
+mouse_filter = 2
 color = Color( 0.317647, 0.494118, 0.501961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2031,5 +2037,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
 [connection signal="button_up" from="CanvasLayer/Inventory/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="CanvasLayer/Menu_picker/Inventory" to="." method="_on_Inventory_button_up"]
+[connection signal="button_up" from="CanvasLayer/Menu_picker/Skill_tree" to="." method="_on_Skill_tree_button_up"]
