@@ -32,8 +32,6 @@ func add_data(data):
 	
 	for n in data["interact"]:
 		interact.append(n.input)
-		
-	$Attacks.play(data["sprite"])
 	
 	modulate = Color(data.color)
 	

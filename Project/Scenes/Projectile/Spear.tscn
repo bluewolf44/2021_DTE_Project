@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Projectile.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Attacks/projectiles.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 3.3, 18 )
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Spell_attack" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+hframes = 8
+vframes = 3
+frame = 14
+
+[node name="Area2D" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Attacks" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

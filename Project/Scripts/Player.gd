@@ -181,9 +181,9 @@ func reset_move():
 func show_info(slot,data):
 	var info = $CanvasLayer/Inventory/Info
 	info.visible = true
-	info.rect_position = slot.rect_position + slot.get_parent().rect_position + Vector2(0,32)
-	if $CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x >= get_viewport_rect().size.x:
-		info.rect_position.x -= 36*(int(($CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x - get_viewport_rect().size.x)/36) + 1)
+	info.rect_position = slot.rect_position + slot.get_parent().rect_position + Vector2(0,64)
+	if $CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x >= get_viewport_rect().size.x/0.75:
+		info.rect_position.x -= 32*(int(($CanvasLayer/Inventory.rect_position.x + info.rect_position.x + info.get_node("ColorRect").rect_size.x - get_viewport_rect().size.x)/32) + 1)
 	if data.sprite:
 		info.get_node("Sprite").texture = data.sprite
 	if data.name:

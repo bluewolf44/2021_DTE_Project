@@ -1,7 +1,7 @@
 extends Node
 
 onready var enemy_scenes = ["Goblin","Minotaur"]
-onready var projectile_scene = load("res://Scenes/Projectile.tscn")
+onready var projectile_scene = "res://Scenes/Projectile/"
 
 func _ready():
 	OS.set_window_maximized(true)
@@ -32,7 +32,7 @@ func create_enemys(number):
 		$Enemys.add_child(enemy_instance)
 
 func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
-	var projectile_instance = projectile_scene.instance()
+	var projectile_instance = load(projectile_scene+data["sprite"]+".tscn").instance()
 	projectile_instance.position = position
 	projectile_instance.add_data(data)
 	projectile_instance.move = direction.normalized()*data["speed"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Projectile.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Attacks/spritesheet.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 30, 20 )
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spell_attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Projectile" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="Spell_attack" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 5
+frame = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1, 0.5 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Attacks" type="AnimationPlayer" parent="."]
+autoplay = "Slash"
+anims/Slash = SubResource( 4 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
