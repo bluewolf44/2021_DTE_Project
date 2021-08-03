@@ -7,7 +7,6 @@ onready var points = PlayerData.lvl
 var held = false
 var base_place = Vector2(0,0)
 
-
 func check_point(node):
 	if node in path or points <= 0:
 		return
@@ -19,11 +18,12 @@ func check_point(node):
 				node.modulate = Color("2e3a08")
 				p.modulate = Color("2e3a08")
 				points -= 1
+				$CanvasModulate/Points.text = str(points)
 				break
 			else:
 				print("die")
 
-func _on_Done_button_up():
+func done_skill():
 	PlayerData.skill_stats = []
 	PlayerData.action_hold = [load("res://Resoures/Fire_ball2.tres")]
 	for d in path:
@@ -35,7 +35,6 @@ func _on_Done_button_up():
 			for s in d.data.stats:
 				PlayerData.skill_stats.append(s)
 				PlayerData.update_stats()
-	get_node("../..").open_skill()
 
 func _on_Restart_button_up():
 	currnet_point = $Points/"0"
@@ -44,6 +43,7 @@ func _on_Restart_button_up():
 	for p in $Points.get_children()+$Paths.get_children():
 		p.modulate = Color(1,1,1)
 	$Points/"0".modulate = Color("2e3a08")
+	$CanvasModulate/Points.text = str(points)
 
 func _process(delta):
 	var move =  Vector2(

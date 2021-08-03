@@ -332,27 +332,41 @@ __meta__ = {
 [node name="CanvasModulate" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Done" type="Button" parent="CanvasModulate"]
-visible = false
-margin_left = 1575.44
-margin_top = 996.919
-margin_right = 1899.44
-margin_bottom = 1059.92
-text = "Done"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Restart" type="Button" parent="CanvasModulate"]
 visible = false
-margin_left = 1575.44
-margin_top = 922.919
-margin_right = 1899.44
-margin_bottom = 985.919
+margin_left = 1583.38
+margin_top = 1004.67
+margin_right = 1907.38
+margin_bottom = 1067.67
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="CanvasModulate/Done" to="." method="_on_Done_button_up"]
+[node name="Label" type="Label" parent="CanvasModulate"]
+visible = false
+margin_left = 1584.04
+margin_top = 952.563
+margin_right = 1656.04
+margin_bottom = 966.563
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 0.0392157, 0.745098, 0.733333, 1 )
+text = "Points Left:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Label" parent="CanvasModulate"]
+visible = false
+margin_left = 1814.0
+margin_top = 953.0
+margin_right = 1823.0
+margin_bottom = 967.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 0.0392157, 0.745098, 0.733333, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_up" from="CanvasModulate/Restart" to="." method="_on_Restart_button_up"]

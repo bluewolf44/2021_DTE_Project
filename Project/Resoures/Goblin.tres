@@ -19,7 +19,7 @@ sprite = "Spear"
 [resource]
 script = ExtResource( 1 )
 name = "Goblin"
-health = 60
+health = 40
 xp = 3
 speed = 80
 distance = 200

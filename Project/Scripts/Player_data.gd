@@ -47,7 +47,7 @@ var lvl = 1
 var current_xp = 0
 var xp_to_next = 30
 
-var action_hold = [load("res://Resoures/Fire_ball2.tres"),load("res://Resoures/Blue_Flame.tres"),load("res://Resoures/Slash.tres")]
+var action_hold = [load("res://Resoures/Fire_ball2.tres")]
 
 func _ready():
 	for n in range(60):
@@ -110,6 +110,7 @@ func gain_xp(number):
 		print("level up")
 		update_stats()
 		get_node("/root/World/Player/CanvasLayer/Skill_tree").points += 1
+		get_node("/root/World/Player/CanvasLayer/Skill_tree/CanvasModulate/Points.text").text = str(get_node("/root/World/Player/CanvasLayer/Skill_tree").points)
 	get_node("/root/World/Player").update_xp()
 
 func add_gold(amount):

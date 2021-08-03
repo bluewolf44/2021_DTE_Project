@@ -37,7 +37,7 @@ func _on_Button_button_up():
 		player.show_info(self,data)
 		PlayerData.update_stats()
 	
-	elif data:
+	elif data and not move.data :
 		$Sprite.texture = load("res://icon.png")
 		$Sprite.modulate = Color(0,0,0)
 		player.move_item(data)

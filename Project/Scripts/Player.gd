@@ -221,7 +221,6 @@ func update_xp():
 	$CanvasLayer/Hot_bar/Lvl.text = str(PlayerData.lvl)
 
 func _on_Inventory_button_up():
-	print("work")
 	open_inv()
 
 func _on_Skill_tree_button_up():
@@ -232,12 +231,15 @@ func open_skill():
 	if $CanvasLayer/Skill_tree.visible:
 		$CanvasLayer/Skill_tree.base_place = Vector2(960,500)
 		$CanvasLayer/Skill_tree.position = Vector2(960,500)
-		$CanvasLayer/Skill_tree/CanvasModulate/Done.visible = true
+		$CanvasLayer/Skill_tree/CanvasModulate/Points.visible = true
+		$CanvasLayer/Skill_tree/CanvasModulate/Label.visible = true
 		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = true
 		get_tree().paused = true
 		$Camera2D.current = false
 	else:
-		$CanvasLayer/Skill_tree/CanvasModulate/Done.visible = false
+		$CanvasLayer/Skill_tree.done_skill()
 		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = false
+		$CanvasLayer/Skill_tree/CanvasModulate/Points.visible = false
+		$CanvasLayer/Skill_tree/CanvasModulate/Label.visible = false
 		$Camera2D.current = true
 		get_tree().paused = false

@@ -27,7 +27,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/z_index = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 64, 80, 32, 96, 0, 80, 64, 80 )
+points = PoolVector2Array( 64, 80, 32, 88, 0, 80, 64, 80 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 64, 80, 0, 80, 16, 64, 48, 64 )
@@ -392,6 +392,6 @@ format = 1
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.443137, 0.443137, 0.443137, 1 )
+color = Color( 0.564706, 0.564706, 0.564706, 1 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
