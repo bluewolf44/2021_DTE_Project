@@ -49,6 +49,7 @@ func create_text(text,position,color = Color(0,0,0)):
 	$Text.add_child(text_instance)
 
 func create_world():
+	var mini_map = $Player/CanvasLayer/Mini_map
 	var star = AStar2D.new()
 	var point_to_astar = {}
 	var max_area = Vector2(50,50)
@@ -132,15 +133,19 @@ func create_world():
 				$Wall.set_cellv(pos+Vector2(-2,-2),11)
 				all_walls.append(pos)
 			elif side["-x"]:
+				mini_map.walls["East"].append(pos)
 				$Wall.set_cellv(pos+Vector2(-2,-2),8)
 				all_walls.append(pos)
 			elif side["-y"]:
+				mini_map.walls["South"].append(pos)
 				all_walls.append(pos)
 				$Wall.set_cellv(pos+Vector2(-2,-2),7)
 			elif side["+x"]:
+				mini_map.walls["West"].append(pos)
 				all_walls.append(pos)
 				$Wall.set_cellv(pos+Vector2(-2,-2),3)
 			elif side["+y"]:
+				mini_map.walls["North"].append(pos)
 				$Wall.set_cellv(pos+Vector2(-2,-2),4)
 				all_walls.append(pos)
 
