@@ -377,6 +377,7 @@ cell_size = Vector2( 64, 32 )
 cell_y_sort = true
 show_collision = true
 format = 1
+tile_data = PoolIntArray( 131072, 4, 0 )
 
 [node name="Top" type="TileMap" parent="."]
 mode = 1

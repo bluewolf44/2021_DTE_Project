@@ -30,6 +30,7 @@ func _ready():
 	PlayerData.update_stats()
 
 func _process(delta):
+	print(position)
 	var move = Vector2(
 		Input.get_action_strength("Move_Right")-Input.get_action_strength("Move_Left"),
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")

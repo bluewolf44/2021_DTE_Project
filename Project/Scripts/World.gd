@@ -172,3 +172,5 @@ func create_world():
 			$Top.set_cellv(pos,0)
 	for pos in not_tops:
 		$Top.set_cellv(pos+Vector2(-2,-2),-1)
+
+	mini_map.do_stuff()
