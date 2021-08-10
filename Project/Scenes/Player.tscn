@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Sprites/player/clothes.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/player/male_head1.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Scenes/hot_bar_button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Skill_tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sprites/light.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Mini_map.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -928,7 +927,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -937,7 +936,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 163
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1965,8 +1964,6 @@ script = ExtResource( 6 )
 pause_mode = 2
 visible = false
 position = Vector2( 960, 500 )
-
-[node name="Mini_map" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="Menu_picker" type="Control" parent="CanvasLayer"]
 pause_mode = 2

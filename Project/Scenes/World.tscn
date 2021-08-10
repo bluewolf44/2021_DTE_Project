@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/grassland_tiles.png" type="Texture" id=3]
 [ext_resource path="res://World.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/Mini_map.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 32, 64, 16, 32, 0, 0, 16 )
@@ -377,7 +378,6 @@ cell_size = Vector2( 64, 32 )
 cell_y_sort = true
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 131072, 4, 0 )
 
 [node name="Top" type="TileMap" parent="."]
 mode = 1
@@ -385,6 +385,8 @@ tile_set = SubResource( 18 )
 cell_size = Vector2( 64, 32 )
 compatibility_mode = true
 format = 1
+
+[node name="Mini_map" parent="." instance=ExtResource( 5 )]
 
 [node name="Projectiles" type="Node" parent="."]
 
