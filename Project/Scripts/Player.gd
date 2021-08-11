@@ -35,6 +35,7 @@ func _process(delta):
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")
 		)
 	move_and_slide(move.normalized()*speed)
+	$CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D.position = position/4
 	if move:
 		other_action = false
 		travel("Run")

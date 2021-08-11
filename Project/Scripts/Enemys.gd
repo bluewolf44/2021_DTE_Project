@@ -31,10 +31,12 @@ func _process(delta):
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
 	if position.distance_to(player.position) <= 300:
 		can_see = true
-	if position.distance_to(player.position) <= 500:
+	elif position.distance_to(player.position) <= 500:
 		visible = true
 	elif not can_see:
 		visible = false
+		if position.distance_to(player.position) <= 800:
+			can_see = false
 
 func interact(effects,projective):
 	if can_get_hit:

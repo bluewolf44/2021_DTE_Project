@@ -15,25 +15,25 @@ func do_stuff():
 		match wall:
 			"South":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,1)
+					$TileMap.set_cellv(n,2)
 			"East":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,0)
+					$TileMap.set_cellv(n,3)
 			"West":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,3)
+					$TileMap.set_cellv(n,0)
 			"North":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,2)
+					$TileMap.set_cellv(n,1)
 			"SouthEast":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,4)
+					$TileMap.set_cellv(n,7)
 			"SouthWest":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,5)
+					$TileMap.set_cellv(n,6)
 			"NorthWest":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,6)
+					$TileMap.set_cellv(n,5)
 			"NorthEast":
 				for n in walls[wall]:
-					$TileMap.set_cellv(n,7)
+					$TileMap.set_cellv(n,4)
