@@ -52,7 +52,7 @@ func create_world():
 	var mini_map = $Player/CanvasLayer/Mini/ViewportContainer/Viewport/Mini_map
 	var star = AStar2D.new()
 	var point_to_astar = {}
-	var max_area = Vector2(50,50)
+	var max_area = Vector2(100,100)
 	
 	var id = 0
 	for x in range(max_area.x+10):
@@ -61,14 +61,17 @@ func create_world():
 				point_to_astar[n] = id
 				star.add_point(id,n)
 				id += 1
+			print("astar made ",id)
+	print("astar made")
 	for x in range(-max_area.x,max_area.x):
 		for y in range(-max_area.y,max_area.y):
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x+1,y)])
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x,y+1)])
+	print("map made")
 	
 	var not_tops = []
 	var main_points = []
-	for r in range(20):
+	for r in range(40):
 		var pos = Vector2(0,0)
 		while  $Floor.get_cellv(pos) != -1:
 			pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)
@@ -82,7 +85,7 @@ func create_world():
 					$Floor.set_cellv(pos+n,0)
 					$Nav/Title.set_cellv(pos+n,0)
 					not_tops.append(pos+n)
-				
+		print("rooms made",r)
 	for n in range(1,len(main_points)):
 		for path in star.get_point_path(point_to_astar[main_points[n-1]],point_to_astar[main_points[n]]):
 			for j in [Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(-1,0),Vector2(0,-1),Vector2(1,1),Vector2(-1,1),Vector2(1,-1),Vector2(-1,-1)]:
@@ -91,7 +94,7 @@ func create_world():
 				not_tops.append(path+j)
 				if j != Vector2(0,0):
 					star.connect_points(point_to_astar[path],point_to_astar[path+j],5)
-	
+	print("path made")
 	for r in range(2):
 		for x in range(-(max_area.x+10),max_area.x+10):
 			for y in range(-(max_area.x+10),max_area.y+10):
@@ -102,7 +105,7 @@ func create_world():
 					$Floor.set_cellv(pos,0)
 					$Nav/Title.set_cellv(pos,0)
 					not_tops.append(pos)
-	
+	print("floor made")
 	var all_walls = []
 	for x in range(-(max_area.x+10),max_area.x+10):
 		for y in range(-(max_area.x+10),max_area.y+10):
@@ -165,16 +168,19 @@ func create_world():
 			elif $Floor.get_cellv(pos + Vector2(1,1)) != -1:
 				$Wall.set_cellv(pos+Vector2(-2,-2),5)
 				all_walls.append(pos)
-
+	print("walls made")
 	for wall in all_walls:
 		$Floor.set_cellv(wall,0)
 		not_tops.append(wall)
-
+	
+	print("wall floor made")
+	
 	for x in range(-(max_area.x+10),max_area.x+10):
 		for y in range(-(max_area.x+10),max_area.y+10):
 			var pos = Vector2(x,y)
 			$Top.set_cellv(pos,0)
 	for pos in not_tops:
 		$Top.set_cellv(pos+Vector2(-2,-2),-1)
-
+	
+	print("top made")
 	mini_map.do_stuff()

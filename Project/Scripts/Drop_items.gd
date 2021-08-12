@@ -6,6 +6,7 @@ func _ready():
 	$AnimationPlayer.play(["","Common","Uncommon","rare","Mythical","legendary"][data.rare])
 
 func _on_Button_button_down():
+	print("idd")
 	if get_parent().get_parent().get_node("Player").position.distance_to(position) <= 100:
 		PlayerData.add_item(data)
 		if get_parent().get_parent().get_node("Player/CanvasLayer/Inventory").visible:

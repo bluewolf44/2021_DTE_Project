@@ -928,7 +928,7 @@ zoom = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -937,7 +937,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
-frame = 160
+frame = 162
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2041,6 +2041,7 @@ __meta__ = {
 [node name="Mini" type="Control" parent="CanvasLayer"]
 margin_right = 1922.0
 margin_bottom = 1088.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2050,6 +2051,7 @@ margin_left = 1412.22
 margin_top = 3.5636
 margin_right = 1924.22
 margin_bottom = 259.564
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
