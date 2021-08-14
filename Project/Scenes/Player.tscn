@@ -1395,6 +1395,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Mini" type="Control" parent="CanvasLayer"]
+margin_right = 1922.0
+margin_bottom = 1088.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/Mini"]
+margin_left = 1412.22
+margin_top = 3.5636
+margin_right = 1924.22
+margin_bottom = 259.564
+mouse_filter = 2
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/Mini/ViewportContainer"]
+size = Vector2( 512, 256 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Mini_map" parent="CanvasLayer/Mini/ViewportContainer/Viewport" instance=ExtResource( 11 )]
+position = Vector2( 0, 12 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Mini/ViewportContainer/Viewport"]
+current = true
+
+[node name="icon" type="Sprite" parent="CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
 [node name="Inventory" type="Control" parent="CanvasLayer"]
 visible = false
 margin_left = 1088.04
@@ -2037,43 +2074,6 @@ text = "Skill Tree"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Mini" type="Control" parent="CanvasLayer"]
-margin_right = 1922.0
-margin_bottom = 1088.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/Mini"]
-margin_left = 1412.22
-margin_top = 3.5636
-margin_right = 1924.22
-margin_bottom = 259.564
-mouse_filter = 2
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="CanvasLayer/Mini/ViewportContainer"]
-size = Vector2( 512, 256 )
-own_world = true
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Mini_map" parent="CanvasLayer/Mini/ViewportContainer/Viewport" instance=ExtResource( 11 )]
-position = Vector2( 0, 12 )
-scale = Vector2( 0.25, 0.25 )
-
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Mini/ViewportContainer/Viewport"]
-current = true
-
-[node name="icon" type="Sprite" parent="CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D"]
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 4 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false

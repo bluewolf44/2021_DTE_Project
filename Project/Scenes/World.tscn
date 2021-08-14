@@ -295,6 +295,34 @@ points = PoolVector2Array( 48, 80, 16, 80, 16, 64, 48, 64 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
+15/name = "grassland_tiles.png 15"
+15/texture = ExtResource( 3 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 288, 880, 96, 112 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "grassland_tiles.png 16"
+16/texture = ExtResource( 3 )
+16/tex_offset = Vector2( -16, -8 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 192, 880, 96, 112 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
 
 [sub_resource type="NavigationPolygon" id=14]
 vertices = PoolVector2Array( 0, 16, 32, 32, 64, 16, 32, 0 )
@@ -375,6 +403,8 @@ mode = 1
 tile_set = SubResource( 13 )
 cell_size = Vector2( 64, 32 )
 format = 1
+
+[node name="Exit" type="Node" parent="."]
 
 [node name="Top" type="TileMap" parent="."]
 mode = 1

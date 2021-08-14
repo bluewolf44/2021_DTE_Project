@@ -7,7 +7,8 @@ func _ready():
 	OS.set_window_maximized(true)
 	randomize()
 	create_world()
-	create_enemys(100)
+	create_enemys(200)
+	#create_exit()
 
 func _on_Timer_timeout():
 	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
@@ -24,9 +25,9 @@ func create_enemys(number):
 		enemy_scene.append(load("res://Scenes/Enemys/"+n+".tscn"))
 	for e in range(number):
 		var enemy_instance = enemy_scene[randi()%2].instance()
-		var pos = Vector2(50-randi() % 100,50-randi() % 100)
+		var pos = Vector2(100-randi() % 200,100-randi() % 200)
 		while $Nav/Title.get_cellv(pos) == -1:
-			pos = Vector2(50-randi() % 100,50-randi() % 100)
+			pos = Vector2(100-randi() % 200,100-randi() % 200)
 			
 		enemy_instance.position = $Nav/Title.map_to_world(pos)
 		$Enemys.add_child(enemy_instance)
@@ -61,13 +62,12 @@ func create_world():
 				point_to_astar[n] = id
 				star.add_point(id,n)
 				id += 1
-			print("astar made ",id)
-	print("astar made")
+
 	for x in range(-max_area.x,max_area.x):
 		for y in range(-max_area.y,max_area.y):
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x+1,y)])
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x,y+1)])
-	print("map made")
+
 	
 	var not_tops = []
 	var main_points = []
@@ -76,25 +76,25 @@ func create_world():
 		while  $Floor.get_cellv(pos) != -1:
 			pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)
 		main_points.append(pos)
-		$Floor.set_cellv(pos,0)
+		$Floor.set_cellv(pos,randi()%13)
 		$Nav/Title.set_cellv(pos,0)
 		var size = Vector2(randi()%4+4,randi()%4+4)
 		for x in range(size.x):
 			for y in range(size.y):
 				for n in [Vector2(x,y),Vector2(-x,-y),Vector2(-x,y),Vector2(x,-y)]:
-					$Floor.set_cellv(pos+n,0)
+					$Floor.set_cellv(pos+n,randi()%13)
 					$Nav/Title.set_cellv(pos+n,0)
 					not_tops.append(pos+n)
-		print("rooms made",r)
+
 	for n in range(1,len(main_points)):
 		for path in star.get_point_path(point_to_astar[main_points[n-1]],point_to_astar[main_points[n]]):
 			for j in [Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(-1,0),Vector2(0,-1),Vector2(1,1),Vector2(-1,1),Vector2(1,-1),Vector2(-1,-1)]:
-				$Floor.set_cellv(path+j,0)
+				$Floor.set_cellv(path+j,randi()%13)
 				$Nav/Title.set_cellv(path+j,0)
 				not_tops.append(path+j)
 				if j != Vector2(0,0):
 					star.connect_points(point_to_astar[path],point_to_astar[path+j],5)
-	print("path made")
+
 	for r in range(2):
 		for x in range(-(max_area.x+10),max_area.x+10):
 			for y in range(-(max_area.x+10),max_area.y+10):
@@ -105,7 +105,9 @@ func create_world():
 					$Floor.set_cellv(pos,0)
 					$Nav/Title.set_cellv(pos,0)
 					not_tops.append(pos)
-	print("floor made")
+	
+	var North_exits = []
+	var West_exits = []
 	var all_walls = []
 	for x in range(-(max_area.x+10),max_area.x+10):
 		for y in range(-(max_area.x+10),max_area.y+10):
@@ -150,9 +152,11 @@ func create_world():
 			elif side["+x"]:
 				mini_map.walls["West"].append(pos+Vector2(-2,-2))
 				all_walls.append(pos)
+				West_exits.append(pos+Vector2(-2,-2))
 				$Wall.set_cellv(pos+Vector2(-2,-2),3)
 			elif side["+y"]:
 				mini_map.walls["North"].append(pos+Vector2(-2,-2))
+				North_exits.append(pos+Vector2(-2,-2))
 				$Wall.set_cellv(pos+Vector2(-2,-2),4)
 				all_walls.append(pos)
 
@@ -168,12 +172,10 @@ func create_world():
 			elif $Floor.get_cellv(pos + Vector2(1,1)) != -1:
 				$Wall.set_cellv(pos+Vector2(-2,-2),5)
 				all_walls.append(pos)
-	print("walls made")
 	for wall in all_walls:
-		$Floor.set_cellv(wall,0)
+		$Floor.set_cellv(wall,randi()%13)
 		not_tops.append(wall)
 	
-	print("wall floor made")
 	
 	for x in range(-(max_area.x+10),max_area.x+10):
 		for y in range(-(max_area.x+10),max_area.y+10):
@@ -182,5 +184,17 @@ func create_world():
 	for pos in not_tops:
 		$Top.set_cellv(pos+Vector2(-2,-2),-1)
 	
-	print("top made")
 	mini_map.do_stuff()
+	for _n in range(3):
+		var n = load("res://Scenes/Exit.tscn").instance()
+		if randi() % 2 == 0:
+			var exit = North_exits[randi() % len(North_exits)]
+			n.position = $Nav/Title.map_to_world(exit) + Vector2(16,56)
+			n.west = false
+			$Player.position = $Nav/Title.map_to_world(exit+Vector2(2,3))
+		else:
+			var exit = West_exits[randi() % len(West_exits)]
+			n.west = true
+			n.position = $Nav/Title.map_to_world(exit) + Vector2(0,48)
+			$Player.position = $Nav/Title.map_to_world(exit+Vector2(3,2))
+		$Exit.add_child(n)
