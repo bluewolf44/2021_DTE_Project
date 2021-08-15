@@ -24,9 +24,11 @@ func _ready():
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana
 	
-	for n in range(1,len(PlayerData.action_hold)):
-		$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
-
+	for n in range(1,11):
+		if len(PlayerData.action_hold) > n:
+			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
+		else:
+			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = null
 	PlayerData.update_stats()
 
 func _process(delta):
@@ -35,7 +37,7 @@ func _process(delta):
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")
 		)
 	move_and_slide(move.normalized()*speed)
-	$CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D.position = position/4
+	$CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D.position = position/5
 	if move:
 		other_action = false
 		travel("Run")
@@ -135,13 +137,16 @@ func start_attack():
 	travel("Cast")
 
 func died():
-	queue_free()
+	get_tree().change_scene("res://Scenes/Map.tscn")
 
 func interact(effects,projective):
 	for e in effects:
 		match e.type:
 			"damage":
-				hit(e.input)
+				if is_instance_valid(projective.sender):
+					hit(e.input+projective.sender.attack)
+				else:
+					hit(e.input)
 
 func open_inv():
 	$CanvasLayer/Inventory.visible = !$CanvasLayer/Inventory.visible

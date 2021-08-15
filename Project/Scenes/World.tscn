@@ -387,7 +387,6 @@ format = 1
 mode = 1
 tile_set = SubResource( 2 )
 cell_size = Vector2( 64, 32 )
-show_collision = true
 format = 1
 
 [node name="Gold" type="Node" parent="."]

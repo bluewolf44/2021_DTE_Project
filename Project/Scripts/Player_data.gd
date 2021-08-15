@@ -50,6 +50,8 @@ var xp_to_next = 30
 var action_hold = [load("res://Resoures/Fire_ball2.tres")]
 
 func _ready():
+	OS.set_window_maximized(true)
+	randomize()
 	for n in range(60):
 		inventory.append(null)
 
@@ -119,3 +121,13 @@ func add_gold(amount):
 	for n in range(7-len(str(gold))):
 		j += "0"
 	get_node("/root/World/Player/CanvasLayer/Gold/Label2").text = j + str(gold)
+
+func go_to(data):
+	get_tree().change_scene("res://Scenes/World.tscn")
+	yield(get_tree(),"idle_frame")
+	var world = get_node("/root/World")
+	var enemy_scenes = []
+	for m in data.monsters:
+		enemy_scenes.append(m.input)
+	world.create_world(data.max_size,data.rooms,data.tile)
+	world.create_enemys(data.max_size,data.amount_monster,enemy_scenes,data.min_level,data.max_level)

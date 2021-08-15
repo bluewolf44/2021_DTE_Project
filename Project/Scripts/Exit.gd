@@ -5,9 +5,10 @@ export var west = true setget change_sprite
 var type = "exit"
 
 func _process(delta):
-	if Input.is_action_just_pressed("Q"):
-		if $Area2D.overlaps_area(get_node("../../Player/Area2D")):
-			print("go to map")
+	if not Engine.editor_hint:
+		if Input.is_action_just_pressed("Q"):
+			if $Area2D.overlaps_area(get_node("../../Player/Area2D")):
+				get_tree().change_scene("res://Scenes/World.tscn")
 			
 
 func change_sprite(change):

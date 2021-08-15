@@ -8,10 +8,14 @@ onready var player = get_parent().get_parent().get_parent().get_parent()
 onready var move = get_parent().get_parent().get_parent().get_node("Move")
 
 func _ready():
-	id += len(PlayerData.equited)
+	id = int(name)
 	data = PlayerData.equited.get(id)
 	if not data:
-		 PlayerData.equited[id] = null
+		PlayerData.equited[id] = null
+	else:
+		$Sprite.modulate = data.color
+		if data.sprite:
+			$Sprite.texture = data.sprite
 
 func _on_Button_button_up():
 	if move.data and data and ["Chest","Ring","Legs","Head","Weapon"][move.data.type] == type:

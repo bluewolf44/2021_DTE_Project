@@ -1423,7 +1423,9 @@ render_target_update_mode = 3
 
 [node name="Mini_map" parent="CanvasLayer/Mini/ViewportContainer/Viewport" instance=ExtResource( 11 )]
 position = Vector2( 0, 12 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Enemys" type="Node" parent="CanvasLayer/Mini/ViewportContainer/Viewport"]
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/Mini/ViewportContainer/Viewport"]
 current = true
@@ -1487,30 +1489,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon3" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="0" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 type = "Chest"
 
-[node name="icon4" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="1" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 margin_left = 52.0
 margin_right = 52.0
 type = "Ring"
 
-[node name="icon5" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="2" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 margin_left = -52.0
 margin_right = -52.0
 type = "Legs"
 
-[node name="icon6" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="3" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 margin_left = 104.0
 margin_right = 104.0
 type = "Weapon"
 
-[node name="icon7" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="4" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 margin_left = -104.0
 margin_right = -104.0
 type = "Head"
 
-[node name="icon8" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
+[node name="5" parent="CanvasLayer/Inventory/Equitment slots" instance=ExtResource( 7 )]
 margin_left = 156.0
 margin_right = 156.0
 type = "Weapon"

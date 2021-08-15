@@ -507,6 +507,7 @@ start_node = "Run"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
 [node name="Minotaur" type="KinematicBody2D"]
+scale = Vector2( 1.5, 1.5 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
@@ -514,16 +515,13 @@ monster_data = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="icon" type="Sprite" parent="."]
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 hframes = 24
 vframes = 8
-frame = 153
+frame = 148
 __meta__ = {
 "_edit_lock_": true
 }
@@ -561,5 +559,6 @@ parameters/Run/blend_position = Vector2( -0.0057193, 0.985549 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/New Piskel1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Map_point.gd" type="Script" id=2]
+
+[node name="0" type="Node2D"]
+position = Vector2( -6.68304, 1335.15 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 128 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -48.0
+margin_top = -49.0
+margin_right = 50.0
+margin_bottom = 49.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

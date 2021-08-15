@@ -10,16 +10,28 @@ var can_get_hit = true
 
 var speed
 var health
+var attack = 1
 var action = false
 var level = 1
 var can_see = false
+var on_mimi
 
 func _ready():
+	attack = level
 	visible = false
 	$Timer.wait_time = 0.5
 	held_action = monster_data["attack"]
 	speed = monster_data.speed
-	health = monster_data.health
+	health = monster_data.health*level
+	
+	var s = Sprite.new()
+	s.texture = load("res://icon.png")
+	s.modulate = Color(1,0,0)
+	s.visible = false
+	s.scale = Vector2(0.25,0.25)
+	s.position = position/5
+	get_node("../../Player/CanvasLayer/Mini/ViewportContainer/Viewport/Enemys").add_child(s)
+	on_mimi = s
 
 func _process(delta):
 	if position.distance_to(player.position) <= monster_data.distance and not action:
@@ -27,18 +39,20 @@ func _process(delta):
 	elif can_see and not action:
 		var move = (nav.get_simple_path(position,player.position)[1]-position).normalized()
 		move_and_collide(move*speed*delta)
+		on_mimi.position = position/5
 		travel("Run")
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
 	if position.distance_to(player.position) <= 300:
 		can_see = true
 		visible = true
+		on_mimi.visible = true
 	elif position.distance_to(player.position) <= 500:
 		visible = true
-	elif not can_see:
+		on_mimi.visible = true
+	elif position.distance_to(player.position) <= 800:
+		can_see = false
 		visible = false
-		if position.distance_to(player.position) <= 800:
-			can_see = false
-
+		on_mimi.visible = false
 func interact(effects,projective):
 	if can_get_hit:
 		for e in effects:
@@ -63,10 +77,10 @@ func interact(effects,projective):
 func died():
 	yield(get_tree(),"idle_frame")
 	create_drop()
-	create_gold()
 	var xp = round(monster_data.xp*(rand_range(0.7,1.3)))*level
 	PlayerData.gain_xp(xp)
 	get_parent().get_parent().create_text(str(xp) + " Xp",position,Color("1df516"))
+	on_mimi.queue_free()
 	queue_free()
 
 func start_attack():
@@ -75,7 +89,7 @@ func start_attack():
 	travel("Attack")
 
 func attack():
-	get_parent().get_parent().create_projectile(position+held_action.distance*(player.position-position).normalized(),held_action,(player.position-position).normalized())
+	get_parent().get_parent().create_projectile(position+held_action.distance*(player.position-position).normalized(),held_action,(player.position-position).normalized(),self)
 
 func attack_reset():
 	action = false

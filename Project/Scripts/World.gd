@@ -1,42 +1,36 @@
 extends Node
 
-onready var enemy_scenes = ["Goblin","Minotaur"]
 onready var projectile_scene = "res://Scenes/Projectile/"
 
-func _ready():
-	OS.set_window_maximized(true)
-	randomize()
-	create_world()
-	create_enemys(200)
-	#create_exit()
+#func _on_Timer_timeout():
+#	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
+#	var pos = Vector2(25-randi() % 50,25-randi() % 50)
+#	while $Nav/Title.get_cellv(pos) == -1:
+#		pos = Vector2(25-randi() % 50,25-randi() % 50)
+#
+#	enemy_instance.position = $Nav/Title.map_to_world(pos)
+#	$Enemys.add_child(enemy_instance)
 
-func _on_Timer_timeout():
-	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
-	var pos = Vector2(25-randi() % 50,25-randi() % 50)
-	while $Nav/Title.get_cellv(pos) == -1:
-		pos = Vector2(25-randi() % 50,25-randi() % 50)
-		
-	enemy_instance.position = $Nav/Title.map_to_world(pos)
-	$Enemys.add_child(enemy_instance)
-
-func create_enemys(number):
+func create_enemys(max_range,number,enemy_scenes,max_level,min_level):
 	var enemy_scene = []
 	for n in enemy_scenes:
 		enemy_scene.append(load("res://Scenes/Enemys/"+n+".tscn"))
 	for e in range(number):
-		var enemy_instance = enemy_scene[randi()%2].instance()
-		var pos = Vector2(100-randi() % 200,100-randi() % 200)
-		while $Nav/Title.get_cellv(pos) == -1:
-			pos = Vector2(100-randi() % 200,100-randi() % 200)
-			
+		var enemy_instance = enemy_scene[randi()%len(enemy_scene)].instance()
+		enemy_instance.level = min_level + randi() % (max_level-min_level)
+		var pos = Vector2(max_range-randi() % max_range*2,max_range-randi() % max_range*2)
+		while $Nav/Title.get_cellv(pos) == -1 or $Player.position.distance_to($Nav/Title.map_to_world(pos)) < 1000:
+			pos = Vector2(max_range-randi() % max_range*2,max_range-randi() % max_range*2)
+		print($Player.position.distance_to($Nav/Title.map_to_world(pos)))	
 		enemy_instance.position = $Nav/Title.map_to_world(pos)
 		$Enemys.add_child(enemy_instance)
 
-func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0)):
+func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0),node=null):
 	var projectile_instance = load(projectile_scene+data["sprite"]+".tscn").instance()
 	projectile_instance.position = position
 	projectile_instance.add_data(data)
 	projectile_instance.move = direction.normalized()*data["speed"]
+	projectile_instance.sender = node
 	yield(get_tree(),"idle_frame")
 	$Projectiles.add_child(projectile_instance)
 	projectile_instance.look_at(position+direction)
@@ -49,18 +43,18 @@ func create_text(text,position,color = Color(0,0,0)):
 	text_instance.modulate = color
 	$Text.add_child(text_instance)
 
-func create_world():
+func create_world(max_size,rooms,tiles):
 	var mini_map = $Player/CanvasLayer/Mini/ViewportContainer/Viewport/Mini_map
 	var star = AStar2D.new()
 	var point_to_astar = {}
-	var max_area = Vector2(100,100)
+	var max_area = Vector2(max_size,max_size)
 	
 	var id = 0
 	for x in range(max_area.x+10):
 		for y in range(max_area.y+10):
 			for n in [Vector2(x,y),Vector2(-x,-y),Vector2(x,-y),Vector2(-x,y)]:
 				point_to_astar[n] = id
-				star.add_point(id,n)
+				star.add_point(id,n,3)
 				id += 1
 
 	for x in range(-max_area.x,max_area.x):
@@ -71,7 +65,7 @@ func create_world():
 	
 	var not_tops = []
 	var main_points = []
-	for r in range(40):
+	for r in range(rooms):
 		var pos = Vector2(0,0)
 		while  $Floor.get_cellv(pos) != -1:
 			pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)
@@ -93,7 +87,7 @@ func create_world():
 				$Nav/Title.set_cellv(path+j,0)
 				not_tops.append(path+j)
 				if j != Vector2(0,0):
-					star.connect_points(point_to_astar[path],point_to_astar[path+j],5)
+					star.set_point_weight_scale(point_to_astar[path+j],1)
 
 	for r in range(2):
 		for x in range(-(max_area.x+10),max_area.x+10):
@@ -177,8 +171,8 @@ func create_world():
 		not_tops.append(wall)
 	
 	
-	for x in range(-(max_area.x+10),max_area.x+10):
-		for y in range(-(max_area.x+10),max_area.y+10):
+	for x in range(-(max_area.x+20),max_area.x+20):
+		for y in range(-(max_area.x+20),max_area.y+20):
 			var pos = Vector2(x,y)
 			$Top.set_cellv(pos,0)
 	for pos in not_tops:

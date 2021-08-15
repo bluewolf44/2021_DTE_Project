@@ -1,5 +1,6 @@
 extends Node2D
 
+var sender = null
 var move = Vector2(0,0)
 var effects
 var interact = []
