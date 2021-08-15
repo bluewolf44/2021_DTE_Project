@@ -2085,7 +2085,12 @@ energy = 0.75
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 
+[node name="Regen" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="Attack_speed" to="." method="_on_Attack_speed_timeout"]
 [connection signal="button_up" from="CanvasLayer/Inventory/Button" to="." method="_on_Button_button_up"]
 [connection signal="button_up" from="CanvasLayer/Menu_picker/Inventory" to="." method="_on_Inventory_button_up"]
 [connection signal="button_up" from="CanvasLayer/Menu_picker/Skill_tree" to="." method="_on_Skill_tree_button_up"]
+[connection signal="timeout" from="Regen" to="." method="_on_Regen_timeout"]

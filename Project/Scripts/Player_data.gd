@@ -1,7 +1,8 @@
 extends Node
 
-var health = 12000
-var current_health = 12000
+var health = 100
+var current_health = 100
+var health_reg = 2
 var attack = 5
 var defence = 4
 var crit = 5
@@ -11,8 +12,9 @@ var mana = 100
 var mana_current = 100
 var mana_regen = 5
 
-var base_health = 12000
+var base_health = 100
 var base_attack = 5
+var base_health_reg = 2
 var base_defence = 4
 var base_crit = 5
 var base_dam_crit = 5
@@ -21,6 +23,7 @@ var base_mana = 100
 var base_mana_regen = 3
 
 var add_health = 0
+var add_health_reg = 0
 var add_attack = 0
 var add_defence = 0
 var add_crit = 0
@@ -30,6 +33,7 @@ var add_mana = 0
 var add_mana_regen = 0
 
 var per_health = 0
+var per_health_reg = 0
 var per_attack = 0
 var per_defence = 0
 var per_crit = 0
@@ -64,7 +68,7 @@ func add_item(data):
 func remove_item(data):
 	inventory[inventory.find(data)] = null
 
-func run_random(data):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
+func run_random(data,change):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
 	var total = 0
 	var hold = []
 	for d in data:
@@ -78,7 +82,7 @@ func run_random(data):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
 
 func update_stats():
 	for n in ["add","per"]:
-		for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
+		for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"]:
 			self[n + "_"+ i] = 0
 	var total = skill_stats
 	for e in equited:
@@ -87,9 +91,9 @@ func update_stats():
 				total.append(stat)
 	
 	for stat in total:
-		self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"][stat.type]] += stat.amount
+		self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"][stat.type]] += stat.amount
 	
-	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen"]:
+	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"]:
 		self[i] = round((self["per_" + i]/100+1)*self["base_" + i] + self["add_" + i])
 		print(i,self[i])
 	if get_node("/root/World/Player"):
@@ -102,13 +106,14 @@ func gain_xp(number):
 		xp_to_next = 5*lvl*lvl+95
 		lvl += 1
 		base_attack += 2
-		base_health += 1000
+		base_health += 100
 		base_defence += 3
 		base_crit += 2
 		base_dam_crit += 3
 		base_speed += 10
 		base_mana += 20
 		base_mana_regen += 1
+		base_health_reg += 1
 		print("level up")
 		update_stats()
 		get_node("/root/World/Player/CanvasLayer/Skill_tree").points += 1
@@ -131,3 +136,67 @@ func go_to(data):
 		enemy_scenes.append(m.input)
 	world.create_world(data.max_size,data.rooms,data.tile)
 	world.create_enemys(data.max_size,data.amount_monster,enemy_scenes,data.min_level,data.max_level)
+
+func create_gold(position,level):
+	if randi() % 3 == 0:
+		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
+		drop_gold_instance.position = position
+		drop_gold_instance.amount = randi() % 10*level + 2*level
+		var pos = Vector2(50-randi() % 100,50-randi() % 100)
+		if get_node("/root/World/Nav/Title").get_cellv(get_node("/root/World/Nav/Title").world_to_map(pos + position)) == 0:
+			drop_gold_instance.position = pos + position
+		else:
+			drop_gold_instance.position = position
+		get_node("/root/World/Gold").add_child(drop_gold_instance)
+
+func pick_name():
+	return [
+		"Soulsiphon",
+		"Blightspore",
+		"Soulkeeper",
+		"Sunlight",
+		"Holy Aspect",
+		"Champion Ornament",
+		"Thundersoul Stone",
+		"Scar, Trinket of the Caged Mind",
+		"Mercy, Hope of Silence",
+		"Nirvana, Aspect of Desecration",
+		"Randy Ortain",
+		"Peenexcalibur",
+		"Mini sucktion cup man",
+	][randi()%13]
+
+func create_drop(position):
+	var world = get_node("/root/World")
+	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed)
+	for n in range(len(get_node("/root/World").enemys_killed)):
+		world.enemys_killed[n] += 1
+	get_node("/root/World")[rare] = 0
+		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
+	if rare == 0:
+		return
+	
+	var item = Resource.new()
+	item.set_script(preload("res://Resource script/Item.gd"))
+	item.stats = []
+	for n in range(rare + 1):
+		var stat = Resource.new()
+		stat.set_script(preload("res://Resource script/Stats.gd"))
+		stat.type = randi()%8
+		stat.change = randi()%2
+		stat.amount = (float(randi()%10)+1)*rare
+		item.stats.append(stat)
+	item.name = pick_name()
+	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]
+	item.type = randi()%5
+	item.rare = rare
+	
+	var drop_item_instance = preload("res://Scenes/Drop_items.tscn").instance()
+	drop_item_instance.data = item
+	var pos = Vector2(50-randi() % 100,50-randi() % 100)
+	if get_node("/root/World/Nav/Title").get_cellv(get_node("/root/World/Nav/Title").world_to_map(pos + position)) == 0:
+		drop_item_instance.position = pos + position
+	else:
+		drop_item_instance.position = position
+	drop_item_instance.get_node("Icon").modulate = item.color
+	get_node("/root/World/Drop_items").add_child(drop_item_instance)

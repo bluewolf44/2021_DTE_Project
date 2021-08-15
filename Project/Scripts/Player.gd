@@ -9,6 +9,7 @@ var held_action = 0
 var held_postion
 var move_towards
 var has_move = false
+var regen = true
 
 var move_inv = false
 
@@ -94,7 +95,14 @@ func _process(delta):
 		PlayerData.mana_current = move_toward(PlayerData.mana_current,PlayerData.mana,PlayerData.mana_regen*delta)
 		$CanvasLayer/Mana_bar/Mana.text = str(round(PlayerData.mana_current))
 		$CanvasLayer/Mana_bar/ProgressBar.value = round(PlayerData.mana_current)
-	
+	if PlayerData.health > PlayerData.current_health:
+		if regen:
+			PlayerData.current_health = move_toward(PlayerData.current_health,PlayerData.health,PlayerData.health_reg*delta*5)
+		else:
+			PlayerData.current_health = move_toward(PlayerData.current_health,PlayerData.health,PlayerData.health_reg*delta)
+		$CanvasLayer/Health_bar/Health.text = str(round(PlayerData.current_health))
+		$CanvasLayer/Health_bar/ProgressBar.value = round(PlayerData.current_health)
+		
 func cast_spell():
 	if PlayerData.action_hold[held_action]["where"].type == 0:
 		get_parent().create_projectile(position+held_postion*PlayerData.action_hold[held_action]["where"].amount,PlayerData.action_hold[held_action],held_postion)
@@ -116,7 +124,8 @@ func hit(damage):
 	PlayerData.current_health -= damage
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.current_health)
 	$CanvasLayer/Health_bar/ProgressBar.value = PlayerData.current_health
-	#print(get_node("/root/PlayerData").health," ",-damage)
+	regen = false
+	$Regen.start()
 	if PlayerData.current_health <= 0:
 		died()
 
@@ -249,3 +258,7 @@ func open_skill():
 		$CanvasLayer/Skill_tree/CanvasModulate/Label.visible = false
 		$Camera2D.current = true
 		get_tree().paused = false
+
+
+func _on_Regen_timeout():
+	regen = true

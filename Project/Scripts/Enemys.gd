@@ -76,7 +76,8 @@ func interact(effects,projective):
 
 func died():
 	yield(get_tree(),"idle_frame")
-	create_drop()
+	PlayerData.create_drop(position)
+	PlayerData.create_gold(position,level)
 	var xp = round(monster_data.xp*(rand_range(0.7,1.3)))*level
 	PlayerData.gain_xp(xp)
 	get_parent().get_parent().create_text(str(xp) + " Xp",position,Color("1df516"))
@@ -100,62 +101,62 @@ func travel(place):
 func _on_Timer_timeout():
 	can_get_hit = true
 
-func create_drop():
-	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5})
-		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
-	if rare == 0:
-		return
-	
-	var item = Resource.new()
-	item.set_script(preload("res://Resource script/Item.gd"))
-	item.stats = []
-	for n in range(rare + 1):
-		var stat = Resource.new()
-		stat.set_script(preload("res://Resource script/Stats.gd"))
-		stat.type = randi()%8
-		stat.change = randi()%2
-		stat.amount = (float(randi()%10)+1)*rare
-		item.stats.append(stat)
-	item.name = pick_name()
-	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]
-	item.type = randi()%5
-	item.rare = rare
-	
-	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
-	drop_item_instance.data = item
-	var pos = Vector2(50-randi() % 100,50-randi() % 100)
-	if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
-		drop_item_instance.position = pos + position
-	else:
-		drop_item_instance.position = position
-	drop_item_instance.get_node("Icon").modulate = item.color
-	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
-
-func pick_name():
-	return [
-		"Soulsiphon",
-		"Blightspore",
-		"Soulkeeper",
-		"Sunlight",
-		"Holy Aspect",
-		"Champion Ornament",
-		"Thundersoul Stone",
-		"Scar, Trinket of the Caged Mind",
-		"Mercy, Hope of Silence",
-		"Nirvana, Aspect of Desecration",
-		"Randy Ortain",
-		"Peenexcalibur",
-		"Mini sucktion cup man",
-	][randi()%13]
-
-func create_gold():
-	if randi() % 3 == 0:
-		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
-		drop_gold_instance.position = position
-		drop_gold_instance.amount = randi() % 10*level + 2*level
-		var pos = Vector2(50-randi() % 100,50-randi() % 100)
-		if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
-			drop_gold_instance.position = pos + position
-		else:
-			drop_gold_instance.position = position
-		get_node("../../Gold").add_child(drop_gold_instance)
+#func create_drop():
+#	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5})
+#		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
+#	if rare == 0:
+#		return
+#
+#	var item = Resource.new()
+#	item.set_script(preload("res://Resource script/Item.gd"))
+#	item.stats = []
+#	for n in range(rare + 1):
+#		var stat = Resource.new()
+#		stat.set_script(preload("res://Resource script/Stats.gd"))
+#		stat.type = randi()%8
+#		stat.change = randi()%2
+#		stat.amount = (float(randi()%10)+1)*rare
+#		item.stats.append(stat)
+#	item.name = pick_name()
+#	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]
+#	item.type = randi()%5
+#	item.rare = rare
+#
+#	var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
+#	drop_item_instance.data = item
+#	var pos = Vector2(50-randi() % 100,50-randi() % 100)
+#	if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
+#		drop_item_instance.position = pos + position
+#	else:
+#		drop_item_instance.position = position
+#	drop_item_instance.get_node("Icon").modulate = item.color
+#	get_parent().get_parent().get_node("Drop_items").add_child(drop_item_instance)
+#
+#func pick_name():
+#	return [
+#		"Soulsiphon",
+#		"Blightspore",
+#		"Soulkeeper",
+#		"Sunlight",
+#		"Holy Aspect",
+#		"Champion Ornament",
+#		"Thundersoul Stone",
+#		"Scar, Trinket of the Caged Mind",
+#		"Mercy, Hope of Silence",
+#		"Nirvana, Aspect of Desecration",
+#		"Randy Ortain",
+#		"Peenexcalibur",
+#		"Mini sucktion cup man",
+#	][randi()%13]
+#
+#func create_gold():
+#	if randi() % 3 == 0:
+#		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
+#		drop_gold_instance.position = position
+#		drop_gold_instance.amount = randi() % 10*level + 2*level
+#		var pos = Vector2(50-randi() % 100,50-randi() % 100)
+#		if get_node("../../Nav/Title").get_cellv(get_node("../../Nav/Title").world_to_map(pos + position)) == 0:
+#			drop_gold_instance.position = pos + position
+#		else:
+#			drop_gold_instance.position = position
+#		get_node("../../Gold").add_child(drop_gold_instance)

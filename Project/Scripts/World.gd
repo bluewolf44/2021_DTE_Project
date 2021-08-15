@@ -1,15 +1,7 @@
 extends Node
 
 onready var projectile_scene = "res://Scenes/Projectile/"
-
-#func _on_Timer_timeout():
-#	var enemy_instance = load("res://Scenes/Enemys/"+enemy_scenes[randi()%2]+".tscn").instance()
-#	var pos = Vector2(25-randi() % 50,25-randi() % 50)
-#	while $Nav/Title.get_cellv(pos) == -1:
-#		pos = Vector2(25-randi() % 50,25-randi() % 50)
-#
-#	enemy_instance.position = $Nav/Title.map_to_world(pos)
-#	$Enemys.add_child(enemy_instance)
+var enemys_killed = [0,0,0,0,0]
 
 func create_enemys(max_range,number,enemy_scenes,max_level,min_level):
 	var enemy_scene = []
