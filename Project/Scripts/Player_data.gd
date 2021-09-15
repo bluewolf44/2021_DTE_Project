@@ -2,7 +2,7 @@ extends Node
 
 var health = 100
 var current_health = 100
-var health_reg = 2
+var health_reg = 1
 var attack = 5
 var defence = 4
 var crit = 5
@@ -14,7 +14,7 @@ var mana_regen = 5
 
 var base_health = 100
 var base_attack = 5
-var base_health_reg = 2
+var base_health_reg = 1
 var base_defence = 4
 var base_crit = 5
 var base_dam_crit = 5
@@ -112,8 +112,8 @@ func gain_xp(number):
 		base_dam_crit += 3
 		base_speed += 10
 		base_mana += 20
-		base_mana_regen += 1
-		base_health_reg += 1
+		base_mana_regen += 0.5
+		base_health_reg += 0.5
 		print("level up")
 		update_stats()
 		get_node("/root/World/Player/CanvasLayer/Skill_tree").points += 1
@@ -171,7 +171,7 @@ func create_drop(position):
 	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed)
 	for n in range(len(get_node("/root/World").enemys_killed)):
 		world.enemys_killed[n] += 1
-	get_node("/root/World")[rare] = 0
+	get_node("/root/World").enemys_killed[rare] = 0
 		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
 	if rare == 0:
 		return
@@ -184,7 +184,7 @@ func create_drop(position):
 		stat.set_script(preload("res://Resource script/Stats.gd"))
 		stat.type = randi()%8
 		stat.change = randi()%2
-		stat.amount = (float(randi()%10)+1)*rare
+		stat.amount = round((float(randi()%10)+1)*rare*(randi()%5+5)/10)
 		item.stats.append(stat)
 	item.name = pick_name()
 	item.color = ["",Color(1,1,1),Color(0,1,0),Color(0,0,1),Color("C947F5"),Color("FF6600")][rare]

@@ -131,7 +131,6 @@ func hit(damage):
 
 func start_attack():
 	if PlayerData.mana_current < PlayerData.action_hold[held_action].cost:
-		print(PlayerData.action_hold[held_action].cost,PlayerData.mana_current)
 		return
 	PlayerData.mana_current -= PlayerData.action_hold[held_action].cost
 	$CanvasLayer/Mana_bar/Mana.text = str(PlayerData.mana_current)

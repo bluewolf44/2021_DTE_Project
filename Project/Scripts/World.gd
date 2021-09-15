@@ -64,7 +64,7 @@ func create_world(max_size,rooms,tiles):
 		main_points.append(pos)
 		$Floor.set_cellv(pos,randi()%13)
 		$Nav/Title.set_cellv(pos,0)
-		var size = Vector2(randi()%4+4,randi()%4+4)
+		var size = Vector2(randi()%6+4,randi()%6+4)
 		for x in range(size.x):
 			for y in range(size.y):
 				for n in [Vector2(x,y),Vector2(-x,-y),Vector2(-x,y),Vector2(x,-y)]:
