@@ -46,6 +46,7 @@ var skill_stats = []
 var inventory = []
 var equited = {}
 var gold = 0
+var place = ""
 
 var lvl = 1
 var current_xp = 0
@@ -95,7 +96,7 @@ func update_stats():
 	
 	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"]:
 		self[i] = round((self["per_" + i]/100+1)*self["base_" + i] + self["add_" + i])
-		print(i,self[i])
+		#print(i,self[i])
 	if get_node("/root/World/Player"):
 		get_node("/root/World/Player").updata_stats()
 
@@ -128,14 +129,17 @@ func add_gold(amount):
 	get_node("/root/World/Player/CanvasLayer/Gold/Label2").text = j + str(gold)
 
 func go_to(data):
-	get_tree().change_scene("res://Scenes/World.tscn")
-	yield(get_tree(),"idle_frame")
-	var world = get_node("/root/World")
-	var enemy_scenes = []
-	for m in data.monsters:
-		enemy_scenes.append(m.input)
-	world.create_world(data.max_size,data.rooms,data.tile)
-	world.create_enemys(data.max_size,data.amount_monster,enemy_scenes,data.min_level,data.max_level)
+	if data:
+		get_tree().change_scene("res://Scenes/World.tscn")
+		yield(get_tree(),"idle_frame")
+		var world = get_node("/root/World")
+		var enemy_scenes = []
+		for m in data.monsters:
+			enemy_scenes.append(m.input)
+		world.create_world(data.max_size,data.rooms,data.tile)
+		world.create_enemys(data.max_size,data.amount_monster,enemy_scenes,data.min_level,data.max_level)
+	else:
+		get_tree().change_scene("res://Scenes/Town.tscn")
 
 func create_gold(position,level):
 	if randi() % 3 == 0:

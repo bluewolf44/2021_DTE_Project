@@ -24,28 +24,39 @@ script = ExtResource( 2 )
 [node name="Paths" type="Node" parent="."]
 
 [node name="0 1" parent="Paths" instance=ExtResource( 6 )]
-position = Vector2( -6.68304, 1335.15 )
-rotation = -2.49052
-scale = Vector2( 1, 15.1053 )
+position = Vector2( 303, 950.716 )
+rotation = -5.54644
+scale = Vector2( 1, 15.4571 )
 id1 = 0
 id2 = 1
 
-[node name="1 2" parent="Paths" instance=ExtResource( 6 )]
-position = Vector2( 292.321, 942.707 )
-rotation = -0.619243
-scale = Vector2( 1, 11.14 )
-id1 = 1
+[node name="0 2" parent="Paths" instance=ExtResource( 6 )]
+position = Vector2( 303, 950.716 )
+rotation = -0.6078
+scale = Vector2( 1, 10.7433 )
+id1 = 0
 id2 = 2
+
+[node name="0 3" parent="Paths" instance=ExtResource( 6 )]
+position = Vector2( 303, 950.716 )
+rotation = -1.9559
+scale = Vector2( 1, 8.84052 )
+id1 = 0
+id2 = 3
 
 [node name="Points" type="Node" parent="."]
 
 [node name="0" parent="Points" instance=ExtResource( 3 )]
+position = Vector2( 303, 950.716 )
 data = ExtResource( 7 )
 
 [node name="1" parent="Points" instance=ExtResource( 3 )]
-position = Vector2( 292.321, 942.707 )
+position = Vector2( -36.0496, 1324.47 )
 data = ExtResource( 8 )
 
 [node name="2" parent="Points" instance=ExtResource( 3 )]
 position = Vector2( 505.033, 1241.14 )
 data = ExtResource( 4 )
+
+[node name="3" parent="Points" instance=ExtResource( 3 )]
+position = Vector2( 574.445, 840.688 )

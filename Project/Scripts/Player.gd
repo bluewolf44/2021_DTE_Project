@@ -13,7 +13,7 @@ var regen = true
 
 var move_inv = false
 
-func _ready():
+func _ready():#add stats
 	update_xp()
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.health)
@@ -25,7 +25,7 @@ func _ready():
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana
 	
-	for n in range(1,11):
+	for n in range(1,11):#added texture to hot buttons
 		if len(PlayerData.action_hold) > n:
 			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
 		else:
@@ -33,30 +33,30 @@ func _ready():
 	PlayerData.update_stats()
 
 func _process(delta):
-	var move = Vector2(
+	var move = Vector2( #test when key is pressed
 		Input.get_action_strength("Move_Right")-Input.get_action_strength("Move_Left"),
 		Input.get_action_strength("Move_Down")-Input.get_action_strength("Move_Up")
 		)
-	move_and_slide(move.normalized()*speed)
-	$CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D.position = position/5
-	if move:
+	move_and_slide(move.normalized()*speed) #move player
+	$CanvasLayer/Mini/ViewportContainer/Viewport/Camera2D.position = position/5 #move the minimap 
+	if move: #stop attack if move
 		other_action = false
 		travel("Run")
 		$AnimationTree.set("parameters/Stand/blend_position",move)
 		$AnimationTree.set("parameters/Run/blend_position",move)
 		$Attack_speed.stop()
 	
-	elif not other_action:
+	elif not other_action: #stop moving
 		travel("Stand")
 		$Attack_speed.stop()
 	
-	if Input.is_action_just_pressed("E"):
+	if Input.is_action_just_pressed("E"): #open inv
 		open_inv()
 	
-	if move_inv:
+	if move_inv: #when move
 		$CanvasLayer/Move.position = get_viewport().get_mouse_position()
 	
-	if not other_action:
+	if not other_action and PlayerData.place != "town":#start attack
 		if Input.is_action_just_pressed("LMB") and not (get_viewport().get_mouse_position().x >= 1175 and $CanvasLayer/Inventory.visible):
 			held_action = 0
 			start_attack()
@@ -91,11 +91,11 @@ func _process(delta):
 			held_action = 9
 			start_attack()
 		
-	if PlayerData.mana > PlayerData.mana_current:
+	if PlayerData.mana > PlayerData.mana_current:#mana regen
 		PlayerData.mana_current = move_toward(PlayerData.mana_current,PlayerData.mana,PlayerData.mana_regen*delta)
 		$CanvasLayer/Mana_bar/Mana.text = str(round(PlayerData.mana_current))
 		$CanvasLayer/Mana_bar/ProgressBar.value = round(PlayerData.mana_current)
-	if PlayerData.health > PlayerData.current_health:
+	if PlayerData.health > PlayerData.current_health: #health regen
 		if regen:
 			PlayerData.current_health = move_toward(PlayerData.current_health,PlayerData.health,PlayerData.health_reg*delta*5)
 		else:
@@ -103,16 +103,16 @@ func _process(delta):
 		$CanvasLayer/Health_bar/Health.text = str(round(PlayerData.current_health))
 		$CanvasLayer/Health_bar/ProgressBar.value = round(PlayerData.current_health)
 		
-func cast_spell():
+func cast_spell():#tells world to create project with stats
 	if PlayerData.action_hold[held_action]["where"].type == 0:
 		get_parent().create_projectile(position+held_postion*PlayerData.action_hold[held_action]["where"].amount,PlayerData.action_hold[held_action],held_postion)
 	elif PlayerData.action_hold[held_action]["where"][0] == 1:
 		get_parent().create_projectile(position,PlayerData.action_hold[held_action],held_postion)
 
-func travel(place):
+func travel(place):#set up animationtree
 	$AnimationTree.get("parameters/playback").travel(place)
 
-func _on_Attack_speed_timeout():
+func _on_Attack_speed_timeout():#reset attack
 	cast_spell()
 	$Attack_speed.stop()
 	yield(get_tree().create_timer(0.2),"timeout")
@@ -120,16 +120,16 @@ func _on_Attack_speed_timeout():
 	yield(get_tree(),"idle_frame")
 	other_action = false
 
-func hit(damage):
+func hit(damage):#when player gets hit
 	PlayerData.current_health -= damage
 	$CanvasLayer/Health_bar/Health.text = str(PlayerData.current_health)
 	$CanvasLayer/Health_bar/ProgressBar.value = PlayerData.current_health
 	regen = false
-	$Regen.start()
+	$Regen.start()#set timer for regegn
 	if PlayerData.current_health <= 0:
 		died()
 
-func start_attack():
+func start_attack(): #when attack
 	if PlayerData.mana_current < PlayerData.action_hold[held_action].cost:
 		return
 	PlayerData.mana_current -= PlayerData.action_hold[held_action].cost
@@ -138,7 +138,7 @@ func start_attack():
 	other_action = true
 	held_postion = (get_global_mouse_position()-position).normalized()
 	
-	$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())
+	$AnimationTree.set("parameters/Cast/blend_position",(get_global_mouse_position()-position).normalized())#make player look toward the mouse
 	$AnimationTree.set("parameters/Stand/blend_position",(get_global_mouse_position()-position).normalized())
 	$Attack_speed.wait_time = PlayerData.action_hold[held_action].cast_time
 	$Attack_speed.start()
@@ -147,7 +147,7 @@ func start_attack():
 func died():
 	get_tree().change_scene("res://Scenes/Map.tscn")
 
-func interact(effects,projective):
+func interact(effects,projective):#when projective interact with players
 	for e in effects:
 		match e.type:
 			"damage":
@@ -161,7 +161,7 @@ func open_inv():
 	if $CanvasLayer/Inventory.visible:
 		update_inv()
 
-func update_inv():
+func update_inv(): #rest texture for invitory
 	for slot in $CanvasLayer/Inventory/Slots.get_children():
 			slot.get_node("icon").texture = load("res://icon.png")
 			slot.get_node("icon").modulate = Color(0,0,0)
@@ -177,7 +177,7 @@ func update_inv():
 				slot.get_node("icon").modulate = item.color
 			slot.data = item
 
-func move_item(data):
+func move_item(data):#move data to move
 	$CanvasLayer/Inventory/Button.rect_size = Vector2(614,511)
 	$CanvasLayer/Inventory/Info.visible = false
 	$CanvasLayer/Move.data = data
@@ -193,7 +193,7 @@ func reset_move():
 	$CanvasLayer/Move.visible = false
 	move_inv = false
 	
-func show_info(slot,data):
+func show_info(slot,data):#open the info box for an item
 	var info = $CanvasLayer/Inventory/Info
 	info.visible = true
 	info.rect_position = slot.rect_position + slot.get_parent().rect_position + Vector2(0,64)
@@ -212,14 +212,14 @@ func show_info(slot,data):
 		l.text = ["Damage","Heath","Defence","Speed","Crit","Crit Dam","Mana","Mana regen"][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
 		info.get_node("Stats").add_child(l)
 
-func updata_stats():
+func updata_stats():#restes the bars
 	$CanvasLayer/Health_bar/Max_Health.text = str(PlayerData.health)
 	$CanvasLayer/Mana_bar/Max_Mana.text = str(PlayerData.mana)
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
 	speed = PlayerData.speed
 
-func _on_Button_button_up():
+func _on_Button_button_up(): #drop an item into the world
 	if $CanvasLayer/Move.data:
 		var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
 		drop_item_instance.data = $CanvasLayer/Move.data
@@ -229,7 +229,7 @@ func _on_Button_button_up():
 		PlayerData.remove_item($CanvasLayer/Move.data)
 		reset_move()
 		
-func update_xp():
+func update_xp(): #the hot_bar xp
 	$CanvasLayer/Hot_bar/XP.max_value = PlayerData.xp_to_next
 	$CanvasLayer/Hot_bar/XP.value = PlayerData.current_xp
 	$CanvasLayer/Hot_bar/Lvl.text = str(PlayerData.lvl)
@@ -240,7 +240,7 @@ func _on_Inventory_button_up():
 func _on_Skill_tree_button_up():
 	open_skill()
 
-func open_skill():
+func open_skill(): #open skill tree and paused the game behind
 	$CanvasLayer/Skill_tree.visible = !$CanvasLayer/Skill_tree.visible
 	if $CanvasLayer/Skill_tree.visible:
 		$CanvasLayer/Skill_tree.base_place = Vector2(960,500)
