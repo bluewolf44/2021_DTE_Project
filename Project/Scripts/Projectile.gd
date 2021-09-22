@@ -10,11 +10,11 @@ var has_after = false
 onready var player = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
-	position += move*delta
+	position += move*delta#move
 	if position.distance_to(player.position) > 800:
 		queue_free()
 	var areas = $Area2D.get_overlapping_areas()
-	if areas:
+	if areas:#test if hit another area
 		for a in areas:
 			if a.get_parent().type in affect:
 				a.get_parent().interact(effects,self)
@@ -22,7 +22,7 @@ func _process(delta):
 				a.get_parent().interact(effects,self)
 				queue_free()
 
-func add_data(data):
+func add_data(data):#set stats
 	if data["time"] != -1:
 		$Timer.wait_time = data["time"]
 	else:

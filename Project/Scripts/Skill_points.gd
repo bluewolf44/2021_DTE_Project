@@ -9,7 +9,7 @@ onready var tool_tip = get_node("../../Tool_tip")
 func _on_Button_button_up():
 	get_parent().get_parent().check_point(self)
 
-func _on_Button_mouse_entered():
+func _on_Button_mouse_entered():#open toot_tip
 	if data:
 		for s in tool_tip.get_node("Stats").get_children():
 			s.queue_free()

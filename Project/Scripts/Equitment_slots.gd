@@ -7,7 +7,7 @@ var data
 onready var player = get_parent().get_parent().get_parent().get_parent()
 onready var move = get_parent().get_parent().get_parent().get_node("Move")
 
-func _ready():
+func _ready():#add sprite to slot
 	id = int(name)
 	data = PlayerData.equited.get(id)
 	if not data:
@@ -19,7 +19,7 @@ func _ready():
 
 func _on_Button_button_up():
 	if move.data and data and ["Chest","Ring","Legs","Head","Weapon"][move.data.type] == type:
-		var new_data = move.data
+		var new_data = move.data #add to equit if move and equit has data
 		if new_data.sprite:
 			$Sprite.texture = new_data.sprite
 		$Sprite.modulate = new_data.color
@@ -31,7 +31,7 @@ func _on_Button_button_up():
 		PlayerData.update_stats()
 
 	elif move.data and ["Chest","Ring","Legs","Head","Weapon"][move.data.type] == type:
-		data = move.data
+		data = move.data #add to equit if there isn't equit and move has data
 		if data.sprite:
 			$Sprite.texture = data.sprite
 		$Sprite.modulate = data.color
@@ -41,7 +41,7 @@ func _on_Button_button_up():
 		player.show_info(self,data)
 		PlayerData.update_stats()
 	
-	elif data and not move.data :
+	elif data and not move.data : #equit  has data so add to move
 		$Sprite.texture = load("res://icon.png")
 		$Sprite.modulate = Color(0,0,0)
 		player.move_item(data)

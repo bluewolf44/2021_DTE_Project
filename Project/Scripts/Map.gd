@@ -1,6 +1,6 @@
 extends Node2D
 
-func go_to(data):
+func go_to(data):#when clicked go to place
 	var world = load("res://Scenes/World.tscn").instance()
 	world.enemy_scenes = []
 	for m in data.monsters:

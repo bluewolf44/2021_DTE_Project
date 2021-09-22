@@ -10,7 +10,7 @@ var base_place = Vector2(0,0)
 func check_point(node):
 	if node in path or points <= 0:
 		return
-	for p in $Paths.get_children():
+	for p in $Paths.get_children():#if next point beside
 		if p.id1 == currnet_point.id or p.id2 == currnet_point.id:
 			if p.id1 == node.id or p.id2 == node.id:
 				path.append(node)
@@ -23,7 +23,7 @@ func check_point(node):
 			else:
 				print("die")
 
-func done_skill():
+func done_skill():#go back to world 
 	PlayerData.skill_stats = []
 	PlayerData.action_hold = [load("res://Resoures/Fire_ball2.tres")]
 	for d in path:
@@ -36,7 +36,7 @@ func done_skill():
 				PlayerData.skill_stats.append(s)
 				PlayerData.update_stats()
 
-func _on_Restart_button_up():
+func _on_Restart_button_up():#reset the points
 	currnet_point = $Points/"0"
 	path = [$Points/"0"]
 	points = PlayerData.lvl
@@ -45,7 +45,7 @@ func _on_Restart_button_up():
 	$Points/"0".modulate = Color("2e3a08")
 	$CanvasModulate/Points.text = str(points)
 
-func _process(delta):
+func _process(delta):#move the camera
 	var move =  Vector2(
 		Input.get_action_strength("Move_Left")-Input.get_action_strength("Move_Right"),
 		Input.get_action_strength("Move_Up")-Input.get_action_strength("Move_Down")

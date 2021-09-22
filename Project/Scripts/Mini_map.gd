@@ -1,6 +1,6 @@
 extends Node2D
 
-var walls = {
+var walls = {#map points
 	"South":[],
 	"East":[],
 	"West":[],
@@ -10,7 +10,7 @@ var walls = {
 	"NorthWest":[],
 	"NorthEast":[],}
 
-func do_stuff():
+func do_stuff():#add point into tilemap
 	for wall in walls:
 		match wall:
 			"South":

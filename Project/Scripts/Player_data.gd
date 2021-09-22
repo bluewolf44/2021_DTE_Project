@@ -1,6 +1,6 @@
 extends Node
 
-var health = 100
+var health = 100 #current stats
 var current_health = 100
 var health_reg = 1
 var attack = 5
@@ -12,7 +12,7 @@ var mana = 100
 var mana_current = 100
 var mana_regen = 5
 
-var base_health = 100
+var base_health = 100 #base stats with inprove with lvl
 var base_attack = 5
 var base_health_reg = 1
 var base_defence = 4
@@ -22,7 +22,7 @@ var base_speed = 200
 var base_mana = 100
 var base_mana_regen = 3
 
-var add_health = 0
+var add_health = 0 #add to base
 var add_health_reg = 0
 var add_attack = 0
 var add_defence = 0
@@ -32,7 +32,7 @@ var add_speed = 0
 var add_mana = 0
 var add_mana_regen = 0
 
-var per_health = 0
+var per_health = 0 #incrace by perstange
 var per_health_reg = 0
 var per_attack = 0
 var per_defence = 0
@@ -54,13 +54,13 @@ var xp_to_next = 30
 
 var action_hold = [load("res://Resoures/Fire_ball2.tres")]
 
-func _ready():
+func _ready(): #set maximized window
 	OS.set_window_maximized(true)
 	randomize()
 	for n in range(60):
 		inventory.append(null)
 
-func add_item(data):
+func add_item(data): #add item to invitory
 	for n in range(60):
 		if not inventory[n]:
 			inventory[n] = data
@@ -70,7 +70,7 @@ func remove_item(data):
 	inventory[inventory.find(data)] = null
 
 func run_random(data,change):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
-	var total = 0
+	var total = 0 #pick a randium output compart to when u put in
 	var hold = []
 	for d in data:
 		total += d
@@ -82,27 +82,26 @@ func run_random(data,change):# data = {change:answer,120:1,40:2,10:3,4:4,1:5}
 			return h["res"]
 
 func update_stats():
-	for n in ["add","per"]:
+	for n in ["add","per"]:#resets add and per stats
 		for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"]:
 			self[n + "_"+ i] = 0
-	var total = skill_stats
+	var total = skill_stats#get stats from the skill tree and equitment
 	for e in equited:
 		if equited[e]:
 			for stat in equited[e].stats:
 				total.append(stat)
 	
-	for stat in total:
+	for stat in total:#sets stats from skill tree and equitment
 		self[["add","per"][stat.change]+"_"+["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"][stat.type]] += stat.amount
-	
+	#sets the stats
 	for i in ["attack","health","defence","speed","crit","dam_crit","mana","mana_regen","health_reg"]:
 		self[i] = round((self["per_" + i]/100+1)*self["base_" + i] + self["add_" + i])
-		#print(i,self[i])
 	if get_node("/root/World/Player"):
 		get_node("/root/World/Player").updata_stats()
 
-func gain_xp(number):
+func gain_xp(number): #gain xp
 	current_xp += number
-	while current_xp >= xp_to_next:
+	while current_xp >= xp_to_next: #lvl up
 		current_xp -= xp_to_next
 		xp_to_next = 5*lvl*lvl+95
 		lvl += 1
@@ -128,7 +127,7 @@ func add_gold(amount):
 		j += "0"
 	get_node("/root/World/Player/CanvasLayer/Gold/Label2").text = j + str(gold)
 
-func go_to(data):
+func go_to(data):#set to go to new world
 	if data:
 		get_tree().change_scene("res://Scenes/World.tscn")
 		yield(get_tree(),"idle_frame")
@@ -142,7 +141,7 @@ func go_to(data):
 		get_tree().change_scene("res://Scenes/Town.tscn")
 
 func create_gold(position,level):
-	if randi() % 3 == 0:
+	if randi() % 3 == 0: #1/3 change for gold to drop
 		var drop_gold_instance = load("res://Scenes/Gold_pick_up.tscn").instance()
 		drop_gold_instance.position = position
 		drop_gold_instance.amount = randi() % 10*level + 2*level
@@ -172,18 +171,18 @@ func pick_name():
 
 func create_drop(position):
 	var world = get_node("/root/World")
-	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed)
+	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed) #get which rear
 	for n in range(len(get_node("/root/World").enemys_killed)):
 		world.enemys_killed[n] += 1
 	get_node("/root/World").enemys_killed[rare] = 0
 		#{"max":1000,range(250,1000):0,range(100,250):1,range(40,100):2,range(13,40):3,range(2,13):4,range(2):5})
-	if rare == 0:
+	if rare == 0: #return if there isn't a drop
 		return
 	
 	var item = Resource.new()
 	item.set_script(preload("res://Resource script/Item.gd"))
 	item.stats = []
-	for n in range(rare + 1):
+	for n in range(rare + 1):#set item stats and data
 		var stat = Resource.new()
 		stat.set_script(preload("res://Resource script/Stats.gd"))
 		stat.type = randi()%8
