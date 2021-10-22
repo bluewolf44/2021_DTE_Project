@@ -26,21 +26,21 @@ script = ExtResource( 2 )
 [node name="0 1" parent="Paths" instance=ExtResource( 6 )]
 position = Vector2( 303, 950.716 )
 rotation = -5.54644
-scale = Vector2( 1, 15.4571 )
+scale = Vector2( 1, 15.457 )
 id1 = 0
 id2 = 1
 
 [node name="0 2" parent="Paths" instance=ExtResource( 6 )]
 position = Vector2( 303, 950.716 )
-rotation = -0.6078
+rotation = -0.607799
 scale = Vector2( 1, 10.7433 )
 id1 = 0
 id2 = 2
 
 [node name="0 3" parent="Paths" instance=ExtResource( 6 )]
 position = Vector2( 303, 950.716 )
-rotation = -1.9559
-scale = Vector2( 1, 8.84052 )
+rotation = -8.37598
+scale = Vector2( 1, 12.7541 )
 id1 = 0
 id2 = 3
 
@@ -59,4 +59,4 @@ position = Vector2( 505.033, 1241.14 )
 data = ExtResource( 4 )
 
 [node name="3" parent="Points" instance=ExtResource( 3 )]
-position = Vector2( 574.445, 840.688 )
+position = Vector2( 665.445, 742.232 )

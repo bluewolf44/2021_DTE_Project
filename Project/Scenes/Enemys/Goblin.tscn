@@ -513,7 +513,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 48
 vframes = 8
-frame = 307
+frame = 302
 __meta__ = {
 "_edit_lock_": true
 }
