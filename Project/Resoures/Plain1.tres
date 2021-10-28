@@ -20,4 +20,5 @@ tile = "plains"
 max_size = 100
 rooms = 40
 amount_monster = 200
+extra = [  ]
 monsters = [ SubResource( 1 ), SubResource( 2 ) ]

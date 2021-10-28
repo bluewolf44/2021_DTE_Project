@@ -135,7 +135,10 @@ func go_to(data):#set to go to new world
 		var enemy_scenes = []
 		for m in data.monsters:
 			enemy_scenes.append(m.input)
-		world.create_world(data.max_size,data.rooms,data.tile)
+		var extra = []
+		for e in data.extra:
+			extra.append(e.input)
+		world.create_world(data.max_size,data.rooms,data.tile,extra)
 		world.create_enemys(data.max_size,data.amount_monster,enemy_scenes,data.min_level,data.max_level)
 	else:
 		get_tree().change_scene("res://Scenes/Town.tscn")

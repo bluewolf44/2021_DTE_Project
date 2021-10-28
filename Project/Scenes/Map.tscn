@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/DS DSi - Locks Quest - Overworld Map.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Map_point.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resoures/Plain3.tres" type="Resource" id=4]
+[ext_resource path="res://Resoures/Finsished.tres" type="Resource" id=5]
 [ext_resource path="res://Scenes/Skill_path.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resoures/Plain1.tres" type="Resource" id=7]
 [ext_resource path="res://Resoures/Plain2.tres" type="Resource" id=8]
@@ -44,6 +45,20 @@ scale = Vector2( 1, 12.7541 )
 id1 = 0
 id2 = 3
 
+[node name="4 2" parent="Paths" instance=ExtResource( 6 )]
+position = Vector2( 262.668, 1558.11 )
+rotation = -15.0552
+scale = Vector2( 1, 12.1568 )
+id1 = 4
+id2 = 2
+
+[node name="4 1" parent="Paths" instance=ExtResource( 6 )]
+position = Vector2( 262.668, 1558.11 )
+rotation = -22.8982
+scale = Vector2( 1, 11.5387 )
+id1 = 4
+id2 = 1
+
 [node name="Points" type="Node" parent="."]
 
 [node name="0" parent="Points" instance=ExtResource( 3 )]
@@ -60,3 +75,7 @@ data = ExtResource( 4 )
 
 [node name="3" parent="Points" instance=ExtResource( 3 )]
 position = Vector2( 665.445, 742.232 )
+
+[node name="4" parent="Points" instance=ExtResource( 3 )]
+position = Vector2( 262.668, 1558.11 )
+data = ExtResource( 5 )

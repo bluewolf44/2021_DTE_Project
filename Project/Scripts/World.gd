@@ -34,7 +34,7 @@ func create_text(text,position,color = Color(0,0,0)):
 	text_instance.modulate = color
 	$Text.add_child(text_instance)
 
-func create_world(max_size,rooms,tiles):
+func create_world(max_size,rooms,tiles,extra=[]):
 	var mini_map = $Player/CanvasLayer/Mini/ViewportContainer/Viewport/Mini_map
 	var star = AStar2D.new()
 	var point_to_astar = {}
@@ -53,9 +53,26 @@ func create_world(max_size,rooms,tiles):
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x+1,y)])
 			star.connect_points(point_to_astar[Vector2(x,y)],point_to_astar[Vector2(x,y+1)])
 
-	
 	var not_tops = []
 	var main_points = []
+	for e in extra:
+		var pos = Vector2(0,0)
+		while $Floor.get_cellv(pos) != -1:
+			pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)# pick a spot
+		main_points.append(pos)
+		$Floor.set_cellv(pos,randi()%13)
+		$Nav/Title.set_cellv(pos,0)
+		if e == "fish":
+			load("")
+		
+		var size = Vector2(randi()%6+4,randi()%6+4)
+		for x in range(size.x):
+			for y in range(size.y):
+				for n in [Vector2(x,y),Vector2(-x,-y),Vector2(-x,y),Vector2(x,-y)]: #place floor down
+					$Floor.set_cellv(pos+n,randi()%13)
+					$Nav/Title.set_cellv(pos+n,0)
+					not_tops.append(pos+n)
+	
 	for r in range(rooms):#creates rooms
 		var pos = Vector2(0,0)
 		while $Floor.get_cellv(pos) != -1:
@@ -70,7 +87,8 @@ func create_world(max_size,rooms,tiles):
 					$Floor.set_cellv(pos+n,randi()%13)
 					$Nav/Title.set_cellv(pos+n,0)
 					not_tops.append(pos+n)
-
+		
+		
 	for n in range(1,len(main_points)): #creates path
 		for path in star.get_point_path(point_to_astar[main_points[n-1]],point_to_astar[main_points[n]]):
 			for j in [Vector2(0,0),Vector2(1,0),Vector2(0,1),Vector2(-1,0),Vector2(0,-1),Vector2(1,1),Vector2(-1,1),Vector2(1,-1),Vector2(-1,-1)]:

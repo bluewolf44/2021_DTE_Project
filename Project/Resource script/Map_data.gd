@@ -11,6 +11,7 @@ var create_inputs = [
 	{"name":"rooms","input":"int"},
 	{"name":"amount_monster","input":"int"},
 	{"name":"monsters","input":"create","other":["String_input"]},
+	{"name":"extra","input":"create","other":["String_input"]},
 	]
 
 export var name = "name"
@@ -20,4 +21,5 @@ export var tile = "plains"
 export var max_size = 1
 export var rooms = 1
 export var amount_monster = 1
+export(Array,Resource) var extra = []
 export(Array,Resource) var monsters = []
