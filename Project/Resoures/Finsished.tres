@@ -3,15 +3,15 @@
 [ext_resource path="res://Resource script/String_input.gd" type="Script" id=1]
 [ext_resource path="res://Resource script/Map_data.gd" type="Script" id=2]
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 1 )
 input = "Finished"
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=2]
 script = ExtResource( 1 )
 input = "Goblin"
 
-[sub_resource type="Resource" id=4]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 1 )
 input = "Minotaur"
 
@@ -24,5 +24,5 @@ tile = "plains"
 max_size = 175
 rooms = 85
 amount_monster = 420
-extra = [ SubResource( 3 ) ]
-monsters = [ SubResource( 1 ), SubResource( 4 ) ]
+extra = [ SubResource( 1 ) ]
+monsters = [ SubResource( 2 ), SubResource( 3 ) ]

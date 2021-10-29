@@ -178,7 +178,7 @@ func update_inv(): #rest texture for invitory
 			slot.data = item
 
 func move_item(data):#move data to move
-	$CanvasLayer/Inventory/Button.rect_size = Vector2(614,511)
+	$CanvasLayer/Inventory/Button.rect_size = Vector2(1058,955)
 	$CanvasLayer/Inventory/Info.visible = false
 	$CanvasLayer/Move.data = data
 	$CanvasLayer/Move.modulate = data.color

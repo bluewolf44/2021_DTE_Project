@@ -1398,8 +1398,10 @@ __meta__ = {
 }
 
 [node name="Mini" type="Control" parent="CanvasLayer"]
-margin_right = 1922.0
-margin_bottom = 1088.0
+margin_left = 4.0
+margin_top = -274.0
+margin_right = 1926.0
+margin_bottom = 814.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1984,10 +1986,10 @@ custom_colors/font_color = Color( 0.827451, 0.121569, 0.121569, 1 )
 text = "Type:"
 
 [node name="Button" type="Button" parent="CanvasLayer/Inventory"]
-margin_left = -941.0
-margin_top = 107.0
+margin_left = -952.0
+margin_top = 22.0
 margin_right = 106.0
-margin_bottom = 941.0
+margin_bottom = 977.0
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0

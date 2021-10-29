@@ -56,14 +56,17 @@ func create_world(max_size,rooms,tiles,extra=[]):
 	var not_tops = []
 	var main_points = []
 	for e in extra:
-		var pos = Vector2(0,0)
+		var pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)# pick a spot
 		while $Floor.get_cellv(pos) != -1:
 			pos = Vector2(randi() % int((max_area.x*2))-max_area.x,randi() % int((max_area.y*2))-max_area.y)# pick a spot
 		main_points.append(pos)
 		$Floor.set_cellv(pos,randi()%13)
 		$Nav/Title.set_cellv(pos,0)
-		if e == "fish":
-			load("")
+		if e == "Finished":
+			var fin = load("res://Scenes/Finished.tscn").instance()
+			print(pos)
+			fin.position = $Nav/Title.map_to_world(pos)
+			$Exit.add_child(fin)
 		
 		var size = Vector2(randi()%6+4,randi()%6+4)
 		for x in range(size.x):
