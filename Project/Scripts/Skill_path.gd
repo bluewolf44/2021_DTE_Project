@@ -7,6 +7,13 @@ export var id2 = -1 setget set_name2
 var point1
 var point2
 
+func _ready():
+	update()
+	if id1 in PlayerData.map_been or id2 in PlayerData.map_been:
+		point2.visible = true
+		point1.visible = true
+		visible = true
+
 func set_name1(change):
 	id1 = change
 	name = str(id1)+ " " + str(id2)

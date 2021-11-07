@@ -47,6 +47,8 @@ var inventory = []
 var equited = {}
 var gold = 0
 var place = ""
+var map_been = []
+
 
 var lvl = 1
 var current_xp = 0
@@ -127,7 +129,9 @@ func add_gold(amount):
 		j += "0"
 	get_node("/root/World/Player/CanvasLayer/Gold/Label2").text = j + str(gold)
 
-func go_to(data):#set to go to new world
+func go_to(data,n):#set to go to new world
+	if not n in map_been:
+		map_been.append(int(n))
 	if data:
 		get_tree().change_scene("res://Scenes/World.tscn")
 		yield(get_tree(),"idle_frame")
