@@ -25,11 +25,6 @@ func _ready():#add stats
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana
 	
-	for n in range(1,11):#added texture to hot buttons
-		if len(PlayerData.action_hold) > n:
-			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
-		else:
-			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = null
 	PlayerData.update_stats()
 
 func _process(delta):
@@ -218,7 +213,12 @@ func updata_stats():#restes the bars
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Health_bar/ProgressBar.max_value = PlayerData.health
 	speed = PlayerData.speed
-
+	for n in range(1,11):#added texture to hot buttons
+		if len(PlayerData.action_hold) > n:
+			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = PlayerData.action_hold[n].icon
+		else:
+			$CanvasLayer/Hot_bar.get_node(str(n)+"/Sprite").texture = null
+			
 func _on_Button_button_up(): #drop an item into the world
 	if $CanvasLayer/Move.data:
 		var drop_item_instance = load("res://Scenes/Drop_items.tscn").instance()
@@ -257,7 +257,7 @@ func open_skill(): #open skill tree and paused the game behind
 		$CanvasLayer/Skill_tree/CanvasModulate/Label.visible = false
 		$Camera2D.current = true
 		get_tree().paused = false
-
+		PlayerData.update_stats()
 
 func _on_Regen_timeout():
 	regen = true

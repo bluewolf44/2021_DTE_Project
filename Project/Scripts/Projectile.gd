@@ -35,6 +35,9 @@ func add_data(data):#set stats
 		interact.append(n.input)
 	
 	modulate = Color(data.color)
+	if get_node("Light2D") and data.color != "ffffff":
+		$Light2D.color = Color(data.color)
+
 	
 func _on_Timer_timeout():
 	queue_free()
