@@ -55,10 +55,10 @@ func _process(delta):#check if player with in visabliy or argo range or attack d
 		on_mimi.visible = false
 
 func interact(effects,projective):#when project hit enemy
-	if can_get_hit:
-		for e in effects:
-			match e.type:
-				"damage":#deal damgae
+	for e in effects:
+		match e.type:
+			"damage":#deal damgae
+				if can_get_hit:
 					var total = (e.input + PlayerData.attack)*int(int(PlayerData.crit/100+1)*(PlayerData.dam_crit/100+1))
 					if randi() % 100 <= int(PlayerData.crit) % 100:
 						total += round((PlayerData.dam_crit/100+1)*(e.input + PlayerData.attack))
@@ -67,13 +67,13 @@ func interact(effects,projective):#when project hit enemy
 					get_parent().get_parent().create_text(str(total),position,Color("eb0c0c"))
 					if health <= 0:
 						died()
-				"after_projectile":#create a second projectile
-					if not projective.has_after:
-						get_node("/root/World").create_projectile(projective.position,e.input)
-						projective.has_after = true
+					can_get_hit = false
+					$Timer.start()
+			"after_projectile":#create a second projectile
+				if not projective.has_after:
+					get_node("/root/World").create_projectile(projective.position,e.input)
+					projective.has_after = true
 		can_see = true
-		can_get_hit = false
-		$Timer.start()
 
 func died():#drop item and goal
 	yield(get_tree(),"idle_frame")
