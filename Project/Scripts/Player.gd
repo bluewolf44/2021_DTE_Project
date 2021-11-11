@@ -126,9 +126,9 @@ func hit(damage):#when player gets hit
 		died()
 
 func start_attack(): #when attack
-	if PlayerData.mana_current < PlayerData.action_hold[held_action].cost:
+	if PlayerData.mana_current < PlayerData.action_hold[held_action].cost: #test if play has mana
 		return
-	PlayerData.mana_current -= PlayerData.action_hold[held_action].cost
+	PlayerData.mana_current -= PlayerData.action_hold[held_action].cost #takes mana
 	$CanvasLayer/Mana_bar/Mana.text = str(PlayerData.mana_current)
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana_current
 	other_action = true
@@ -141,7 +141,7 @@ func start_attack(): #when attack
 	travel("Cast")
 
 func died():
-	get_tree().change_scene("res://Scenes/Map.tscn")
+	get_tree().change_scene("res://Scenes/Map.tscn")#retuns to map when die
 
 func interact(effects,projective):#when projective interact with players
 	for e in effects:
@@ -157,7 +157,7 @@ func open_inv():
 	if $CanvasLayer/Inventory.visible:
 		update_inv()
 
-func update_inv(): #rest texture for invitory
+func update_inv(): #resets texture for invitory
 	for slot in $CanvasLayer/Inventory/Slots.get_children():
 			slot.get_node("icon").texture = load("res://icon.png")
 			slot.get_node("icon").modulate = Color(0,0,0)
@@ -203,7 +203,7 @@ func show_info(slot,data):#open the info box for an item
 	for n in info.get_node("Stats").get_children():
 		n.queue_free()
 	
-	for stat in data.stats:
+	for stat in data.stats:#adds stats to info from the data
 		var l = Label.new()
 		l.text = ["Damage","Heath","Defence","Speed","Crit","Crit Dam","Mana","Mana regen"][stat.type] + [" + "," +% "][stat.change] + str(stat.amount)
 		info.get_node("Stats").add_child(l)
@@ -243,7 +243,7 @@ func _on_Skill_tree_button_up():
 
 func open_skill(): #open skill tree and paused the game behind
 	$CanvasLayer/Skill_tree.visible = !$CanvasLayer/Skill_tree.visible
-	if $CanvasLayer/Skill_tree.visible:
+	if $CanvasLayer/Skill_tree.visible: # when 
 		$CanvasLayer/Skill_tree.base_place = Vector2(960,500)
 		$CanvasLayer/Skill_tree.position = Vector2(960,500)
 		$CanvasLayer/Skill_tree/CanvasModulate/Points.visible = true
@@ -251,7 +251,7 @@ func open_skill(): #open skill tree and paused the game behind
 		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = true
 		get_tree().paused = true
 		$Camera2D.current = false
-	else:
+	else: #when skill is open
 		$CanvasLayer/Skill_tree.done_skill()
 		$CanvasLayer/Skill_tree/CanvasModulate/Restart.visible = false
 		$CanvasLayer/Skill_tree/CanvasModulate/Points.visible = false
@@ -261,4 +261,4 @@ func open_skill(): #open skill tree and paused the game behind
 		PlayerData.update_stats()
 
 func _on_Regen_timeout():
-	regen = true
+	regen = true #turn on higher regen

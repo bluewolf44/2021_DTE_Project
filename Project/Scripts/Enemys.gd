@@ -36,20 +36,20 @@ func _ready():#add stats for data
 func _process(delta):#check if player with in visabliy or argo range or attack distance
 	if position.distance_to(player.position) <= monster_data.distance and not action:
 		start_attack()
-	elif can_see and not action:
+	elif can_see and not action: #moves towards player with path finding
 		var move = (nav.get_simple_path(position,player.position)[1]-position).normalized()
 		move_and_collide(move*speed*delta)
 		on_mimi.position = position/5
 		travel("Run")
 		$AnimationTree.set("parameters/Run/blend_position",(player.position-position).normalized())
-	if position.distance_to(player.position) <= 300:
+	if position.distance_to(player.position) <= 300:#if in range of player
 		can_see = true
 		visible = true
 		on_mimi.visible = true
-	elif position.distance_to(player.position) <= 500:
+	elif position.distance_to(player.position) <= 500: #show player but dosn't attack player
 		visible = true
 		on_mimi.visible = true
-	elif position.distance_to(player.position) <= 800:
+	elif position.distance_to(player.position) <= 800:#hides enemy when to far away
 		can_see = false
 		visible = false
 		on_mimi.visible = false

@@ -3,7 +3,7 @@ extends Node2D
 func go_to(data):#when clicked go to place
 	var world = load("res://Scenes/World.tscn").instance()
 	world.enemy_scenes = []
-	for m in data.monsters:
+	for m in data.monsters:#add data to world scene
 		world.enemy_scenes.append(m.input)
 	world.amount_monster = data.amount_monster
 	world.max_size = data.max_size

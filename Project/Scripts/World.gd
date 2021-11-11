@@ -20,14 +20,14 @@ func create_projectile(position=Vector2(0,0),data={},direction = Vector2(0,0),no
 	var projectile_instance = load(projectile_scene+data["sprite"]+".tscn").instance() #create the instacne of the projectile
 	projectile_instance.position = position #add data
 	projectile_instance.add_data(data)
-	projectile_instance.move = direction.normalized()*data["speed"]
+	projectile_instance.move = direction.normalized()*data["speed"] #set speed
 	projectile_instance.sender = node
 	yield(get_tree(),"idle_frame")
 	$Projectiles.add_child(projectile_instance)
 	projectile_instance.look_at(position+direction)
 	projectile_instance.rotation_degrees -= 90
 
-func create_text(text,position,color = Color(0,0,0)):
+func create_text(text,position,color = Color(0,0,0)):#create text in world e.g damage text
 	var text_instance = load("res://Scenes/Text.tscn").instance()
 	text_instance.text = str(text)
 	text_instance.rect_position = position + Vector2(50 - randi() % 100,25 - randi() % 100)

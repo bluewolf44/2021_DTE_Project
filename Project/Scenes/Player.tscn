@@ -940,9 +940,6 @@ texture = ExtResource( 2 )
 hframes = 32
 vframes = 8
 frame = 163
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player" type="AnimationPlayer" parent="."]
 method_call_mode = 1

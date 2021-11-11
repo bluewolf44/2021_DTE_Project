@@ -49,7 +49,6 @@ var gold = 0
 var place = ""
 var map_been = []
 
-
 var lvl = 1
 var current_xp = 0
 var xp_to_next = 30
@@ -107,15 +106,15 @@ func gain_xp(number): #gain xp
 		current_xp -= xp_to_next
 		xp_to_next = 5*lvl*lvl+95
 		lvl += 1
-		base_attack += 2
+		base_attack += 1
 		base_health += 100
-		base_defence += 3
-		base_crit += 2
-		base_dam_crit += 3
-		base_speed += 10
-		base_mana += 20
-		base_mana_regen += 0.5
-		base_health_reg += 0.5
+		base_defence += 2
+		base_crit += 1
+		base_dam_crit += 2
+		base_speed += 2
+		base_mana += 10
+		base_mana_regen += 0.25
+		base_health_reg += 0.25
 		print("level up")
 		update_stats()
 		get_node("/root/World/Player/CanvasLayer/Skill_tree").points += 1
@@ -159,7 +158,7 @@ func create_gold(position,level):
 			drop_gold_instance.position = position
 		get_node("/root/World/Gold").add_child(drop_gold_instance)
 
-func pick_name():
+func pick_name(): #pick random name for items
 	return [
 		"Soulsiphon",
 		"Blightspore",
@@ -176,9 +175,9 @@ func pick_name():
 		"Mini sucktion cup man",
 	][randi()%13]
 
-func create_drop(position):
+func create_drop(position): #creates an item in world
 	var world = get_node("/root/World")
-	var rare = PlayerData.run_random({1000:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed) #get which rear
+	var rare = PlayerData.run_random({800:0,120:1,40:2,10:3,4:4,1:5},world.enemys_killed) #get which rarity is item
 	for n in range(len(get_node("/root/World").enemys_killed)):
 		world.enemys_killed[n] += 1
 	get_node("/root/World").enemys_killed[rare] = 0
@@ -204,7 +203,7 @@ func create_drop(position):
 	var drop_item_instance = preload("res://Scenes/Drop_items.tscn").instance()
 	drop_item_instance.data = item
 	var pos = Vector2(50-randi() % 100,50-randi() % 100)
-	if get_node("/root/World/Nav/Title").get_cellv(get_node("/root/World/Nav/Title").world_to_map(pos + position)) == 0:
+	if get_node("/root/World/Nav/Title").get_cellv(get_node("/root/World/Nav/Title").world_to_map(pos + position)) == 0:#test if item can dorp there.
 		drop_item_instance.position = pos + position
 	else:
 		drop_item_instance.position = position
