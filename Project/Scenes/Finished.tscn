@@ -25,3 +25,18 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/StaticBody2D"]
 shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -66.5431
+margin_top = -83.5329
+margin_right = 0.456863
+margin_bottom = -69.5329
+rect_scale = Vector2( 2, 2 )
+text = "Q to finish"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

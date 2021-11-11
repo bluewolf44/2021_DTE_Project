@@ -6,10 +6,12 @@ var type = "exit"
 
 func _process(delta):
 	if not Engine.editor_hint:
-		if Input.is_action_just_pressed("Q"): #when Q got to map with in area
-			if $Area2D.overlaps_area(get_node("../../Player/Area2D")):
+		if $Area2D.overlaps_area(get_node("../../Player/Area2D")):
+			$Label.visible = true
+			if Input.is_action_just_pressed("Q"): #when Q got to map with in area
 				get_tree().change_scene("res://Scenes/Map.tscn")
-			
+		else:
+			$Label.visible = false
 
 func change_sprite(change):#bool for which side the sprtite and area is on
 	west = change

@@ -24,6 +24,7 @@ func _ready():#add stats
 	$CanvasLayer/Mana_bar/Max_Mana.text = str(PlayerData.mana)
 	$CanvasLayer/Mana_bar/ProgressBar.max_value = PlayerData.mana
 	$CanvasLayer/Mana_bar/ProgressBar.value = PlayerData.mana
+	PlayerData.current_health = PlayerData.health
 	
 	PlayerData.update_stats()
 
