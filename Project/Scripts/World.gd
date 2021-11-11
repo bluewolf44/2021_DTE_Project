@@ -102,8 +102,8 @@ func create_world(max_size,rooms,tiles,extra=[]):
 					star.set_point_weight_scale(point_to_astar[path+j],1)#resets weight
 
 	for r in range(2):#add floor
-		for x in range(-(max_area.x+10),max_area.x+10):
-			for y in range(-(max_area.x+10),max_area.y+10):
+		for x in range(-(max_area.x+15),max_area.x+15):
+			for y in range(-(max_area.x+15),max_area.y+15):
 				var pos = Vector2(x,y)
 				if $Floor.get_cellv(pos) != -1:
 					continue
